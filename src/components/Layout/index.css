@@ -1,0 +1,11 @@
+.trapezoid {
+  position: fixed;
+  bottom: -200px;
+  left: -100px;
+  right: 0;
+  height: 50vh;
+  background: red;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  transform: skewY(-10deg);
+  transform-origin: bottom;
+}
