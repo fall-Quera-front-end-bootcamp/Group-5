@@ -1,1 +1,0 @@
-This is a test project in Quera Bootcamp. The Reactor Team is trying to build  a task manager web app. The team is currenty working on the user authentication page.
