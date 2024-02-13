@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     colors: {
+      'white': '#FFFFFF',
       'gray-secondary': '#F1F3F5',
       'gray-primary' : "#868E96",
       'gray-darker': '#343A40',
