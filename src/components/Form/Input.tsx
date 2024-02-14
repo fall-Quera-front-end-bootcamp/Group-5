@@ -17,7 +17,11 @@ const InputField: React.FC<inputProps> = ({ label, type, register, error }) => (
       }`}
       {...register}
     />
-    {error && <p className="text-red-primary text-sm mt-1">{error.message}</p>}
+    {error && (
+      <p className="text-red-primary text-body-m font-body mt-1">
+        {error.message}
+      </p>
+    )}
   </div>
 );
 
