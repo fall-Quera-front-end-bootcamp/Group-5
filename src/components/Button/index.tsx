@@ -6,7 +6,7 @@ const Button = (porps) => {
     <>
       <div className=" flex items-center justify-center">
         <button
-          type="button"
+          type="submit"
           className="
        bg-blue-primary
        text-white-primary
