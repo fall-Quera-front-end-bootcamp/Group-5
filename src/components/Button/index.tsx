@@ -1,7 +1,4 @@
 const Button = (porps) => {
-  const handleClick = () => {
-    console.log("hi");
-  };
   return (
     <>
       <div className=" flex items-center justify-center">
@@ -16,7 +13,6 @@ const Button = (porps) => {
        font-bold
        text-bold-xs
        "
-          onClick={handleClick}
         >
           {porps.name}
         </button>
