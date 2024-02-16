@@ -5,7 +5,7 @@ function Layout() {
       <h1 className="font-heading text-heading-l bg-gradient-to-r from-[#118C80] to-[#4AB7D8] text-transparent bg-clip-text">کوئرا تسک منیجر</h1>
       <div>
         <p>ثبت‌نام نکرده‌ای؟</p>
-        <button className="h-xl p-[10px] rounded-md bg-brand-primary hover:bg-teal-primary text-white-primary">ثبت‌نام</button>
+        <button className="bg-brand-primary hover:bg-teal-primary text-white-primary font-body-800">ثبت‌نام</button>
       </div>
     </div>
     {/* <Login/> */}
