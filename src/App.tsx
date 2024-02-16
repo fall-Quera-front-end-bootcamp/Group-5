@@ -1,9 +1,19 @@
-
-import './App.css'
+import Button from "./components/Button";
+import "./App.css";
 
 function App() {
-
   return (
+<<<<<<< ph1-button
+    <>
+      <div>
+        <p className="bg-red-primary font-heading text-heading-m text-center">
+          This is a test page
+        </p>
+        <Button name="Click me" />
+      </div>
+    </>
+  );
+=======
 <>
 <div>
   <p className='bg-red-primary font-heading text-heading-m text-center'>This is a test page</p>
@@ -11,6 +21,7 @@ function App() {
 </div>
 </>
   )
+>>>>>>> main
 }
 
-export default App
+export default App;
