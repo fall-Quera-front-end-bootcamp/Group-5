@@ -5,15 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    
-    spacing: {
-      'xs': '8px',
-      's': '16px',
-      'm': '24px',
-      'l': '32px',
-      'xl': '40px',
-    },
     extend: {
+      spacing: {
+        'xs': '8px',
+        's': '16px',
+        'm': '24px',
+        'l': '32px',
+        'xl': '40px',
+      },
       colors: {
         'gray-secondary': '#F1F3F5',
         'gray-primary' : "#868E96",
