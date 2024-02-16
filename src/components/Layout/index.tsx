@@ -4,8 +4,8 @@ function Layout() {
     <div className="absolute top-[80px] w-10/12 flex justify-between">
       <h1 className="font-heading text-heading-l bg-gradient-to-r from-[#118C80] to-[#4AB7D8] text-transparent bg-clip-text">کوئرا تسک منیجر</h1>
       <div>
-        <p>ثبت‌نام نکرده‌ای؟</p>
-        <button className="bg-brand-primary hover:bg-teal-primary text-white-primary font-body-800">ثبت‌نام</button>
+        <p className="font-body font-bold text-body-s">ثبت‌نام نکرده‌ای؟</p>
+        <button className="bg-brand-primary hover:bg-teal-primary text-white-primary font-body fiont font-bold text-body-s">ثبت‌نام</button>
       </div>
     </div>
     {/* <Login/> */}
