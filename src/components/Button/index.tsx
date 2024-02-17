@@ -1,25 +1,41 @@
-const Button = (porps) => {
+import React from "react";
+
+interface MyButtonProps {
+  key: string;
+  label: string;
+}
+function renderSwitch(param: string) {
+  switch (param) {
+    case "signIn":
+      return (
+        <div className="flex items-center justify-center">
+          <div className="">ثبت نام نکرده‌ای؟ </div>
+          <p>ثبت‌نام</p>
+        </div>
+      );
+    case "forgotPassword":
+      return <p>بازگشت</p>;
+    default:
+      return;
+  }
+}
+const MYButton: React.FC<MyButtonProps> = ({ key, label }) => {
   return (
     <>
-      <div className=" flex items-center justify-center">
-        <button
-          type="submit"
-          className="
-       bg-blue-primary
-       text-white-primary
-       w-5/6
-       rounded-md
-       place-content-around
-       font-bold
-       text-bold-xs
-       "
-        >
-          {porps.name}
-        </button>
-      </div>
+      {key === "signIn" && <p>رمز عبور فراموش کردم</p>}
+      <button
+        type="submit"
+        className="bg-brand-primary 
+    hover:bg-teal-primary 
+    text-white 
+    font-body-800 
+    h-xl w-full rounded-[6px]
+    "
+      >
+        {label}
+      </button>
+      {renderSwitch(key)}
     </>
   );
 };
-
-export default Button;
-//inline-block rounded px-6 pb-2 pt-2.5 text-xs font-medium leading-normal text-white
+export default MYButton;
