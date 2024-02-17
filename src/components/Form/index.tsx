@@ -34,11 +34,15 @@ const forms: FormsType = {
       username: z.string().nonempty("نام کاربری الزامی است"),
       email: z.string().nonempty("نام کاربری الزامی است"),
       password: z.string().nonempty("رمز عبور الزامی است"),
+      terms: z.literal(true, {
+        errorMap: () => ({ message: "شما با قوانین موافقت نکردید!!" }),
+      }),
     },
     fields: [
       { key: "username", type: "text", label: "نام کاربری" },
       { key: "email", type: "email", label: "ایمیل" },
       { key: "password", type: "password", label: "رمز عبور" },
+      { key: "terms", type: "checkbox", label: "قوانین و مقررات را می‌پذیرم." },
     ],
   },
   forgotPassword: {
@@ -53,8 +57,12 @@ const forms: FormsType = {
     title: "تغییر رمز عبور",
     button: "اعمال تغییرات",
     schema: {
-      password: z.string().nonempty("رمز عبور الزامی است"),
-      confirmPassword: z.string().nonempty("رمز عبور الزامی است"),
+      password: z
+        .string()
+        .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
+      confirmPassword: z
+        .string()
+        .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
     },
     fields: [
       {
@@ -79,7 +87,17 @@ const Form: React.FC<FormProps> = ({ formClass }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(z.object(schema)),
+    resolver:
+      formClass === "resetPassword"
+        ? zodResolver(
+            z
+              .object(schema)
+              .refine((data) => data.password === data.confirmPassword, {
+                path: ["confirmPassword"],
+                message: "پسورد و تکرار آن باید یکسان باشد.",
+              })
+          )
+        : zodResolver(z.object(schema)),
   });
 
   const onSubmit = (data: any) => {
