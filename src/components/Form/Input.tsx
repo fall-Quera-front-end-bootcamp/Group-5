@@ -6,9 +6,9 @@ interface inputProps {
 }
 
 const InputField: React.FC<inputProps> = ({ label, type, register, error }) => (
-  <div className="mb-[32px]">
+  <div className="mt-m">
     {type === "checkbox" ? (
-      <>
+      <div className="mb-[20px]">
         <input type="checkbox" id="terms" {...register} />
         <label
           htmlFor="terms"
@@ -22,9 +22,9 @@ const InputField: React.FC<inputProps> = ({ label, type, register, error }) => (
             {error.message}
           </p>
         )}
-      </>
+      </div>
     ) : (
-      <>
+      <div className="mt-l">
         <label className="block text-gray-700 text-body-m font-body mb-xs">
           {label}
         </label>
@@ -40,7 +40,7 @@ const InputField: React.FC<inputProps> = ({ label, type, register, error }) => (
             {error.message}
           </p>
         )}
-      </>
+      </div>
     )}
   </div>
 );

@@ -1,41 +1,49 @@
 import React from "react";
 
 interface MyButtonProps {
-  key: string;
+  myKey: string; // Rename the prop to myKey
   label: string;
 }
+
 function renderSwitch(param: string) {
   switch (param) {
     case "signIn":
       return (
-        <div className="flex items-center justify-center">
-          <div className="">ثبت نام نکرده‌ای؟ </div>
-          <p>ثبت‌نام</p>
+        <div className="flex items-center justify-center mt-m font-bold">
+          <p className="font-normal text-body-m  ">
+            ثبت نام نکرده‌ای؟{" "}
+            <span className="text-brand-primary"> ثبت‌نام</span>
+          </p>
         </div>
       );
     case "forgotPassword":
-      return <p>بازگشت</p>;
+      return (
+        <div className="flex items-center justify-center mt-m font-bold">
+          <p className="font-bold text-body-m text-brand-primary">بازگشت</p>
+        </div>
+      );
     default:
-      return;
+      return null; // Return null instead of an empty value
   }
 }
-const MYButton: React.FC<MyButtonProps> = ({ key, label }) => {
+
+const MYButton: React.FC<MyButtonProps> = ({ myKey, label }) => {
   return (
     <>
-      {key === "signIn" && <p>رمز عبور فراموش کردم</p>}
+      {myKey === "signIn" && (
+        <p className="mb-s mt-xs font-body text-bold-xs underline">
+          رمز عبور خود را فراموش کرده‌اید؟
+        </p>
+      )}
       <button
         type="submit"
-        className="bg-brand-primary 
-    hover:bg-teal-primary 
-    text-white 
-    font-body-800 
-    h-xl w-full rounded-[6px]
-    "
+        className="bg-brand-primary hover:bg-teal-primary text-white font-bold text-bold-s h-xl w-full rounded-[6px] mt-m"
       >
         {label}
       </button>
-      {renderSwitch(key)}
+      {renderSwitch(myKey)}
     </>
   );
 };
+
 export default MYButton;
