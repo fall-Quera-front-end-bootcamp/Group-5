@@ -94,7 +94,7 @@ const Form: React.FC<FormProps> = ({ formClass }) => {
     formState: { errors },
   } = useForm({
     resolver:
-      formClass === "resetPassword"
+      button === "resetPassword"
         ? zodResolver(
             z
               .object(schema)
