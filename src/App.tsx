@@ -1,6 +1,6 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import { Login, SignUp, ForgotPassword, ResetPassword } from "./pages";
+import { Login, SignUp, ForgotPassword, ResetPassword } from "./Pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
