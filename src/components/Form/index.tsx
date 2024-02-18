@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import InputField from "./Input";
+import MYButton from "../Button";
 
 interface FormsType {
   [key: string]: {
     title: string;
+    label: string;
     button: string;
     schema: Record<string, any>;
     fields: { key: string; type: string; label: string }[];
@@ -16,7 +18,8 @@ interface FormsType {
 const forms: FormsType = {
   signIn: {
     title: "به کوئرا تسک منیجر خوش برگشتی :) ",
-    button: "ورود",
+    label: "ورود",
+    button: "signIn",
     schema: {
       username: z.string().nonempty("نام کاربری الزامی است"),
       password: z.string().nonempty("رمز عبور الزامی است"),
@@ -29,7 +32,8 @@ const forms: FormsType = {
 
   signUp: {
     title: "ثبت‌نام در کوئرا تسک منیجر",
-    button: "ثبت نام",
+    label: "ثبت نام",
+    button: "signUp",
     schema: {
       username: z.string().nonempty("نام کاربری الزامی است"),
       email: z.string().nonempty("نام کاربری الزامی است"),
@@ -47,7 +51,8 @@ const forms: FormsType = {
   },
   forgotPassword: {
     title: "فراموشی رمز عبور",
-    button: "دریافت ایمیل بازیابی رمز عبور",
+    label: "دریافت ایمیل بازیابی رمز عبور",
+    button: "forgotPassword",
     schema: {
       email: z.string().nonempty("نام کاربری الزامی است"),
     },
@@ -55,7 +60,8 @@ const forms: FormsType = {
   },
   resetPassword: {
     title: "تغییر رمز عبور",
-    button: "اعمال تغییرات",
+    label: "اعمال تغییرات",
+    button: "resetPassword",
     schema: {
       password: z
         .string()
@@ -80,7 +86,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ formClass }) => {
-  const { schema, fields, button } = forms[formClass];
+  const { schema, fields, button, label } = forms[formClass];
 
   const {
     register,
@@ -120,12 +126,7 @@ const Form: React.FC<FormProps> = ({ formClass }) => {
               error={errors[key]}
             />
           ))}
-          <button
-            type="submit"
-            className="bg-brand-primary hover:bg-teal-primary text-white-primary font-body-800 h-xl w-full rounded-[6px]"
-          >
-            {button}
-          </button>
+          <MYButton myKey={button} label={label} />
         </form>
       </div>
     </div>
