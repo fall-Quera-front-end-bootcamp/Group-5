@@ -1,5 +1,7 @@
 import { Form } from "../../components";
 
-const Login = () => <Form formClass={"signIn"} />;
+const Login = () => {
+  return <Form formClass={"signIn"} />;
+};
 
 export default Login;

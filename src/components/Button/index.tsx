@@ -1,25 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface MyButtonProps {
   myKey: string; // Rename the prop to myKey
   label: string;
 }
 
-function renderSwitch(param: string) {
+function RenderSwitch(param: string) {
+  const navigate = useNavigate();
+
   switch (param) {
     case "signIn":
       return (
         <div className="flex items-center justify-center mt-m font-bold">
           <p className="font-normal text-body-m  ">
             ثبت نام نکرده‌ای؟{" "}
-            <span className="text-brand-primary"> ثبت‌نام</span>
+            <span
+              className="text-brand-primary cursor-pointer"
+              onClick={() => navigate("/signUp")}
+            >
+              {" "}
+              ثبت‌نام
+            </span>
           </p>
         </div>
       );
     case "forgotPassword":
       return (
         <div className="flex items-center justify-center mt-m font-bold">
-          <p className="font-bold text-body-m text-brand-primary">بازگشت</p>
+          <p
+            className="font-bold text-body-m text-brand-primary cursor-pointer"
+            onClick={() => navigate(-1)}
+          >
+            بازگشت
+          </p>
         </div>
       );
     default:
@@ -28,10 +42,15 @@ function renderSwitch(param: string) {
 }
 
 const MYButton: React.FC<MyButtonProps> = ({ myKey, label }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       {myKey === "signIn" && (
-        <p className="mb-s mt-xs font-body text-bold-xs underline">
+        <p
+          className="mb-s mt-xs font-body text-bold-xs underline cursor-pointer"
+          onClick={() => navigate("/forgotPassword")}
+        >
           رمز عبور خود را فراموش کرده‌اید؟
         </p>
       )}
@@ -41,7 +60,7 @@ const MYButton: React.FC<MyButtonProps> = ({ myKey, label }) => {
       >
         {label}
       </button>
-      {renderSwitch(myKey)}
+      {RenderSwitch(myKey)}
     </>
   );
 };
