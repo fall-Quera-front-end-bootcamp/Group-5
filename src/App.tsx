@@ -1,6 +1,12 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import { Login, SignUp, ForgotPassword, ResetPassword } from "./pages";
+import {
+  Login,
+  SignUp,
+  ForgotPassword,
+  ResetPassword,
+  Listview,
+} from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +17,7 @@ function App() {
         <Route path="signUp" element={<SignUp />} />
         <Route path="forgotPassword" element={<ForgotPassword />} />
         <Route path="resetPassword" element={<ResetPassword />} />
+        <Route path="Listview" element={<Listview />} />
       </Route>
     </Routes>
   );
