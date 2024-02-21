@@ -1,6 +1,6 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import { Login, SignUp, ForgotPassword, ResetPassword } from "./pages";
+import { Login, SignUp, ForgotPassword, ResetPassword, Profile } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path="forgotPassword" element={<ForgotPassword />} />
         <Route path="resetPassword" element={<ResetPassword />} />
       </Route>
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
