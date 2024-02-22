@@ -23,7 +23,7 @@ interface FormsType {
 }
 
 const forms: FormsType = {
-  personal: {
+  personalInfo: {
     title: "اطلاعات فردی",
     label: "ثبت تغییرات",
     button: "personal",
@@ -46,11 +46,55 @@ const forms: FormsType = {
       { key: "phoneNumber", type: "text", label: "شماره موبایل" },
     ],
   },
+  accountInfo: {
+    title: "اطلاعات حساب",
+    label: "ثبت تغییرات",
+    button: "account",
+    schema: {
+      email: z
+        .string()
+        .min(1, { message: "ایمیل الزامی است" })
+        .email("ایمیل وارد شده معتبر نیست"),
+      username: z
+        .string()
+        .min(6, { message: "نام کاربری باید حداقل 6 کاراکتر باشد." }),
+
+      currentPassword: z
+        .string()
+        .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
+      password: z
+        .string()
+        .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
+      confirmPassword: z
+        .string()
+        .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
+    },
+    fields: [
+      { key: "email", type: "email", label: "ایمیل" },
+      { key: "username", type: "text", label: "نام کاربری" },
+
+      {
+        key: "currentPassword",
+        type: "password",
+        label: "رمز عبور فعلی",
+      },
+      {
+        key: "password",
+        type: "password",
+        label: "رمز عبور جدید",
+      },
+      {
+        key: "confirmPassword",
+        type: "password",
+        label: "تکرار رمز عبور جدید",
+      },
+    ],
+  },
 };
 
 const Profile = () => {
-  const [tab, setTab] = useState("personalInfo");
-  const { title, schema, fields, button, label } = forms["personal"];
+  const [tab, setTab] = useState<string>("personalInfo");
+  const { title, schema, fields, button, label } = forms[tab];
 
   const {
     register,
@@ -58,7 +102,7 @@ const Profile = () => {
     formState: { errors },
   } = useForm({
     resolver:
-      button === "resetPassword"
+      button === "account"
         ? zodResolver(
             z
               .object(schema)
@@ -79,42 +123,48 @@ const Profile = () => {
       {/* slide */}
       <Slide tab={tab} setTab={setTab} />
       {/* main */}
-      <div className="mt-[80px] mx-[60px] max-w-[354px]">
+      <div className="mt-[80px] mx-[60px] w-[354px]">
+        <h3 className="font-body text-[31px] mb-[40px]">{title}</h3>
         {tab === "personalInfo" && (
-          <>
-            <h3 className="font-body text-[31px] mb-[40px]">{title}</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex">
-                <div className="rounded-full bg-yellow-secondary text-yellow-primary w-[100px] h-[100px] flex items-center justify-center font-bold text-[20px] ml-5">
-                  NM
-                </div>
-                <div>
-                  <button className="border-solid border-2 border-brand-primary rounded-lg p-[10px] mb-5 mt-1 bg-white font-body text-[18px] text-brand-primary">
-                    ویرایش تصویر پروفایل
-                  </button>
-                  <p className="font-body text-[#8A8989] text-[12px]">
-                    این تصویر برای عموم قابل نمایش است.
-                  </p>
-                </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex">
+              <div className="rounded-full bg-yellow-secondary text-yellow-primary w-[100px] h-[100px] flex items-center justify-center font-bold text-[20px] ml-5">
+                NM
               </div>
-              {fields.map(({ key, type, label }) => (
-                <InputField
-                  key={key}
-                  label={label}
-                  type={type}
-                  register={register(key)}
-                  error={errors[key]}
-                />
-              ))}
-              <MYButton myKey={button} label={label} />
-            </form>
-          </>
+              <div>
+                <button className="border-solid border-2 border-brand-primary rounded-lg p-[10px] mb-5 mt-1 bg-white font-body text-[18px] text-brand-primary">
+                  ویرایش تصویر پروفایل
+                </button>
+                <p className="font-body text-[#8A8989] text-[12px]">
+                  این تصویر برای عموم قابل نمایش است.
+                </p>
+              </div>
+            </div>
+            {fields.map(({ key, type, label }) => (
+              <InputField
+                key={key}
+                label={label}
+                type={type}
+                register={register(key)}
+                error={errors[key]}
+              />
+            ))}
+            <MYButton myKey={button} label={label} />
+          </form>
         )}
         {tab === "accountInfo" && (
-          <>
-            <h3 className="font-body text-[31px]">اطلاعات حساب</h3>
-            <div>account Form</div>
-          </>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {fields.map(({ key, type, label }) => (
+              <InputField
+                key={key}
+                label={label}
+                type={type}
+                register={register(key)}
+                error={errors[key]}
+              />
+            ))}
+            <MYButton myKey={button} label={label} />
+          </form>
         )}
         {tab === "settings" && (
           <>
