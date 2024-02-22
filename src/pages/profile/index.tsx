@@ -5,7 +5,7 @@ import { z } from "zod";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { BsPersonGear, BsPersonCheck } from "react-icons/bs";
 import { SlSettings } from "react-icons/sl";
-import { InputField, MYButton, Slide } from "../../components";
+import { InputField, MYButton, Slide, ColorOption } from "../../components";
 
 interface FormsType {
   [key: string]: {
@@ -92,10 +92,26 @@ const forms: FormsType = {
   },
 };
 
+type ColorsType = string[];
+
 const Profile = () => {
   const [tab, setTab] = useState<string>("personalInfo");
   const { title, schema, fields, button, label } = forms[tab];
-
+  const colors: ColorsType = [
+    "red-primary",
+    "pink-primary",
+    "grape-primary",
+    "violet-primary",
+    "indigo-primary",
+    "blue-primary",
+    "cyan-primary",
+    "teal-secondary",
+    "brand-primary",
+    "green-primary",
+    "lime-primary",
+    "yellow-primary",
+    "orange-primary",
+  ];
   const {
     register,
     handleSubmit,
@@ -212,6 +228,14 @@ const Profile = () => {
         )}
         {tab === "settings" && (
           <form>
+            <label className="block text-gray-700 text-body-s font-body mb-xs">
+              انتخاب تم
+            </label>
+            <div className="flex gap-[15px]">
+              {colors.map((color, index) => (
+                <ColorOption color={color} key={index} />
+              ))}
+            </div>
             <MYButton myKey={button} label={label} />
           </form>
         )}
