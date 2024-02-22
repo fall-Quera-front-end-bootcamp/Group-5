@@ -103,7 +103,8 @@ const Profile = () => {
   } = useForm({
     resolver:
       button === "account"
-        ? zodResolver(
+        ? schema &&
+          zodResolver(
             z
               .object(schema)
               .refine((data) => data.password === data.confirmPassword, {
@@ -111,7 +112,7 @@ const Profile = () => {
                 message: "پسورد و تکرار آن باید یکسان باشد.",
               })
           )
-        : zodResolver(z.object(schema)),
+        : schema && zodResolver(z.object(schema)),
   });
 
   const onSubmit = (data: any) => {
