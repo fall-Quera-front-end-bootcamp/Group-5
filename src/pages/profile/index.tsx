@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
+import { FaArrowRightLong } from "react-icons/fa6";
+import { BsPersonGear, BsPersonCheck } from "react-icons/bs";
+import { SlSettings } from "react-icons/sl";
 import { InputField, MYButton, Slide } from "../../components";
 
 interface FormsType {
@@ -119,7 +121,48 @@ const Profile = () => {
   return (
     <div className="h-screen flex">
       {/* slide */}
-      <Slide tab={tab} setTab={setTab} />
+      <Slide>
+        <div>
+          <button className="flex justify-between h-[36px] w-[90px] bg-brand-primary text-white py-[4px] px-[8px] mb-[40px] rounded-lg items-center">
+            <FaArrowRightLong /> <span className="font-body ">بازگشت</span>
+          </button>
+          <div>
+            <div
+              className={`cursor-pointer w-[266px] py-[8px] px-[10px] mb-[20px] rounded flex items-center gap-2 text-[18px] ${
+                tab === "personalInfo"
+                  ? "bg-brand-secondary font-bold "
+                  : "font-body"
+              }`}
+              onClick={() => setTab("personalInfo")}
+            >
+              <BsPersonGear size="22px" />
+              <span>اطلاعات فردی</span>
+            </div>
+            <div
+              className={`cursor-pointer w-[266px] py-[8px] px-[10px] mb-[20px] rounded flex items-center gap-2 text-[18px] ${
+                tab === "accountInfo"
+                  ? "bg-brand-secondary font-bold "
+                  : "font-body"
+              }`}
+              onClick={() => setTab("accountInfo")}
+            >
+              <BsPersonCheck size="22px" />
+              <span>اطلاعات حساب</span>
+            </div>
+            <div
+              className={`cursor-pointer w-[266px] py-[8px] px-[10px] mb-[20px] rounded flex items-center gap-2 text-[18px] ${
+                tab === "settings"
+                  ? "bg-brand-secondary font-bold "
+                  : "font-body"
+              }`}
+              onClick={() => setTab("settings")}
+            >
+              <SlSettings size="22px" />
+              <span>تنظیمات</span>
+            </div>
+          </div>
+        </div>
+      </Slide>
       {/* main */}
       <div className="mt-[80px] mx-[60px] w-[354px]">
         <h3 className="font-body text-[31px] mb-[40px]">{title}</h3>
