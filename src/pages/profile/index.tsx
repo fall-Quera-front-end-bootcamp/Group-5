@@ -17,8 +17,8 @@ interface FormsType {
     title: string;
     label: string;
     button: string;
-    schema: Record<string, any>;
-    fields: { key: string; type: string; label: string }[];
+    schema?: Record<string, any>;
+    fields?: { key: string; type: string; label: string }[];
   };
 }
 
@@ -90,6 +90,11 @@ const forms: FormsType = {
       },
     ],
   },
+  settings: {
+    title: "تنظیمات",
+    label: "ثبت تغییرات",
+    button: "settings",
+  },
 };
 
 const Profile = () => {
@@ -125,6 +130,7 @@ const Profile = () => {
       {/* main */}
       <div className="mt-[80px] mx-[60px] w-[354px]">
         <h3 className="font-body text-[31px] mb-[40px]">{title}</h3>
+
         {tab === "personalInfo" && (
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex">
@@ -154,7 +160,7 @@ const Profile = () => {
         )}
         {tab === "accountInfo" && (
           <form onSubmit={handleSubmit(onSubmit)}>
-            {fields.map(({ key, type, label }) => (
+            {fields?.map(({ key, type, label }) => (
               <InputField
                 key={key}
                 label={label}
@@ -163,14 +169,14 @@ const Profile = () => {
                 error={errors[key]}
               />
             ))}
+
             <MYButton myKey={button} label={label} />
           </form>
         )}
         {tab === "settings" && (
-          <>
-            <h3 className="font-body text-[31px]">تنظیمات</h3>
-            <div>theme settings</div>
-          </>
+          <form>
+            <MYButton myKey={button} label={label} />
+          </form>
         )}
       </div>
     </div>
