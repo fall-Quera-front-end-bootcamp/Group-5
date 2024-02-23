@@ -10,17 +10,6 @@ type taskType = {
 // type DataObjectType = string | tasksType;
 type DataObjectType = { project_name: string; tasks: taskType[] };
 type DataType = DataObjectType[];
-// interface Datatype {
-//   project_name: string;
-//   tasks: {
-//     task_name: string;
-//     status: string;
-//     peoples: string[];
-//     deadline: string;
-//     priority: string;
-//     description: string;
-//   }[];
-// }
 const mocked_data: DataType = [
   {
     project_name: "do first",
@@ -78,37 +67,64 @@ interface DataProps {
   data?: DataType;
 }
 
-const Listview: React.FC<DataProps> = ({ data }) => {
+const Listview: React.FC<DataProps> = ({ }) => {
   const [collapsed, setCollapsed] = useState(true);
 
-  useEffect(() => {
-    console.log(mocked_data);
-  }, []);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
 
+  const CheckTASKS = (AllTasks: Array[], status: string) => {
+    const ReTasks = AllTasks.filter((CheckTask) => CheckTask.status == status)
+    console.log(ReTasks)
+    return (
+      ReTasks.map((task)=>{
+        return <></>
+      })
+    )
+
+
+  }
+
   return (
     <div>
-      <h2 onClick={toggleCollapsed}>{"project-no"}</h2>
-      {collapsed ? null : (
-        <ul>
-          <li>
-            <h3>project1</h3>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-            </ul>
-          </li>
-          <li>
-            <h3>Section 2</h3>
-            <ul>
-              <li>Item 3</li>
-              <li>Item 4</li>
-            </ul>
-          </li>
-        </ul>
-      )}
+      {mocked_data.map((Projects) => {
+        return (
+          <>
+            <h2 onClick={toggleCollapsed} key={Projects.project_name}>{Projects.project_name}</h2>
+            {collapsed ? null : (
+              CheckTASKS(Projects.tasks, "pending")
+
+
+              // e.tasks.map((items) => {
+              //   return (
+              //     <ul>
+              //       <li>
+              //         <h3></h3>
+              //         <ul>
+              //           <li>Item 1</li>
+              //           <li>Item 2</li>
+              //         </ul>
+              //       </li>
+              //       <li>
+              //         <ul>
+              //           <h3>Section 2</h3>
+              //           <li>Item 3</li>
+              //           <li>Item 4</li>
+              //         </ul>
+              //       </li>
+              //     </ul>
+              //   )
+              // })
+
+
+            )}
+
+          </>
+        )
+      })}
+      {/* <h2 onClick={toggleCollapsed}>{"project-no"}</h2> */}
+
     </div>
   );
 };
