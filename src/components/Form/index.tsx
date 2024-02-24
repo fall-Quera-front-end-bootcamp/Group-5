@@ -35,8 +35,13 @@ const forms: FormsType = {
     label: "ثبت نام",
     button: "signUp",
     schema: {
-      username: z.string().nonempty("نام کاربری الزامی است"),
-      email: z.string().nonempty("نام کاربری الزامی است"),
+      username: z
+        .string()
+        .min(6, { message: "نام کاربری باید حداقل 6 کاراکتر باشد." }),
+      email: z
+        .string()
+        .min(1, { message: "ایمیل الزامی است" })
+        .email("ایمیل وارد شده معتبر نیست"),
       password: z.string().nonempty("رمز عبور الزامی است"),
       terms: z.literal(true, {
         errorMap: () => ({ message: "شما با قوانین موافقت نکردید!!" }),
