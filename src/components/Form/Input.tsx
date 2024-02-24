@@ -24,13 +24,13 @@ const InputField: React.FC<inputProps> = ({ label, type, register, error }) => (
         )}
       </div>
     ) : (
-      <div className="mt-l">
-        <label className="block text-gray-700 text-body-m font-body mb-xs">
+      <div className="mt-m">
+        <label className="block text-gray-700 text-body-s font-body mb-xs">
           {label}
         </label>
         <input
           type={type}
-          className={`border rounded-[6px] px-xs w-[592px] h-[40px] ${
+          className={`border rounded-[6px] px-xs w-full h-[40px] ${
             error ? "border-red-primary" : "border-gray-primary"
           }`}
           {...register}
