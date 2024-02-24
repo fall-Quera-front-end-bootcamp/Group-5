@@ -99,8 +99,9 @@ const Profile = () => {
   const {
     colors,
     theme: {
-      primary: { bgPrimary: themeBg },
+      primary: { bgPrimary },
     },
+    setTheme,
   } = useTheme();
 
   const {
@@ -121,6 +122,10 @@ const Profile = () => {
           )
         : schema && zodResolver(z.object(schema)),
   });
+
+  const handleChangeTheme = (color) => {
+    setTheme(color);
+  };
 
   const onSubmit = (data: any) => {
     console.log(data); // Handle form submission here
@@ -223,11 +228,19 @@ const Profile = () => {
               انتخاب تم
             </label>
             <div className="flex items-center gap-[15px] w-[1482px]">
-              {colors.map(({ primary: { bgPrimary } }, index) =>
-                bgPrimary !== themeBg ? (
-                  <ColorOption color={bgPrimary} key={index} />
+              {colors.map((color, index) =>
+                color.primary.bgPrimary === bgPrimary ? (
+                  <ColorOption
+                    color={color.primary.bgPrimary}
+                    key={index}
+                    selected={true}
+                  />
                 ) : (
-                  <ColorOption color={bgPrimary} key={index} selected={true} />
+                  <ColorOption
+                    color={color.primary.bgPrimary}
+                    key={index}
+                    handleClick={() => handleChangeTheme(color)}
+                  />
                 )
               )}
             </div>
