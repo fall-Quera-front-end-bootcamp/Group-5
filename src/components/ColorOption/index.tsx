@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ColorOption: React.FC<Props> = ({ color }) => {
-  return <div className={`rounded-lg w-[20px] h-[20px] bg-${color}`} />;
+  return <div className={`rounded-lg w-[20px] h-[20px] ${color}`} />;
 };
 
 export default ColorOption;

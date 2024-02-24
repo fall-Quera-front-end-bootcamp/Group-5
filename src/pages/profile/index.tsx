@@ -6,6 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { BsPersonGear, BsPersonCheck } from "react-icons/bs";
 import { SlSettings } from "react-icons/sl";
 import { InputField, MYButton, Slide, ColorOption } from "../../components";
+import useTheme from "../../services/Theme";
 
 interface FormsType {
   [key: string]: {
@@ -92,26 +93,16 @@ const forms: FormsType = {
   },
 };
 
-type ColorsType = string[];
-
 const Profile = () => {
   const [tab, setTab] = useState<string>("personalInfo");
   const { title, schema, fields, button, label } = forms[tab];
-  const colors: ColorsType = [
-    "red-primary",
-    "pink-primary",
-    "grape-primary",
-    "violet-primary",
-    "indigo-primary",
-    "blue-primary",
-    "cyan-primary",
-    "teal-secondary",
-    "brand-primary",
-    "green-primary",
-    "lime-primary",
-    "yellow-primary",
-    "orange-primary",
-  ];
+  const {
+    colors,
+    theme: {
+      primary: { bgPrimary },
+    },
+  } = useTheme();
+
   const {
     register,
     handleSubmit,
@@ -232,8 +223,8 @@ const Profile = () => {
               انتخاب تم
             </label>
             <div className="flex gap-[15px]">
-              {colors.map((color, index) => (
-                <ColorOption color={color} key={index} />
+              {colors.map(({ primary: { bgPrimary } }, index) => (
+                <ColorOption color={bgPrimary} key={index} />
               ))}
             </div>
             <MYButton myKey={button} label={label} />
