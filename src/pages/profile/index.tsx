@@ -99,7 +99,7 @@ const Profile = () => {
   const {
     colors,
     theme: {
-      primary: { bgPrimary },
+      primary: { bgPrimary: themeBg },
     },
   } = useTheme();
 
@@ -222,10 +222,14 @@ const Profile = () => {
             <label className="block text-gray-700 text-body-s font-body mb-xs">
               انتخاب تم
             </label>
-            <div className="flex gap-[15px]">
-              {colors.map(({ primary: { bgPrimary } }, index) => (
-                <ColorOption color={bgPrimary} key={index} />
-              ))}
+            <div className="flex items-center gap-[15px] w-[1482px]">
+              {colors.map(({ primary: { bgPrimary } }, index) =>
+                bgPrimary !== themeBg ? (
+                  <ColorOption color={bgPrimary} key={index} />
+                ) : (
+                  <ColorOption color={bgPrimary} key={index} selected={true} />
+                )
+              )}
             </div>
             <MYButton myKey={button} label={label} />
           </form>

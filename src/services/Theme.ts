@@ -91,10 +91,6 @@ const useTheme = () => {
       bgPrimary: "bg-brand-primary",
       textPrimary: "text-brand-primary",
     },
-    secondary: {
-      bgSecondary: "bg-brand-secondary",
-      textSecondary: "text-brand-secondary",
-    },
   });
 
   return { colors, theme, setTheme };
