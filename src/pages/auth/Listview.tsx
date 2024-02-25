@@ -87,14 +87,17 @@ const Listview: React.FC<DataProps> = ({}) => {
     switch (Task_priority) {
       case "high":
         return (
-          <CiFlag1 className="text-red-primary text-heading-l block m-a uto " />
+          <CiFlag1 className="text-red-primary text-heading-l block m-auto " />
         );
       case "low":
-        return <CiFlag1 className="text-yellow-primary text-heading-l" />;
+        return (
+          <CiFlag1 className="text-yellow-primary text-heading-l block m-auto" />
+        );
     }
   };
 
-  const CheckTASKS = (AllTasks: Array[], status: string) => {
+  ///////////// the render tasks function
+  const RenderTASKS = (AllTasks: Array[], status: string) => {
     const ReTasks = AllTasks.filter((CheckTask) => CheckTask.status == status);
     let color = "";
     if (status == "pending") color = "bg-pink-primary";
@@ -104,31 +107,32 @@ const Listview: React.FC<DataProps> = ({}) => {
       return null;
     } else {
       return (
-        <div className=" border-4 border-black p-s">
+        <div className="p-s">
           <div className="flex flex-row">
             <div className="basis-[50%] flex ">
+              <IoIosArrowDropdown className="mt-2.5 ml-2 size-5" />
               <div
                 key={ReTasks[0].status}
                 className={`${color} text-center
                  text-white 
                  min-w-min rounded-lg 
                  font-heading-l 
-                 p-2`}
+                 p-2 `}
               >
                 {ReTasks[0].status}
               </div>
             </div>
-            <span className="basis-[15%]">اعضا</span>
-            <span className="basis-[15%]">ددلاین</span>
-            <span className="basis-[15%]">اولویت</span>
-            <span className="basis-[15%]">توضیحات</span>
+            <span className="basis-[15%] text-center">اعضا</span>
+            <span className="basis-[15%] text-center">ددلاین</span>
+            <span className="basis-[15%] text-center">اولویت</span>
+            <span className="basis-[15%] text-center">توضیحات</span>
           </div>
           {ReTasks.map((task) => {
             return (
               <div key={task.name} className="flex flex-row p-xs">
                 <div className="flex basis-[50%]">
                   <div
-                    className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1`}
+                    className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1 mr-5`}
                   ></div>
                   <div key={task.task_name}>{task.task_name}</div>
                 </div>
@@ -136,17 +140,24 @@ const Listview: React.FC<DataProps> = ({}) => {
                 <div className="basis-[15%]" key={task.peoples}>
                   {task.peoples}
                 </div>
-                <div className=" basis-[15%]" key={task.deadline}>
+                <div className=" basis-[15%] text-center" key={task.deadline}>
                   {task.deadline}
                 </div>
                 <div className=" basis-[15%] flex flex-col" key={task.priority}>
                   {TaskPriority(task.priority)}
                 </div>
                 <div
-                  className=" basis-[15%] overflow-hidden"
+                  className=" basis-[15%] flex flex-col"
                   key={task.description}
                 >
-                  <Popup trigger={<div><CgDetailsMore /></div>} position="right center">
+                  <Popup
+                    trigger={
+                      <div className="block m-auto">
+                        <CgDetailsMore />
+                      </div>
+                    }
+                    position="right center"
+                  >
                     <div>{task.description}</div>
                   </Popup>
                 </div>
@@ -162,7 +173,7 @@ const Listview: React.FC<DataProps> = ({}) => {
     <div key={"contain"} className="max-h-screen overflow-y-auto flex flex-row">
       {mocked_data.map((Projects) => {
         return (
-          <div className=" border-4 border-red-900 w-screen">
+          <div className="w-screen">
             <h2
               key={Projects.project_name}
               onClick={toggleCollapsed}
@@ -175,10 +186,10 @@ const Listview: React.FC<DataProps> = ({}) => {
             </h2>
 
             {collapsed ? null : (
-              <div className="border-4 border-amber-950">
-                {CheckTASKS(Projects.tasks, "pending")}
-                {CheckTASKS(Projects.tasks, "inprogress")}
-                {CheckTASKS(Projects.tasks, "done")}
+              <div className="mr-3">
+                {RenderTASKS(Projects.tasks, "pending")}
+                {RenderTASKS(Projects.tasks, "inprogress")}
+                {RenderTASKS(Projects.tasks, "done")}
               </div>
             )}
           </div>
