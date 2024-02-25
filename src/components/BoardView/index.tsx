@@ -1,8 +1,10 @@
+import TaskCol from "../TaskCol";
+
 function BoardView() {
   return (
-    <>
-      <p>mamad nobari</p>
-    </>
+    <div>
+      <TaskCol />
+    </div>
   );
 }
 
