@@ -12,7 +12,7 @@ function RenderSwitch(param: string) {
   switch (param) {
     case "signIn":
       return (
-        <div className="flex items-center justify-center mt-m font-bold">
+        <div className="flex items-center justify-center mt-m font-xl">
           <p className="font-normal text-body-m  ">
             ثبت نام نکرده‌ای؟{" "}
             <span
