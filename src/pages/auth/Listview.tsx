@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { CiFlag1 } from "react-icons/ci";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import { CgDetailsMore } from "react-icons/cg";
 type taskType = {
   task_name: string;
   peoples: string[];
@@ -71,6 +74,7 @@ interface DataProps {
   data?: DataType;
 }
 
+///// the main component
 const Listview: React.FC<DataProps> = ({}) => {
   const [collapsed, setCollapsed] = useState(true);
 
@@ -80,11 +84,10 @@ const Listview: React.FC<DataProps> = ({}) => {
 
   ///prirory function
   const TaskPriority = (Task_priority: string) => {
-    console.log("im in TaskPriority", Task_priority);
     switch (Task_priority) {
       case "high":
         return (
-          <CiFlag1 className="text-red-primary text-heading-l block m-auto " />
+          <CiFlag1 className="text-red-primary text-heading-l block m-a uto " />
         );
       case "low":
         return <CiFlag1 className="text-yellow-primary text-heading-l" />;
@@ -135,7 +138,7 @@ const Listview: React.FC<DataProps> = ({}) => {
                 </div>
                 <div className=" basis-[15%]" key={task.deadline}>
                   {task.deadline}
-                </div> 
+                </div>
                 <div className=" basis-[15%] flex flex-col" key={task.priority}>
                   {TaskPriority(task.priority)}
                 </div>
@@ -143,7 +146,9 @@ const Listview: React.FC<DataProps> = ({}) => {
                   className=" basis-[15%] overflow-hidden"
                   key={task.description}
                 >
-                  {task.description}
+                  <Popup trigger={<div><CgDetailsMore /></div>} position="right center">
+                    <div>{task.description}</div>
+                  </Popup>
                 </div>
               </div>
             );
