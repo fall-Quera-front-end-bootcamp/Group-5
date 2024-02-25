@@ -9,7 +9,11 @@ function Layout() {
       : "قبلا ثبت‌نام کرده‌ای؟"
   );
 
-  const BtnValue = Location.pathname === "/" ? "ثبت‌نام" : "ورود";
+  const BtnValue = (
+    Location.pathname === "/"
+      ? "ثبت‌نام"
+      : "ورود"
+  );
 
   const NavigateTo = (
     Location.pathname === "/"
