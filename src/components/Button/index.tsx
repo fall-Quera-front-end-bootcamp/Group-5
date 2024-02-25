@@ -56,7 +56,7 @@ const MYButton: React.FC<MyButtonProps> = ({ myKey, label }) => {
       )}
       <button
         type="submit"
-        className="bg-brand-primary hover:bg-teal-primary text-white font-bold text-bold-s h-xl w-full rounded-[6px] mt-m"
+        className="bg-brand-primary hover:bg-teal-primary text-white font-bold text-bold-s h-xl w-full rounded-[6px] mt-l"
       >
         {label}
       </button>

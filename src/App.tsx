@@ -1,14 +1,7 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import {
-  Login,
-  SignUp,
-  ForgotPassword,
-  ResetPassword,
-  Listview,
-} from "./pages";
+import { Login, SignUp, ForgotPassword, ResetPassword, Profile,Listview } from "./pages";
 import { Routes, Route } from "react-router-dom";
-
 function App() {
   return (
     <Routes>
@@ -19,6 +12,7 @@ function App() {
         <Route path="resetPassword" element={<ResetPassword />} />
         <Route path="Listview" element={<Listview />} />
       </Route>
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
