@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 function Layout() {
   const Navigate = useNavigate();
   const Location = useLocation();
+  
   const signUpMessage = (
     Location.pathname === "/"
       ? "ثبت‌نام نکرده‌ای؟"
