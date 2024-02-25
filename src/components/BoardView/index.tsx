@@ -1,6 +1,8 @@
 function BoardView() {
   return (
-    <></>
+    <>
+      <p>mamad nobari</p>
+    </>
   );
 }
 
