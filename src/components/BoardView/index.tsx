@@ -1,6 +1,6 @@
 function BoardView() {
   return (
-    <div></div>
+    <></>
   );
 }
 
