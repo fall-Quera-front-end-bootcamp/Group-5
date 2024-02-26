@@ -4,6 +4,7 @@ import { CiFlag1 } from "react-icons/ci";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { CgDetailsMore } from "react-icons/cg";
+import Dropdown from "./test";
 type taskType = {
   task_name: string;
   peoples: string[];
@@ -170,33 +171,41 @@ const Listview: React.FC<DataProps> = ({}) => {
   };
 
   return (
-    <div key={"contain"} className="max-h-screen overflow-y-auto flex flex-row">
-      {mocked_data.map((Projects) => {
-        return (
-          <div className="w-screen">
-            <h2
-              key={Projects.project_name}
-              onClick={toggleCollapsed}
-              className="text-heading-l
-             font-heading flex flex-row
-             "
-            >
-              <IoIosArrowDropdown className="mt-2.5 ml-2" />
-              {Projects.project_name}
-            </h2>
+      <div key={"contain"} className=" w-full h-screen overflow-y-auto mt-2">
+        {mocked_data.map((Projects) => {
+          return (
+            <div className="w-screen">
+              <h2
+                key={Projects.project_name}
+                onClick={toggleCollapsed}
+                className="text-heading-l
+               font-heading flex flex-row
+               "
+              >
+                <IoIosArrowDropdown className="mt-2.5 ml-2" />
+                {Projects.project_name}
+              </h2>
 
-            {collapsed ? null : (
-              <div className="mr-3">
-                {RenderTASKS(Projects.tasks, "pending")}
-                {RenderTASKS(Projects.tasks, "inprogress")}
-                {RenderTASKS(Projects.tasks, "done")}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
+              {collapsed ? (
+                <div className="transition-opacity duration-500 opacity-0 "></div>
+              ) : (
+                <div
+                  className="mr-3
+                  transition-opacity
+                  duration-500 opacity-100
+                  "
+                >
+                  {RenderTASKS(Projects.tasks, "pending")}
+                  {RenderTASKS(Projects.tasks, "inprogress")}
+                  {RenderTASKS(Projects.tasks, "done")}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+   
 };
 
 export default Listview;

@@ -1,7 +1,8 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import { Login, SignUp, ForgotPassword, ResetPassword, Profile,Listview } from "./pages";
+import { Login, SignUp, ForgotPassword, ResetPassword, Profile } from "./pages";
 import { Routes, Route } from "react-router-dom";
+import Listview from "./components/ListView/Listview";
 function App() {
   return (
     <Routes>
