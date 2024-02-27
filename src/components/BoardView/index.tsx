@@ -22,7 +22,7 @@ const exampleData = {
 
 function BoardView() {
   return (
-    <div>
+    <div className="flex gap-4">
       <TaskCol data={exampleData} />
       <TaskCol data={exampleData} />
     </div>
