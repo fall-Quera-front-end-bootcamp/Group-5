@@ -1,13 +1,13 @@
 import TaskHeader from "../TaskHeader";
 import TaskBox from "../TaskBox";
 
-function TaskCol() {
+function TaskCol({data}:any) {
   return (
     <div>
-      <TaskHeader/>
-      <TaskBox/>
-      <TaskBox/>
-      <TaskBox/>
+      <TaskHeader title={data.header} />
+      {data.tasks.map((task: any) => (
+        <TaskBox key={task.id} {...task} />
+      ))}
     </div>
   );
 }
