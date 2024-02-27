@@ -1,4 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { IoIosArrowDropdown } from "react-icons/io";
+import { CiFlag1 } from "react-icons/ci";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import { CgDetailsMore } from "react-icons/cg";
+import Dropdown from "./test";
+import { ListHeader } from "./ListHeader";
+import { RenderTasks } from "./RenderTasks";
 type taskType = {
   task_name: string;
   peoples: string[];
@@ -10,9 +18,11 @@ type taskType = {
 // type DataObjectType = string | tasksType;
 type DataObjectType = { project_name: string; tasks: taskType[] };
 type DataType = DataObjectType[];
+
+//////// this is a fake data to test
 const mocked_data: DataType = [
   {
-    project_name: "do first",
+    project_name: "پروژه اول",
     tasks: [
       {
         task_name: "no-1-1",
@@ -67,64 +77,47 @@ interface DataProps {
   data?: DataType;
 }
 
-const Listview: React.FC<DataProps> = ({ }) => {
+///// the main component
+const Listview: React.FC<DataProps> = ({}) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
 
-  const CheckTASKS = (AllTasks: Array[], status: string) => {
-    const ReTasks = AllTasks.filter((CheckTask) => CheckTask.status == status)
-    console.log(ReTasks)
-    return (
-      ReTasks.map((task)=>{
-        return <></>
-      })
-    )
-
-
-  }
-
   return (
-    <div>
+    <div key={"contain"} className=" w-full h-screen overflow-y-auto mt-2">
       {mocked_data.map((Projects) => {
         return (
-          <>
-            <h2 onClick={toggleCollapsed} key={Projects.project_name}>{Projects.project_name}</h2>
-            {collapsed ? null : (
-              CheckTASKS(Projects.tasks, "pending")
+          <div className="w-screen">
+            <h2
+              key={Projects.project_name}
+              onClick={toggleCollapsed}
+              className="text-heading-l
+               font-heading flex flex-row
+               "
+            >
+              <IoIosArrowDropdown className="mt-2.5 ml-2" />
+              {Projects.project_name}
+            </h2>
 
-
-              // e.tasks.map((items) => {
-              //   return (
-              //     <ul>
-              //       <li>
-              //         <h3></h3>
-              //         <ul>
-              //           <li>Item 1</li>
-              //           <li>Item 2</li>
-              //         </ul>
-              //       </li>
-              //       <li>
-              //         <ul>
-              //           <h3>Section 2</h3>
-              //           <li>Item 3</li>
-              //           <li>Item 4</li>
-              //         </ul>
-              //       </li>
-              //     </ul>
-              //   )
-              // })
-
-
+            {collapsed ? (
+              <div className="transition-opacity duration-500 opacity-0 "></div>
+            ) : (
+              <div
+                className="mr-3
+                  transition-opacity
+                  duration-500 opacity-100
+                  "
+              >
+                <RenderTasks allTasks={Projects.tasks} status={'pending'}/>
+                <RenderTasks allTasks={Projects.tasks} status={'inprogress'}/>
+                <RenderTasks allTasks={Projects.tasks} status={'done'}/>
+              </div>
             )}
-
-          </>
-        )
+          </div>
+        );
       })}
-      {/* <h2 onClick={toggleCollapsed}>{"project-no"}</h2> */}
-
     </div>
   );
 };
