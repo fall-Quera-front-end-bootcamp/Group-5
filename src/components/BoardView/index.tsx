@@ -1,4 +1,5 @@
 import TaskCol from "../TaskCol";
+import { DragDropContext } from "react-beautiful-dnd"
 
 const exampleData = {
   header: "Title 2",
@@ -23,8 +24,10 @@ const exampleData = {
 function BoardView() {
   return (
     <div className="flex gap-4">
-      <TaskCol data={exampleData} />
-      <TaskCol data={exampleData} />
+      <DragDropContext onDragEnd={BoardView}>
+        <TaskCol data={exampleData} />
+        <TaskCol data={exampleData} />
+      </DragDropContext>
     </div>
   );
 }
