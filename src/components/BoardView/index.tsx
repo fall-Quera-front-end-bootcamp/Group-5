@@ -21,13 +21,27 @@ const exampleData = {
   ]
 }
 
-function BoardView() {
+type TaskAPIType = {
+  "taskGroups": {
+    groupId: number;
+    groupName: string;
+    tasks: {
+        taskId: number;
+        topic: string;
+        caption: string;
+        img: string;
+        tags: string[];
+    }[];
+  }[]
+};
+
+function BoardView({taskGroups}: TaskAPIType) {
   return (
     <div className="flex gap-4">
-      <DragDropContext onDragEnd={BoardView}>
+      {/* <DragDropContext onDragEnd={BoardView}> */}
+        {/* <TaskCol data={taskGroups} /> */}
         <TaskCol data={exampleData} />
-        <TaskCol data={exampleData} />
-      </DragDropContext>
+      {/* </DragDropContext> */}
     </div>
   );
 }
