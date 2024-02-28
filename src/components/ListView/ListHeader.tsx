@@ -7,11 +7,13 @@ export type taskStatusType = "done" | "pending" | "inprogress";
 type ListHeaderType = {
   status: taskStatusType;
   onToggleCollapseStatus: () => void;
+  numTasks: number;
 };
 
 export const ListHeader: React.FC<ListHeaderType> = ({
   status,
   onToggleCollapseStatus,
+  numTasks,
 }) => {
   return (
     <div className="flex flex-row">
@@ -27,6 +29,7 @@ export const ListHeader: React.FC<ListHeaderType> = ({
         >
           {TaskStatusEnum[status].textEn}
         </div>
+        <span className="mr-2 mt-2">{numTasks} تسک</span>
       </div>
       <span className="basis-[15%] text-center">اعضا</span>
       <span className="basis-[15%] text-center">ددلاین</span>
