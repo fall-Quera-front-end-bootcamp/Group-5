@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { CiFlag1 } from "react-icons/ci";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { CgDetailsMore } from "react-icons/cg";
-import Dropdown from "./test";
-import { ListHeader } from "./ListHeader";
 import { RenderTasks } from "./RenderTasks";
-type taskType = {
+import man from "./image/man.jpg";
+export type taskType = {
   task_name: string;
   peoples: string[];
   status: string;
@@ -15,7 +11,6 @@ type taskType = {
   priority: string;
   description: string;
 };
-// type DataObjectType = string | tasksType;
 type DataObjectType = { project_name: string; tasks: taskType[] };
 type DataType = DataObjectType[];
 
@@ -27,7 +22,7 @@ const mocked_data: DataType = [
       {
         task_name: "no-1-1",
         status: "pending",
-        peoples: ["ali", "hasan"],
+        peoples: [man, man],
         deadline: "fri",
         priority: "high",
         description:
@@ -36,7 +31,7 @@ const mocked_data: DataType = [
       {
         task_name: "no-1-2",
         status: "pending",
-        peoples: ["alireza", "davod"],
+        peoples: [man, man, man],
         deadline: "mon",
         priority: "high",
         description:
@@ -44,8 +39,8 @@ const mocked_data: DataType = [
       },
       {
         task_name: "no-1-3",
-        status: "inprogress",
-        peoples: ["ali", "hasan"],
+        status: "done",
+        peoples: [],
         deadline: "sat",
         priority: "low",
         description:
@@ -54,7 +49,7 @@ const mocked_data: DataType = [
       {
         task_name: "no-1-4",
         status: "done",
-        peoples: ["moh", "mosh"],
+        peoples: [man],
         deadline: "sun",
         priority: "high",
         description:
@@ -63,7 +58,7 @@ const mocked_data: DataType = [
       {
         task_name: "no-1-5",
         status: "done",
-        peoples: ["ali", "hasan"],
+        peoples: [man, man],
         deadline: "fri",
         priority: "high",
         description:
@@ -110,9 +105,9 @@ const Listview: React.FC<DataProps> = ({}) => {
                   duration-500 opacity-100
                   "
               >
-                <RenderTasks allTasks={Projects.tasks} status={'pending'}/>
-                <RenderTasks allTasks={Projects.tasks} status={'inprogress'}/>
-                <RenderTasks allTasks={Projects.tasks} status={'done'}/>
+                <RenderTasks allTasks={Projects.tasks} status={"pending"} />
+                <RenderTasks allTasks={Projects.tasks} status={"inprogress"} />
+                <RenderTasks allTasks={Projects.tasks} status={"done"} />
               </div>
             )}
           </div>
