@@ -45,7 +45,10 @@ const Personal: React.FC<Props> = ({ tab }) => {
       <div className="flex">
         <div className="rounded-full bg-yellow-secondary text-yellow-primary w-[100px] h-[100px] flex items-center justify-center font-bold text-[20px] ml-5 overflow-hidden">
           {previewImage ? (
-            <img src={previewImage.preview} className="object-fit: cover" />
+            <img
+              src={previewImage.preview}
+              className="object-cover h-full w-full"
+            />
           ) : (
             "NM"
           )}
