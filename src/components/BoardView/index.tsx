@@ -1,46 +1,35 @@
-import TaskCol from "../TaskCol";
+import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd"
+import TaskCol from "../TaskCol";
 
-const exampleData = {
-  header: "Title 2",
-  tasks: [
-    {
-      id: 3,
-      img: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png",
-      topic: "تسک۳",
-      caption: "توضیح الکی",
-      tag: ["تگ1", "تگ2", "تگ3"],
-    },
-    {
-      id: 4,
-      img: "",
-      topic: "تسک۴",
-      caption: "توضیح الکی",
-      tag: ["تگ1", "تگ2"],
-    }
-  ]
-}
+import { taskData } from "../../Data";
 
-type TaskAPIType = {
-  "taskGroups": {
-    groupId: number;
-    groupName: string;
-    tasks: {
-        taskId: number;
-        topic: string;
-        caption: string;
-        img: string;
-        tags: string[];
-    }[];
-  }[]
-};
+type tasks = {
+  id: number,
+  img: string,
+  title: string,
+  caption: string
+}[]
 
-function BoardView({taskGroups}: TaskAPIType) {
+const BoardView = () => {
+  const [taskHeaders, setTaskHeaders] = useState(taskData.taskHeaders);
+  const tasks = taskData.tasks
+
+  // const onDragEnd = (result: any) => {
+  //   const { destination, source, draggableId } = result;
+  // }
+
+  const givenTasks = (taskIds:number[]):tasks => {
+    return taskIds.map(id => tasks.find(task => task.id === id) as tasks[0]) as tasks;
+  }
+
   return (
     <div className="flex gap-4">
       {/* <DragDropContext onDragEnd={BoardView}> */}
-        {/* <TaskCol data={taskGroups} /> */}
-        <TaskCol data={exampleData} />
+        {/* <TaskCol data={exampleData} /> */}
+        {taskHeaders.map((taskHeader: any) => (
+          <TaskCol key={taskHeader.id} tasks={givenTasks(taskHeader.taskIds)} header={taskHeader.title} />
+        ))}
       {/* </DragDropContext> */}
     </div>
   );

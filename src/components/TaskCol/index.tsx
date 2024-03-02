@@ -2,11 +2,23 @@ import TaskHeader from "../TaskHeader";
 import TaskBox from "../TaskBox";
 import { CiSquarePlus } from "react-icons/ci";
 
-function TaskCol({data}:any) {
+type taskType = {
+  id: number,
+  img: string,
+  title: string,
+  caption: string
+}
+
+type taskColType = {
+  header: string,
+  tasks: taskType[]
+}
+
+const TaskCol: React.FC<taskColType> = ({header, tasks}) => {
   return (
     <div className="flex flex-col gap-4">
-      <TaskHeader title={data.header} numOfTasks={data.tasks.length} />
-      {data.tasks.map((task: any) => (
+      <TaskHeader title={header} numOfTasks={tasks.length} />
+      {tasks.map((task: taskType) => (
         <TaskBox key={task.id} {...task} />
       ))}
 
