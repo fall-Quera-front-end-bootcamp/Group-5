@@ -5,9 +5,12 @@ import ProjectColorBox from "./ProjectColorBox";
 import ProfilePreview from "./ProfilePreview";
 import ExitButton from "./ExitButton";
 import ThemeButton from "./ThemeButton";
-const MySidebar = () => {
+interface MySideBarProps {
+  className: string;
+}
+const MySidebar = ({className}:MySideBarProps) => {
   return (
-    <div>
+    <div className={className}>
     <Sidebar
       rtl={true}
       className="mt-[40px] font-body h-[800px] mr-[40px]"
@@ -28,7 +31,7 @@ const MySidebar = () => {
             className="font-bold text-[16px]"
           >
             <MenuItem>
-              <Searchbar />
+              <Searchbar className="font-body text-[12px] text-right pr-1 h-[40px] w-[274px] bg-[#F6F7F9]" placeholder="جستجو کنید"/>
             </MenuItem>
             <MenuItem>
               <button
