@@ -53,7 +53,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                   </div>
 
                   <div
-                    className=" basis-[15%] text-center  "
+                    className=" basis-[15%] flex justify-center pl-4"
                     key={task.peoples}
                   >
                     <TaskPeoples images={task.peoples} />
@@ -62,7 +62,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                     {task.deadline}
                   </div>
                   <div
-                    className=" basis-[15%] flex flex-col"
+                    className=" basis-[15%]"
                     key={task.priority}
                   >
                     <TaskPriority priority={task.priority} />
