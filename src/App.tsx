@@ -17,7 +17,7 @@ function App() {
       </Route>
       <Route path="/profile" element={<Profile />} />
       <Route path="/home" element={<MainLayout />} > 
-        <Route index element = {<h1>This will be rendered</h1>} />
+        <Route index element = {<Listview />} />
       </Route>
     </Routes>
   );
