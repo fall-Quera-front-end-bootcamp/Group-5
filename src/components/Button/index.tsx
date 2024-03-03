@@ -12,7 +12,7 @@ function RenderSwitch(param: string) {
   switch (param) {
     case "signIn":
       return (
-        <div className="flex items-center justify-center mt-m font-bold">
+        <div className="flex items-center justify-center mt-m font-xl">
           <p className="font-normal text-body-m  ">
             ثبت نام نکرده‌ای؟{" "}
             <span
@@ -56,7 +56,7 @@ const MYButton: React.FC<MyButtonProps> = ({ myKey, label }) => {
       )}
       <button
         type="submit"
-        className="bg-brand-primary hover:bg-teal-primary text-white font-bold text-bold-s h-xl w-full rounded-[6px] mt-m"
+        className="bg-brand-primary hover:bg-teal-primary text-white font-bold text-bold-s h-xl w-full rounded-[6px] mt-l"
       >
         {label}
       </button>
