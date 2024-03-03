@@ -145,7 +145,11 @@ const useTheme = () => {
     },
   });
 
-  return { colors, theme, setTheme };
+  //   Todo: implement handle change color here
+  const handleChangeTheme = (color: ThemeType) => {
+    setTheme(color);
+  };
+  return { colors, theme, handleChangeTheme };
 };
 
 export default useTheme;

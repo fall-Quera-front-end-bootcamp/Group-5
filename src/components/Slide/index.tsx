@@ -9,7 +9,7 @@ const Slide: React.FC<SlideProps> = ({ children }) => (
     <h2 className=" mb-[60px] font-heading text-heading-l bg-gradient-to-r from-[#118C80] to-[#4AB7D8] text-transparent bg-clip-text">
       کوئرا تسک منیجر
     </h2>
-    {children}
+    <div>{children}</div>
   </div>
 );
 
