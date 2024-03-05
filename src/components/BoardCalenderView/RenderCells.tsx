@@ -12,18 +12,18 @@ const DaysEnum: { [key: number]: string } = {
   6: "جمعه",
 };
 
-export const FirstSevenDays: React.FC<DayType> = ({
+export const RenderCells: React.FC<DayType> = ({
   dayIndex,
 }): JSX.Element => {
   return (
-    <>
+    <div className="border-l-[1px] border-b-[1px] border-black relative">
       <div
         key={dayIndex}
-        className="relative w-auto max-h-[156px] pr-2 border-4 border-black"
+        className="w-auto max-h-[133px] p-2 "
       >
-        <span>{DaysEnum[dayIndex]}</span>
-        <div className="absolute bottom-0 left-0 pl-2 pb-1">{dayIndex}</div>
+        {dayIndex<7 &&<div  className="absolute right-1 top-1">{DaysEnum[dayIndex]}</div>}
+        <div className="absolute bottom-1 left-2">{dayIndex}</div>
       </div>
-    </>
+    </div>
   );
 };

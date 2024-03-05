@@ -1,20 +1,20 @@
-import { FirstSevenDays } from "./FirstSevenDays";
-import { RemainingDaysOfTheMonth } from "./RemainingDaysOfTheMonth";
+import { RenderCells } from "./RenderCells";
+
 
 export const BoardCalenderView: React.FC = ({}) => {
   return (
-    <div className="grid grid-cols-7 gap-4 w-full h-screen overflow-y-auto p-4">
-      {Array.from({ length: 35 }).map((_, index) => {
-        return (
-          <>
-            {index < 7 ? (
-              <FirstSevenDays dayIndex={index} />
-            ) : (
-              <RemainingDaysOfTheMonth dayIndex={index} />
-            )}
-          </>
-        );
-      })}
+    <div className="p-10">
+      
+    <div className="h-full border-r-[1px] border-t-[1px] border-black w-full z-10">
+      
+      <div className="grid grid-cols-7 w-full h-screen">
+        {Array.from({ length: 35 }).map((_, index) => {
+          return (
+            <RenderCells dayIndex={index} />
+            );
+          })}
+      </div>
     </div>
+          </div>
   );
 };
