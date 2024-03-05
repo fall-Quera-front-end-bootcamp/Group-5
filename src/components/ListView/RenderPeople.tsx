@@ -3,7 +3,7 @@ type TaskPeople = {
   images: string[];
 };
 
-export const TaskPeoples: React.FC<TaskPeople> = ({ images }) => {
+export const RenderPeople: React.FC<TaskPeople> = ({ images }) => {
   return (
     // <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
     <div className=" ">

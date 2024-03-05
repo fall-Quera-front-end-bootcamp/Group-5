@@ -5,7 +5,7 @@ import { useState } from "react";
 import { TaskPriority } from "./TaskPriority";
 import { taskType } from "./Listview";
 import { taskStatusType } from "./ListHeader";
-import { TaskPeoples } from "./TaskPeoples";
+import { RenderPeople } from "./RenderPeople";
 type RenderTask = {
   allTasks: any;
   status: taskStatusType;
@@ -56,7 +56,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                     className=" basis-[15%] flex justify-center pl-4"
                     key={task.peoples}
                   >
-                    <TaskPeoples images={task.peoples} />
+                    <RenderPeople images={task.peoples} />
                   </div>
                   <div className=" basis-[15%] text-center" key={task.deadline}>
                     {task.deadline}
