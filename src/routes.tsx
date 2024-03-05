@@ -1,7 +1,7 @@
 import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
 import { Layout, Listview, MainLayout, Workspace } from "./components";
 
-const Routes = [
+const routes = [
   {path:'/' , element: <Layout />, children:[
     {path:'' , element: <Login />},
     {path:'signUp' , element: <SignUp />},
@@ -16,4 +16,4 @@ const Routes = [
   ]},
 ]
 
-export default Routes
+export default routes
