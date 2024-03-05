@@ -1,1 +1,10 @@
 export { default as Form } from "./Form";
+export { default as InputField } from "./Form/Input";
+export { default as MYButton } from "./Button";
+export { default as Slide } from "./Slide";
+export { default as Colorption } from "./ColorOption";
+export { default as Personal } from "./Profile/Personal";
+export { default as Account } from "./Profile/Account";
+export { default as Settings } from "./Profile/Settings";
+export { default as SidebarOption } from "./Profile/SidebarOption";
+export { default as BackButton } from "./Profile/BackButton";
