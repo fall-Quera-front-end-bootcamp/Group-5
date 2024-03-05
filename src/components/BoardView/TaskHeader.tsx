@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
+import NewTask from "../Modals/NewTask";
 
-function TaskHeader({title, numOfTasks}:any) {
+type taskHeaderType = {
+  title: string,
+  numOfTasks: number
+}
+
+const TaskHeader = ({title, numOfTasks}:taskHeaderType) => {
+  const [showModal, setShowModal] = useState(false)
+
   const randomColor = ():string => {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
@@ -27,7 +36,13 @@ function TaskHeader({title, numOfTasks}:any) {
       </div>
       <div className="flex gap-1 items-center">
         <HiEllipsisHorizontal />
-        <FaPlus />
+        <button onClick={() => setShowModal(true)}>
+          <FaPlus />
+        </button>
+
+        {showModal &&(
+          <NewTask setShowModal={setShowModal}/>
+        )}
       </div>
     </div>
   );

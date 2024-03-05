@@ -8,7 +8,7 @@ type taskType = {
   index: number
 }
 
-const TaskBox:React.FC<taskType> = ({id, img, title, caption, index}) => {
+const TaskBox = ({id, img, title, caption, index}:taskType) => {
   return (
     <Draggable draggableId={String(id)} index={index}>
       {(provided) => (
