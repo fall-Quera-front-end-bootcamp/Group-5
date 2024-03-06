@@ -5,11 +5,11 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 
-type NewTaskPropType = {
+type PropsType = {
   setShowModal: (showModal: boolean) => void
 }
 
-const NewTask = ({setShowModal}:NewTaskPropType) => {
+const NewTask = ({setShowModal}:PropsType) => {
   useLockBodyScroll();
 
   const {
@@ -26,7 +26,7 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
 
   return (
     <>
-      <div className="flex justify-center items-center fixed inset-0 z-20">
+      <div className="flex justify-center items-center fixed inset-0 z-30">
         <div className="w-9/12">
           <div className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] p-8 rounded-3xl shadow-lg">
             <div className="flex justify-between items-center">
@@ -42,7 +42,9 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
                 type="button"
                 onClick={() => setShowModal(false)}
               >
-                <IoClose size={28} color="#BDBDBD" />
+                <span className="text-[#BDBDBD] text-3xl">
+                  <IoClose />
+                </span>
               </button>
             </div>
             <div className="flex items-center gap-3">
@@ -70,7 +72,9 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
                 className="cursor-pointer font-body text-body-m rounded-md border-2 py-[5px] px-[8px] w-auto flex justify-start items-center gap-2"
               >
                 <input {...getInputPropsFile()} />
-                <SlPaperClip color="#208D8E" size={22} />
+                <span className="text-brand-primary text-2xl">
+                  <SlPaperClip />
+                </span>
                 <p>آپلود فایل</p>
               </div>
               <p className="font-body text-body-l">
@@ -84,7 +88,9 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
                 className="flex justify-start items-center gap-2 w-auto px-[8px] py-[5px] cursor-pointer font-body text-body-m rounded-md border-2"
               >
                 <input {...getInputPropsCover()} />
-                <SlPaperClip color="#208D8E" size={22} />
+                <span className="text-brand-primary text-2xl">
+                  <SlPaperClip />
+                </span>
                 <p>آپلود فایل</p>
               </div>
               <p className="font-body text-body-l">
@@ -93,14 +99,14 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
             </div>
             <div className="flex justify-between items-center gap-5 mt-8">
               <div className="flex justify-between items-center gap-5">
-                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <BsFlag size={20} color="#C1C1C1" />
+                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <BsFlag />
                 </div>
-                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <BsCalendarDate size={20} color="#C1C1C1" />
+                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <BsCalendarDate />
                 </div>
-                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <CiBookmarkPlus size={20} color="#C1C1C1" />
+                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <CiBookmarkPlus />
                 </div>
               </div>
               <button
