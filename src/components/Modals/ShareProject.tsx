@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PermissionList from "./PermissionList" 
 import useLockBodyScroll from "../../hooks/useLockBodyScroll"
 import { IoClose } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
@@ -7,13 +9,14 @@ type PropsType = {
   setShowModal: (showModal: boolean) => void
 }
 
-
 const ShareProject = ({setShowModal}:PropsType) => {
   useLockBodyScroll();
 
+  const [showPermission, setShowPermission] = useState(false);
+
   return (
     <>
-      <div className="flex justify-center items-center fixed inset-0 z-30">
+      <div className="flex justify-center top-20 bottom-auto fixed inset-0 z-30">
         <div className="w-[470px] p-5 bg-white text-[#1E1E1E] font-body rounded-xl flex flex-col gap-10">
           <div className="flex justify-between items-center">
             <button
@@ -54,7 +57,7 @@ const ShareProject = ({setShowModal}:PropsType) => {
                   </div>
                   <button className="h-6 hover:bg-gray-100 text-xs px-3 py-1 border rounded-md">دسترسی کامل</button>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="relative flex justify-between items-center">
                   <div className="flex items-center object-cover object-center gap-3">
                     <div className="flex items-center gap-2">
                       <div
@@ -66,10 +69,14 @@ const ShareProject = ({setShowModal}:PropsType) => {
                       <span>alireza3205@gmail.com</span>
                     </div>
                   </div>
-                  <button className="h-6 flex items-center gap-2 hover:bg-gray-100 text-xs px-3 py-1 border rounded-md">
+                  <button
+                    className="h-6 flex items-center gap-2 hover:bg-gray-100 text-xs px-3 py-1 border rounded-md"
+                    onClick={() => setShowPermission(true)}
+                  >
                     <span>دسترسی کامل</span>
                     <IoIosArrowDown />
                   </button>
+                  {showPermission && <PermissionList setShowModal={setShowPermission} />}
                 </div>
               </div>
             </div>

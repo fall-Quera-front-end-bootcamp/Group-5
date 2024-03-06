@@ -61,7 +61,7 @@ const NewTask = ({setShowModal}:PropsType) => {
             <div>
               <textarea
                 placeholder="توضیحاتی برای این تسک بنویسید"
-                className="text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
+                className="outline-none text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
               />
             </div>
             <div className="flex items-center gap-5">
