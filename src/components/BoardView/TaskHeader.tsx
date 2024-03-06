@@ -9,7 +9,7 @@ type taskHeaderType = {
 }
 
 const TaskHeader = ({title, numOfTasks}:taskHeaderType) => {
-  const [showModal, setShowModal] = useState(false)
+  const [showPlusModal, setShowPlusModal] = useState(false)
 
   const randomColor = ():string => {
     const red = Math.floor(Math.random() * 256);
@@ -36,12 +36,12 @@ const TaskHeader = ({title, numOfTasks}:taskHeaderType) => {
       </div>
       <div className="flex gap-1 items-center">
         <HiEllipsisHorizontal />
-        <button onClick={() => setShowModal(true)}>
+        <button onClick={() => setShowPlusModal(true)}>
           <FaPlus />
         </button>
 
-        {showModal &&(
-          <NewTask setShowModal={setShowModal}/>
+        {showPlusModal &&(
+          <NewTask setShowModal={setShowPlusModal}/>
         )}
       </div>
     </div>
