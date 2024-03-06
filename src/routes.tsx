@@ -1,4 +1,4 @@
-import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
+import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./Pages";
 import { Layout, Listview, MainLayout, Workspace } from "./components";
 
 const routes = [
