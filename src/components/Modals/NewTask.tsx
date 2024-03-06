@@ -1,5 +1,9 @@
+import useDropFile from "../../hooks/useDropFile";
 import useLockBodyScroll from "../../hooks/useLockBodyScroll"
+import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
+import { SlPaperClip } from "react-icons/sl";
 
 type NewTaskPropType = {
   setShowModal: (showModal: boolean) => void
@@ -7,42 +11,100 @@ type NewTaskPropType = {
 
 const NewTask = ({setShowModal}:NewTaskPropType) => {
   useLockBodyScroll();
+
+  const {
+    previewImage: perviewFile,
+    getRootProps: getRootPropsFile,
+    getInputProps: getInputPropsFile,
+  } = useDropFile();
+
+  const {
+    previewImage: previewCover,
+    getRootProps: getRootPropsCover,
+    getInputProps: getInputPropsCover,
+  } = useDropFile();
+
   return (
     <>
-      <div
-        className="flex justify-center items-center fixed inset-0 z-20"
-      >
-        <div className="max-w-3xl">
-          <div className="relative flex flex-col gap-10 w-full bg-white p-8 rounded-3xl shadow-lg">
-            <div className="flex justify-between items-start p-5">
-              <div className="flex justify-between w-full">
-                <div className="flex items-center gap-3">
-                  <div className="h-4 w-4 bg-[#d9d9d9]"></div>
-                  <input
-                    className="outline-none"
-                    placeholder="عنوان تسک"
-                    type="text"
-                  />
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                >
-                  <IoClose style={{color: "#BDBDBD"}}/>
-                </button>
+      <div className="flex justify-center items-center fixed inset-0 z-20">
+        <div className="w-9/12">
+          <div className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] p-8 rounded-3xl shadow-lg">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="h-4 w-4 bg-[#d9d9d9]"></div>
+                <input
+                  className="outline-none font-body text-body-xl"
+                  placeholder="عنوان تسک"
+                  type="text"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+              >
+                <IoClose size={28} color="#BDBDBD" />
+              </button>
+            </div>
+            <div className="flex items-center gap-3">
+              <p className="font-body text-body-ml">در</p>
+              <input
+                className="outline-none w-40 px-[8px] py-[5px] font-body text-body-m rounded-md border-2"
+                placeholder="پروژه اول"
+                type="text"
+              />
+              <p className="font-body text-body-m">برای</p>
+              <div className="p-2 cursor-pointer border-2 border-[#C1C1C1] border-dashed rounded-full">
+                <BsPersonAdd size={20} color="#C1C1C1" />
               </div>
             </div>
-            {/*body*/}
-            <div className="relative p-6 flex-auto">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi corporis itaque cumque ex, rem explicabo dolorum accusamus quos iusto quis, voluptate aut mollitia quae ullam obcaecati ipsa asperiores voluptatum quam!
-                Ex odio iure a molestiae blanditiis doloremque magni. Rerum laborum dignissimos nulla temporibus labore, fugit asperiores velit maxime impedit officia debitis ipsum unde commodi nemo aliquam cumque consequatur ipsa aspernatur.
+            <div>
+              <textarea
+                placeholder="توضیحاتی برای این تسک بنویسید"
+                className="font-body text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
+              />
+            </div>
+            <div className="flex items-center gap-5">
+              <p className="font-body text-body-l">افزودن پیوست</p>
+              <div
+                {...getRootPropsFile()}
+                className="cursor-pointer font-body text-body-m rounded-md border-2 py-[5px] px-[8px] w-auto flex justify-start items-center gap-2"
+              >
+                <input {...getInputPropsFile()} />
+                <SlPaperClip color="#208D8E" size={22} />
+                <p>آپلود فایل</p>
+              </div>
+              <p className="font-body text-body-l">
+                {perviewFile?.name}
               </p>
             </div>
-            {/*footer*/}
-            <div className="flex items-center justify-end p-6">
+            <div className="flex items-center gap-5">
+              <p className="font-body text-body-l">افزودن کاور</p>
+              <div
+                {...getRootPropsCover()}
+                className="flex justify-start items-center gap-2 w-auto px-[8px] py-[5px] cursor-pointer font-body text-body-m rounded-md border-2"
+              >
+                <input {...getInputPropsCover()} />
+                <SlPaperClip color="#208D8E" size={22} />
+                <p>آپلود فایل</p>
+              </div>
+              <p className="font-body text-body-l">
+                {previewCover?.name}
+              </p>
+            </div>
+            <div className="flex justify-between items-center gap-5 mt-8">
+              <div className="flex justify-between items-center gap-5">
+                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <BsFlag size={20} color="#C1C1C1" />
+                </div>
+                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <BsCalendarDate size={20} color="#C1C1C1" />
+                </div>
+                <div className="cursor-pointer border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <CiBookmarkPlus size={20} color="#C1C1C1" />
+                </div>
+              </div>
               <button
-                className="bg-brand-primary hover:bg-teal-primary text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-normal text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(false)}
               >
@@ -54,7 +116,7 @@ const NewTask = ({setShowModal}:NewTaskPropType) => {
       </div>
       <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
     </>
-  )
-} 
+  );
+};
 
-export default NewTask
+export default NewTask;
