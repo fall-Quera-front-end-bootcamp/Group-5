@@ -28,33 +28,32 @@ const NewTask = ({setShowModal}:PropsType) => {
     <>
       <div className="flex justify-center items-center fixed inset-0 z-30">
         <div className="w-9/12">
-          <div className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] p-8 rounded-3xl shadow-lg">
+          <div className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] font-body p-8 rounded-3xl shadow-lg">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="h-4 w-4 bg-[#d9d9d9]"></div>
                 <input
-                  className="outline-none font-body text-body-xl"
+                  className="outline-none text-body-xl"
                   placeholder="عنوان تسک"
                   type="text"
                 />
               </div>
               <button
+                className="text-3xl hover:text-red-primary hover:rotate-90 transition-all"
                 type="button"
                 onClick={() => setShowModal(false)}
               >
-                <span className="text-[#BDBDBD] text-3xl">
-                  <IoClose />
-                </span>
+                <IoClose />
               </button>
             </div>
             <div className="flex items-center gap-3">
-              <p className="font-body text-body-ml">در</p>
+              <p className="text-body-ml">در</p>
               <input
-                className="outline-none w-40 px-[8px] py-[5px] font-body text-body-m rounded-md border-2"
+                className="outline-none w-40 px-[8px] py-[5px] text-body-m rounded-md border-2"
                 placeholder="پروژه اول"
                 type="text"
               />
-              <p className="font-body text-body-m">برای</p>
+              <p className="text-body-m">برای</p>
               <div className="p-2 cursor-pointer border-2 border-[#C1C1C1] border-dashed rounded-full">
                 <BsPersonAdd size={20} color="#C1C1C1" />
               </div>
@@ -62,14 +61,14 @@ const NewTask = ({setShowModal}:PropsType) => {
             <div>
               <textarea
                 placeholder="توضیحاتی برای این تسک بنویسید"
-                className="font-body text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
+                className="text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
               />
             </div>
             <div className="flex items-center gap-5">
-              <p className="font-body text-body-l">افزودن پیوست</p>
+              <p className="text-body-l">افزودن پیوست</p>
               <div
                 {...getRootPropsFile()}
-                className="cursor-pointer font-body text-body-m rounded-md border-2 py-[5px] px-[8px] w-auto flex justify-start items-center gap-2"
+                className="cursor-pointer text-body-m rounded-md border-2 py-[5px] px-[8px] w-auto flex justify-start items-center gap-2"
               >
                 <input {...getInputPropsFile()} />
                 <span className="text-brand-primary text-2xl">
@@ -77,15 +76,15 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="font-body text-body-l">
+              <p className="text-body-l">
                 {perviewFile?.name}
               </p>
             </div>
             <div className="flex items-center gap-5">
-              <p className="font-body text-body-l">افزودن کاور</p>
+              <p className="text-body-l">افزودن کاور</p>
               <div
                 {...getRootPropsCover()}
-                className="flex justify-start items-center gap-2 w-auto px-[8px] py-[5px] cursor-pointer font-body text-body-m rounded-md border-2"
+                className="flex justify-start items-center gap-2 w-auto px-[8px] py-[5px] cursor-pointer text-body-m rounded-md border-2"
               >
                 <input {...getInputPropsCover()} />
                 <span className="text-brand-primary text-2xl">
@@ -93,7 +92,7 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="font-body text-body-l">
+              <p className="text-body-l">
                 {previewCover?.name}
               </p>
             </div>
