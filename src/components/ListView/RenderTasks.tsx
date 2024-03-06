@@ -11,7 +11,7 @@ type RenderTask = {
   status: taskStatusType;
 };
 export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
-  const [collapsedStatus, setCollapsedStatus] = useState(false);
+  const [collapsedStatus, setCollapsedStatus] = useState(true);
   const toggleCollapsedStatus = () => {
     setCollapsedStatus(!collapsedStatus);
   };
@@ -24,7 +24,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
   else if (status == "done") color = "bg-green-primary";
   if (FilteredTasks.length == 0) {
     return (
-      <div className="p-s">
+      <div className="p-s ">
         <ListHeader
           numTasks={FilteredTasks.length}
           status={status}
@@ -34,7 +34,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
     );
   } else {
     return (
-      <div className="p-s">
+      <div className="p-s ">
         <ListHeader
           numTasks={FilteredTasks.length}
           status={FilteredTasks[0].status}
@@ -44,8 +44,8 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
           ? null
           : FilteredTasks.map((task: any) => {
               return (
-                <div key={task.name} className="flex flex-row p-xs">
-                  <div className="flex basis-[50%]">
+                <div key={task.name} className="flex flex-row p-xs ">
+                  <div className="flex basis-[50%] ">
                     <div
                       className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1 mr-5`}
                     ></div>
