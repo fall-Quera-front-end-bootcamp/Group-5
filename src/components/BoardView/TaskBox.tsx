@@ -1,4 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
+import { useState } from 'react';
+import { FaRegComments } from "react-icons/fa6";
 
 type taskType = {
   id: number,
@@ -9,10 +11,15 @@ type taskType = {
 }
 
 const TaskBox = ({id, img, title, caption, index}:taskType) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Draggable draggableId={String(id)} index={index}>
       {(provided) => (
         <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onMouseDown={() => setIsHovered(false)}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -30,6 +37,14 @@ const TaskBox = ({id, img, title, caption, index}:taskType) => {
           <div className="flex gap-2">
             {/* tags */}
           </div>
+          {isHovered && (
+            <>
+              <hr />
+              <div className="flex justify-end hover:text-brand-primary transition-all cursor-pointer">
+                <FaRegComments />
+              </div>
+            </>
+          )}
         </div>
       )}
     </Draggable>
