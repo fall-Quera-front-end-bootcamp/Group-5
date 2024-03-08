@@ -1,5 +1,5 @@
 import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
-import { Layout, Listview, MainLayout, Workspace } from "./components/index";
+import { Layout, Listview, MainLayout, Workspace } from "./components/layout/exports";
 
 const Routes = [
   {path:'/' , element: <Layout />, children:[
