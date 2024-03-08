@@ -6,7 +6,7 @@ import ProfilePreview from "./ProfilePreview";
 import ExitButton from "./ExitButton";
 import ThemeButton from "./ThemeButton";
 import { useState } from "react";
-import { NewWorkSpaceModal } from "../Modals/NewProjectModal";
+import { NewWorkSpaceModal } from "../Modals/NewWorkSpaceModal";
 interface MySideBarProps {
   className: string;
 }
