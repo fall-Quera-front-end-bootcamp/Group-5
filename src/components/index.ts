@@ -8,7 +8,7 @@ export { default as ColorOption } from "./common/ColorOption/index"
 export { default as Colorption } from "./common/ColorOption/index";
 
 //layouts
-export { default as Slide } from "./layout/Slide/index";
+export { default as Slide } from "./layout/Sidebar/Slide";
 export { default as Personal } from "./layout/Profile/Personal";
 export { default as Account } from "./layout/Profile/Account";
 export { default as Settings } from "./layout/Profile/Settings";
