@@ -1,5 +1,5 @@
 import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
-import { Layout, Listview, BoardView, MainLayout, Workspace } from "./components";
+import { Layout, Listview, BoardView, MainLayout, Workspace, BoardCalendarView } from "./components";
 
 const routes = [
   {path:'/' , element: <Layout />, children:[
@@ -14,6 +14,7 @@ const routes = [
     {path:'' , element: <Listview />},
     {path:'board' , element: <BoardView />},
     {path:'workspace' , element: <Workspace />},
+    {path:'calendar', element: <BoardCalendarView />},
   ]},
 ]
 

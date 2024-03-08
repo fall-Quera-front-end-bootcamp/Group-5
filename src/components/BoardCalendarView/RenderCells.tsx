@@ -18,7 +18,7 @@ const RenderCells: React.FC<DayType> = ({
   return (
     <div className="border-l-[1px] border-b-[1px] border-black relative">
       <div
-        className="w-auto max-h-[133px] p-2 "
+        className="w-40 max-h-[133px] p-2"
       >
         {dayIndex < 7 && <div className="absolute right-1 top-1">{DaysEnum[dayIndex]}</div>}
         <div className="absolute bottom-1 left-2">{dayIndex}</div>
