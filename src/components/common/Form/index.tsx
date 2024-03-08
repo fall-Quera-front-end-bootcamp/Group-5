@@ -1,6 +1,5 @@
 import useAuth from "../../../hooks/useAuth";
-import InputField from "./Input";
-import { MYButton } from "../exports";
+import { MYButton, InputField } from "../exports";
 
 interface FormProps {
   formClass: string;
