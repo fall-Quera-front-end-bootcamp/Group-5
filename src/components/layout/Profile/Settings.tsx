@@ -1,6 +1,6 @@
 import React from "react";
 import Props from "../../../entities/Profile";
-import  ColorOption from '../../ColorOption'
+import  ColorOption from '../../common/ColorOption'
 import { MYButton } from "../..";
 import useTheme from "../../../services/Theme";
 import useProfile from "../../../hooks/useProfile";
