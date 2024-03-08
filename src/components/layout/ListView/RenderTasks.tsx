@@ -2,10 +2,11 @@ import Popup from "reactjs-popup";
 import { ListHeader } from "./ListHeader";
 import { CgDetailsMore } from "react-icons/cg";
 import { useState } from "react";
-import { TaskPriority } from "./TaskPriority";
+import TaskPriority from "./TaskPriority";
 import { taskType } from "./Listview";
 import { taskStatusType } from "./ListHeader";
-import { TaskPeoples } from "./TaskPeoples";
+import TaskPeoples from "./TaskPeoples";
+
 type RenderTask = {
   allTasks: any;
   status: taskStatusType;

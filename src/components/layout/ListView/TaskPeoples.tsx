@@ -1,9 +1,8 @@
-import React from "react";
 type TaskPeople = {
   images: string[];
 };
 
-export const TaskPeoples: React.FC<TaskPeople> = ({ images }) => {
+const TaskPeoples: React.FC<TaskPeople> = ({ images }) => {
   return (
     // <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
     <div className=" ">
@@ -24,6 +23,8 @@ export const TaskPeoples: React.FC<TaskPeople> = ({ images }) => {
     </div>
   );
 };
+
+export default TaskPeoples;
 
 // (<div
 //   className="float-right relative z-100 ml-[-20px]">

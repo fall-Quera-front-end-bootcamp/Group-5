@@ -1,4 +1,3 @@
-
 interface WorkspaceColorBoxProps {
     color: string;
     projectName: string;

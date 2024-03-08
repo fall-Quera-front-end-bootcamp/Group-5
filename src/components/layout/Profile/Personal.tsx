@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-import { InputField, MYButton } from "../..";
+import { InputField, MYButton } from "../../index";
 import FieldType from "../../../entities/Field";
 import Props from "../../../entities/Profile";
 import useProfile from "../../../hooks/useProfile";

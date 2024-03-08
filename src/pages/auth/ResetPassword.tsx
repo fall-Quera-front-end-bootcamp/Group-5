@@ -1,4 +1,4 @@
-import { Form } from "../../components";
+import { Form } from "../../components/";
 
 const ResetPassword = () => <Form formClass={"resetPassword"} />;
 

@@ -1,4 +1,4 @@
-import { TaskPeoples } from "../../layout/ListView/TaskPeoples";
+import { TaskPeoples } from "../../index";
 
 const TaskComments = () => {
   return (

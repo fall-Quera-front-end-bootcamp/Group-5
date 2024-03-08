@@ -3,7 +3,8 @@ import { DragDropContext } from "react-beautiful-dnd"
 import { DropResult } from "react-beautiful-dnd";
 import TaskCol from "./TaskCol";
 
-import { taskData } from "../../Data";
+// delete at the end
+import { taskData } from "../../../Data";
 
 type tasksType = {
   id: number,

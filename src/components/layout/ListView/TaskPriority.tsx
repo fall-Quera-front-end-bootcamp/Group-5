@@ -8,10 +8,12 @@ const TaskPriorityEnum = {
 type TaskPriorityType = {
   priority: "high" | "low";
 };
-export const TaskPriority: React.FC<TaskPriorityType> = ({ priority }) => {
+const TaskPriority: React.FC<TaskPriorityType> = ({ priority }) => {
   return (
     <CiFlag1
       className={`text-${TaskPriorityEnum[priority].color}-primary text-heading-l block m-auto`}
     />
   );
 };
+
+export default TaskPriority

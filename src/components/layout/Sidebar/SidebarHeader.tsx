@@ -1,10 +1,8 @@
 import { TiThList } from "react-icons/ti";
 import { FaColumns } from "react-icons/fa";
-import { LuCalendarDays } from "react-icons/lu";
-import { IoShareSocialOutline } from "react-icons/io5";
+import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
+import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
-import { LuSettings2 } from "react-icons/lu";
-import { IoRefreshOutline } from "react-icons/io5";
 
 interface SidebarHeaderProps {
   className: string;

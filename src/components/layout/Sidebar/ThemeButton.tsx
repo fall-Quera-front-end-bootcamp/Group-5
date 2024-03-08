@@ -1,4 +1,3 @@
-
 import ToggleOnOutlinedIcon from '@mui/icons-material/ToggleOnOutlined';
 
 const ThemeButton = () => {

@@ -1,5 +1,3 @@
-
-
 const ProfilePreview = () => {
   return (
     <div className="flex justify-center items-center gap-xs ">
