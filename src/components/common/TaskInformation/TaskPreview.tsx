@@ -1,6 +1,6 @@
-import { TaskPeoples } from "../layout/ListView/TaskPeoples";
+import { TaskPeoples } from "../../layout/ListView/TaskPeoples";
 import { IoShareSocialOutline } from "react-icons/io5";
-import { TaskPriority } from "../layout/ListView/TaskPriority";
+import { TaskPriority } from "../../layout/ListView/TaskPriority";
 
 const TaskDetail = () => {
   return (

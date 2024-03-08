@@ -1,7 +1,7 @@
 export { default as Form } from "./common/Form";
 export { default as InputField } from "./common/Form/Input";
 export { default as MYButton } from "./common/Button";
-export { default as Slide } from "./Slide";
+export { default as Slide } from "./layout/Slide";
 export { default as Colorption } from "./common/ColorOption";
 export { default as Personal } from "./layout/Profile/Personal";
 export { default as Account } from "./layout/Profile/Account";
