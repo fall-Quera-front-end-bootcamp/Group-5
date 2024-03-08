@@ -1,7 +1,6 @@
-
+import { Outlet } from 'react-router-dom'
 import Sidebar from '../Sidebar/MySideBar'
 import SidebarHeader  from '../Sidebar/SidebarHeader'
-import { Outlet } from 'react-router-dom'
 
 interface MainLayoutProps {
   Displayheader: boolean;

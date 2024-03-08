@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { IoMdClose } from "react-icons/io";
@@ -6,8 +6,9 @@ import TaskDetail from "./TaskPreview";
 import TaskTitle from "./TaskDetail";
 import Comment from "./Comment";
 import TaskComments from "./TaskComments";
-export default function TaskInformation() {
-  const [open, setOpen] = React.useState(false);
+
+function TaskInformation() {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -61,3 +62,5 @@ export default function TaskInformation() {
     </div>
   );
 }
+
+export default TaskInformation;
