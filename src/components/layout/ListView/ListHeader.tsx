@@ -1,5 +1,5 @@
 import { IoIosArrowDropdown } from "react-icons/io";
-import { TaskStatusEnum } from "../Task/TaskStatusEnum";
+import { TaskStatusEnum } from "../../../TaskStatusEnum";
 
 export type taskStatusType = "done" | "pending" | "inprogress";
 // export type taskStatusType = string;
