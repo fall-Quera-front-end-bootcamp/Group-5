@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { IoIosArrowDropdown } from "react-icons/io";
-import "reactjs-popup/dist/index.css";
 import  {RenderTasks} from "./RenderTasks";
+import "reactjs-popup/dist/index.css";
+import { IoIosArrowDropdown } from "react-icons/io";
 const man =
   "https://www.tuktukdesign.com/wp-content/uploads/2021/03/person-icon-520x520.jpg";
 export type taskType = {

@@ -1,7 +1,5 @@
-import React from "react";
+import { MYButton, ColorOption } from "../../index";
 import Props from "../../../entities/Profile";
-import { ColorOption } from '../../index'
-import { MYButton } from "../../index";
 import useTheme from "../../../services/Theme";
 import useProfile from "../../../hooks/useProfile";
 
