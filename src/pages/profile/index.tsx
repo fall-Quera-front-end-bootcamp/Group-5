@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Account, Personal, Settings} from "../../components";
-import Sidebar from '../../../src/components/Profile/Sidebar'
+import Sidebar from '../../../src/components/layout/Profile/Sidebar'
 import useProfile from "../../hooks/useProfile";
 
 const Profile = () => {

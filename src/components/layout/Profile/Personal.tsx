@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-import { InputField, MYButton } from "..";
-import FieldType from "../../entities/Field";
-import Props from "../../entities/Profile";
-import useProfile from "../../hooks/useProfile";
+import { InputField, MYButton } from "../..";
+import FieldType from "../../../entities/Field";
+import Props from "../../../entities/Profile";
+import useProfile from "../../../hooks/useProfile";
 
 type PreviewImage = {
   name: string; // File name
