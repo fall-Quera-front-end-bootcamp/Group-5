@@ -25,10 +25,12 @@
     "react-pro-sidebar": "^1.1.0",
     "react-router-dom": "^6.22.1",
     "reactjs-popup": "^2.0.6",
+    "simple-zustand-devtools": "^1.1.0",
     "zod": "^3.22.4",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/node": "^20.11.25",
     "@types/react": "^18.2.55",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.19",
