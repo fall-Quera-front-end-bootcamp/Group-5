@@ -1,7 +1,7 @@
 import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
-import { Layout, Listview, MainLayout, Workspace } from "./components/layout/exports";
+import { Layout, Listview, MainLayout, Workspace, BoardCalendarView, BoardView } from "./components/layout/exports";
 
-const Routes = [
+const routes = [
   {path:'/' , element: <Layout />, children:[
     {path:'' , element: <Login />},
     {path:'signUp' , element: <SignUp />},
@@ -12,8 +12,10 @@ const Routes = [
   {path:'/profile' , element: <Profile />},
   {path:'/home' , element: <MainLayout Displayheader = {!window.location.pathname.includes("workspace")} />, children:[
     {path:'' , element: <Listview />},
+    {path:'board' , element: <BoardView />},
     {path:'workspace' , element: <Workspace />},
+    {path:'calendar', element: <BoardCalendarView />},
   ]},
 ]
 
-export default Routes
+export default routes

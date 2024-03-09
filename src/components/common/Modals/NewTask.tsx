@@ -1,5 +1,5 @@
-import useDropFile from "../../hooks/useDropFile";
-import useLockBodyScroll from "../../hooks/useLockBodyScroll"
+import useDropFile from "../../../hooks/useDropFile";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
 import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
-import NewTask from "../Modals/NewTask";
-import BoardMore from "../Modals/BoardMore";
+import {BoardMore,NewTask} from "../../common/exports";
 
 type taskHeaderType = {
   title: string,
