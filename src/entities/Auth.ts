@@ -8,20 +8,17 @@ export default interface FormsType {
   };
 }
 
-export type ValueType = {
-  [key: string]: string | string[] | ValueType;
-};
-
 export interface LoginFormData {
   email: string;
   password: string;
 }
 
 export interface LoginResponse {
-  id: number;
-  email: string;
-  username: string;
-  tokens: {
+  id?: number;
+  email?: string;
+  username?: string;
+  password?: string;
+  tokens?: {
     access: string;
     refresh: string;
   };

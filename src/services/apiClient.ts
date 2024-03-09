@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authInstance = axios.create({
-  baseURL: "http://185.8.174.74:8000/accounts/",
+  baseURL: "http://185.8.174.74:8000/",
 });
 
 class APIClient<T> {
@@ -11,10 +11,8 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  post = (data: T, id?: string) => {
-    return authInstance
-      .post<T>(this.endpoint + id, data)
-      .then((res) => res.data);
+  post = (data: T) => {
+    return authInstance.post<T>(this.endpoint, data).then((res) => res.data);
   };
 }
 

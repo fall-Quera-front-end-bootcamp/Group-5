@@ -1,9 +1,12 @@
 import Form from "../../components/common/Form/index";
-import { ValueType } from "../../entities/Auth";
+import { LoginResponse } from "../../entities/Auth";
+import { useRegisterUser } from "../../hooks/useAuth";
 
 const signUp = () => {
-  const onSubmit = (data: ValueType) => {
+  const register = useRegisterUser();
+  const onSubmit = (data: LoginResponse) => {
     console.log(data);
+    register.mutate(data);
   };
   return <Form formClass={"signUp"} onSubmit={onSubmit} />;
 };

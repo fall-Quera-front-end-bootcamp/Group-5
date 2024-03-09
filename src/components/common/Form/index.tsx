@@ -1,10 +1,10 @@
 import useAuth from "../../../hooks/useAuth";
 import { MYButton, InputField } from "../exports";
-import { ValueType } from "../../../entities/Auth";
+import { LoginResponse } from "../../../entities/Auth";
 
 interface FormProps {
   formClass: string;
-  onSubmit: (data: ValueType) => void;
+  onSubmit: (data: LoginResponse) => void;
 }
 
 const Form: React.FC<FormProps> = ({ formClass, onSubmit }) => {
