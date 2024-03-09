@@ -5,13 +5,13 @@ import { useState } from "react";
 import { TaskPriority } from "./TaskPriority";
 import { taskType } from "./Listview";
 import { taskStatusType } from "./ListHeader";
-import { TaskPeoples } from "./TaskPeoples";
+import { RenderPeople } from "./RenderPeople";
 type RenderTask = {
   allTasks: any;
   status: taskStatusType;
 };
 export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
-  const [collapsedStatus, setCollapsedStatus] = useState(false);
+  const [collapsedStatus, setCollapsedStatus] = useState(true);
   const toggleCollapsedStatus = () => {
     setCollapsedStatus(!collapsedStatus);
   };
@@ -24,7 +24,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
   else if (status == "done") color = "bg-green-primary";
   if (FilteredTasks.length == 0) {
     return (
-      <div className="p-s">
+      <div className="p-s ">
         <ListHeader
           numTasks={FilteredTasks.length}
           status={status}
@@ -34,7 +34,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
     );
   } else {
     return (
-      <div className="p-s">
+      <div className="p-s ">
         <ListHeader
           numTasks={FilteredTasks.length}
           status={FilteredTasks[0].status}
@@ -44,8 +44,8 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
           ? null
           : FilteredTasks.map((task: any) => {
               return (
-                <div key={task.name} className="flex flex-row p-xs">
-                  <div className="flex basis-[50%]">
+                <div key={task.name} className="flex flex-row p-xs ">
+                  <div className="flex basis-[50%] ">
                     <div
                       className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1 mr-5`}
                     ></div>
@@ -56,7 +56,7 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                     className=" basis-[15%] flex justify-center pl-4"
                     key={task.peoples}
                   >
-                    <TaskPeoples images={task.peoples} />
+                    <RenderPeople images={task.peoples} />
                   </div>
                   <div className=" basis-[15%] text-center" key={task.deadline}>
                     {task.deadline}
