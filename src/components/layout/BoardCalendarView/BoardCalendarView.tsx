@@ -1,7 +1,7 @@
 import { RenderCells } from "./RenderCells";
 
 
-export const BoardCalenderView: React.FC = ({ }) => {
+const BoardCalendarView: React.FC = ({ }) => {
   return (
     <div className="p-10">
 
@@ -16,3 +16,5 @@ export const BoardCalenderView: React.FC = ({ }) => {
     </div>
   );
 };
+
+export default BoardCalendarView;
