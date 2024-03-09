@@ -1,13 +1,10 @@
-import { RenderCells } from "./RenderCells";
+import RenderCells from "./RenderCells";
 
-
-const BoardCalendarView: React.FC = ({ }) => {
+const BoardCalendarView: React.FC = () => {
   return (
-    <div className="p-10">
-
-      <div className="h-full border-r-[1px] border-t-[1px] border-black w-full z-10">
-
-        <div className="grid grid-cols-7 w-full h-screen">
+    <div className="w-full p-10">
+      <div className="w-full h-full border-r-[1px] border-t-[1px] border-black z-10">
+        <div className="w-full h-screen grid grid-cols-7">
           {Array.from({ length: 35 }).map((_, index) =>
             <RenderCells dayIndex={index} key={index} />
           )}
@@ -17,4 +14,4 @@ const BoardCalendarView: React.FC = ({ }) => {
   );
 };
 
-export default BoardCalendarView;
+export default BoardCalendarView
