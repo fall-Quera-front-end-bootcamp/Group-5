@@ -4,7 +4,7 @@ import { FaColumns } from "react-icons/fa";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
-import ShareProject from "../Modals/ShareProject";
+import {ShareProject} from "../../common/exports";
 
 interface SidebarHeaderProps {
   className: string;

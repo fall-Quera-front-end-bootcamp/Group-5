@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PermissionList from "./PermissionList" 
-import useLockBodyScroll from "../../hooks/useLockBodyScroll"
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
 import { IoClose } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";

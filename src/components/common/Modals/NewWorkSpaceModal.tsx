@@ -1,11 +1,11 @@
-import useLockBodyScroll from "../../hooks/useLockBodyScroll"
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
 import { IoClose } from "react-icons/io5";
 
 type NewProjectType = {
     setShowModal: (showModal: boolean) => void
 }
 
-export const NewWorkSpaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
+const NewWorkSpaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
     useLockBodyScroll()
     return (
         <>
@@ -62,3 +62,5 @@ export const NewWorkSpaceModal: React.FC<NewProjectType> = ({ setShowModal }) =>
         </>
     )
 }
+
+export default NewWorkSpaceModal
