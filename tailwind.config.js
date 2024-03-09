@@ -64,7 +64,6 @@ export default {
         'bold-m' : '16px',
         'bold-s' : '14px',
         'bold-xs' : '12px'
-
       },
     },
   },

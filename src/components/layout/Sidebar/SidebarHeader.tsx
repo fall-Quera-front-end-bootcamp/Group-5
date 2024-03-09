@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { TiThList } from "react-icons/ti";
 import { FaColumns } from "react-icons/fa";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
+import ShareProject from "../Modals/ShareProject";
 
 interface SidebarHeaderProps {
   className: string;
 }
+
 const SidebarHeader = ({ className }: SidebarHeaderProps) => {
+  const [showModal,setShowModal] = useState(false)
   return (
     <div className={className}>
       <div className="flex flex-col">
@@ -38,10 +42,13 @@ const SidebarHeader = ({ className }: SidebarHeaderProps) => {
             </div>
             <div className="w-[22px] border-[1px] border-gray-primary rotate-90"></div>
           </div>
-          <div className="   h-[32px] flex ">
+          <button 
+            className="flex h-8 gap-1"
+            onClick={() => setShowModal(true)}
+          >
             <IoShareSocialOutline className="w-[24px] h-[24px]" />
-            <p className="font-body text-bold-m">اشتراک گذاری</p>
-          </div>
+            <span className="font-body text-bold-m">اشتراک گذاری</span>
+          </button>
         </div>
         <div className=" h-[50px] flex gap-xl items-center">
           <div>
@@ -72,6 +79,7 @@ const SidebarHeader = ({ className }: SidebarHeaderProps) => {
           </div>
         </div>
       </div>
+      {showModal && <ShareProject setShowModal={setShowModal} />}
     </div>
   );
 };

@@ -1,7 +1,18 @@
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
+import NewTask from "../Modals/NewTask";
+import BoardMore from "../Modals/BoardMore";
 
-function TaskHeader({title, numOfTasks}:any) {
+type taskHeaderType = {
+  title: string,
+  numOfTasks: number
+}
+
+const TaskHeader = ({title, numOfTasks}:taskHeaderType) => {
+  const [showPlusModal, setShowPlusModal] = useState(false)
+  const [showMore, setShowMore] = useState(false)
+
   const randomColor = ():string => {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
@@ -25,9 +36,25 @@ function TaskHeader({title, numOfTasks}:any) {
         <p className="text-body-m">{title}</p>
         <p className="text-body-xs pt-[2px] px-1 bg-gray-100 rounded-[100px]">{convertToPersianNumber(numOfTasks)}</p>
       </div>
-      <div className="flex gap-1 items-center">
-        <HiEllipsisHorizontal />
-        <FaPlus />
+      <div className="relative flex gap-1 items-center">
+        <button onClick={() => setShowMore(true)}>
+          <span className="hover:text-brand-primary transition-all">
+            <HiEllipsisHorizontal />
+          </span>
+        </button>
+        <button onClick={() => setShowPlusModal(true)}>
+          <span className="hover:text-brand-primary transition-all">
+            <FaPlus />
+          </span>
+        </button>
+
+        {showMore &&(
+          <BoardMore setShowModal={setShowMore}/>
+        )}
+
+        {showPlusModal &&(
+          <NewTask setShowModal={setShowPlusModal}/>
+        )}
       </div>
     </div>
   );
