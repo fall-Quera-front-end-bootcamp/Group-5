@@ -1,17 +1,15 @@
 import useAuth from "../../../hooks/useAuth";
 import { MYButton, InputField } from "../exports";
+import { ValueType } from "../../../entities/Auth";
 
 interface FormProps {
   formClass: string;
+  onSubmit: (data: ValueType) => void;
 }
 
-const Form: React.FC<FormProps> = ({ formClass }) => {
+const Form: React.FC<FormProps> = ({ formClass, onSubmit }) => {
   const { title, fields, button, label, register, handleSubmit, errors } =
     useAuth(formClass);
-
-  const onSubmit = (data: any) => {
-    console.log(data); // Handle form submission here
-  };
 
   return (
     <div className="flex justify-center items-center h-screen" dir="rtl">
