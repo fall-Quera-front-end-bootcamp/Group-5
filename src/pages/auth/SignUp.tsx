@@ -1,4 +1,4 @@
-import { Form } from "../../components";
+import Form from "../../components/common/Form/index";
 
 const signUp = () => <Form formClass={"signUp"} />;
 
