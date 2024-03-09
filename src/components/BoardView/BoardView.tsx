@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { DragDropContext } from "react-beautiful-dnd"
 import { DropResult } from "react-beautiful-dnd";
-import TaskCol from "../TaskCol";
+import TaskCol from "./TaskCol";
 
 import { taskData } from "../../Data";
 

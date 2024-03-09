@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 
-// interface SlideProps {
-//   children: ReactNode;
-// }
+interface SlideProps {
+  children: ReactNode;
+}
 
 const Slide: React.FC<SlideProps> = ({ children }) => (
   <div className="flex justify-start flex-col  border-l-2 w-[340px] py-6  px-10">

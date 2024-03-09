@@ -1,7 +1,7 @@
 import { CiSquarePlus } from "react-icons/ci";
 import { Droppable } from "react-beautiful-dnd"
-import TaskHeader from "../TaskHeader";
-import TaskBox from "../TaskBox";
+import TaskHeader from "./TaskHeader";
+import TaskBox from "./TaskBox";
 
 type taskType = {
   id: number,
@@ -26,10 +26,6 @@ const TaskCol: React.FC<taskColType> = ({id, header, tasks}) => {
           className="flex flex-col gap-4"
         >
           <TaskHeader title={header} numOfTasks={tasks.length} />
-          {tasks.map((task: taskType, index) => (
-            <TaskBox key={task.id} {...task} index={index} />
-          ))}
-
           <div
             className="flex justify-center items-center gap-[10px] border-2 border-brand-primary py-2 px-3 rounded-lg cursor-pointer"
             {...provided.droppableProps}
@@ -37,6 +33,10 @@ const TaskCol: React.FC<taskColType> = ({id, header, tasks}) => {
             <CiSquarePlus size={24} color="#208D8E" />
             <p className="text-brand-primary font-bold">ساخت تسک جدید</p>
           </div>
+          {tasks.map((task: taskType, index) => (
+            <TaskBox key={task.id} {...task} index={index} />
+          ))}
+
         </div>
       )}
     </Droppable>
