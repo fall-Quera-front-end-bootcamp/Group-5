@@ -1,9 +1,11 @@
 import useDropFile from "../../../hooks/useDropFile";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
+import { useState } from "react"
 import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
+import { CalendarModal } from "../exports"
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void
@@ -11,6 +13,8 @@ type PropsType = {
 
 const NewTask = ({setShowModal}:PropsType) => {
   useLockBodyScroll();
+
+  const [showCalendar, SetShowCalendar] = useState(false);
 
   const {
     previewImage: perviewFile,
@@ -101,9 +105,13 @@ const NewTask = ({setShowModal}:PropsType) => {
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <BsFlag />
                 </div>
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                <button
+                  className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2"
+                  type="button"
+                  onClick={() => SetShowCalendar(true)}
+                >
                   <BsCalendarDate />
-                </div>
+                </button>
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <CiBookmarkPlus />
                 </div>
@@ -119,7 +127,8 @@ const NewTask = ({setShowModal}:PropsType) => {
           </div>
         </div>
       </div>
-      <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
+      {showCalendar && <CalendarModal setShowCalendar={SetShowCalendar} />}
+      <div className="opacity-50 fixed inset-0 z-10 bg-black" />
     </>
   );
 };
