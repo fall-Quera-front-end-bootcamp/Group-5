@@ -121,7 +121,6 @@ export const useLoginUser = () => {
     mutationFn: loginApiClient.post,
 
     onSuccess: (user: LoginServerResponse) => {
-      console.log(user);
       login(user);
     },
   });

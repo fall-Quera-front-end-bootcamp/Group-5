@@ -11,7 +11,6 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ formClass, onSubmit, mutateError }) => {
   const { title, fields, button, label, register, handleSubmit, errors } =
     useAuth(formClass);
-  console.log(mutateError?.message);
 
   return (
     <div className="flex justify-center items-center h-screen" dir="rtl">
