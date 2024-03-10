@@ -1,17 +1,32 @@
-type PropsType = {
-  setShowModal: (showModal: boolean) => void
-}
-
-const PermissionList = ({setShowModal}:PropsType) => {
+export  const PermissionList: React.FC = () => {
   return (
     <>
-      <div
-        className="absolute top-[-10px] left-[-260px] w-64 h-96 mt-1 text-body-s font-normal rounded-lg p-3 z-20 bg-red-primary shadow-lg"
-      >
-        ممد نوبری دل همه رو میبری
+      <div className="flex flex-col gap-7">
+        <div>
+          <h3 className="pb-2 font-bold ">دسترسی کامل</h3>
+          <p className="text-[#7D828C]">
+            توانایی ساختن تسک در این پروژه، ویرایش تنظیمات پروژه و حذف پروژه
+          </p>
+        </div>
+        <div>
+          <h3 className="pb-2 font-bold ">دسترسی ویرایش</h3>
+          <p className="text-[#7D828C]">
+            توانایی ویرایش تسک در این پروژه و ویرایش تنظیمات پروژه. نمی‌تواند
+            پروژه را حذف یا تسک جدید بسازد.
+          </p>
+        </div>
+        <div>
+          <h3 className="pb-2 font-bold ">دسترسی کامنت</h3>
+          <p className="text-[#7D828C]">
+            توانایی کامنت گذاشتن دارد. می‌تواند ستون تسک‌ها را تغییر دهد اما
+            توانایی ویرایش تنظیمات پروژه را ندارد.
+          </p>
+        </div>
+        <div>
+          <h3 className="pb-2 font-bold ">فقط دسترسی مشاهده</h3>
+          <p className="text-[#7D828C]">توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.</p>
+        </div>
       </div>
     </>
   );
 };
-
-export default PermissionList;
