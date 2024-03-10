@@ -22,7 +22,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsType> = ({
                  "
         >
           <div className="flex justify-between items-center">
-            <p className="grow text-center">قوانین و مقررات</p>
+            <p className="grow text-center font-heading text-heading-s">قوانین و مقررات</p>
             <button
               className="text-2xl
                              hover:text-red-primary 
@@ -42,12 +42,34 @@ export const TermsAndConditions: React.FC<TermsAndConditionsType> = ({
             زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
             متخصصان را می طلبد.
           </p>
-          <List bulleted>
-            <ListItem>
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            </ListItem>
-            
-          </List>
+          <ul
+            className="list-outside list-disc pr-5"
+          >
+            <li>
+              ورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+              در ستون و سطرآنچنان که لازم است،
+            </li>
+            <li>
+              و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
+              بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد
+              گذشته حال و آینده،
+            </li>
+            <li>
+              شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
+              بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
+              پیشرو در زبان فارسی ایجاد کرد،
+            </li>
+            <li>
+              در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
+              راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
+              حروفچینی دستاوردهای اصلی، و
+            </li>
+            <li>
+              جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
+              قرار گیرد
+            </li>
+          </ul>
         </div>
       </div>
       <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
