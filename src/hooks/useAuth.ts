@@ -2,7 +2,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import FormsType, { LoginResponse } from "../entities/Auth";
+import FormsType, {
+  LoginResponse,
+  LoginServerResponse,
+} from "../entities/Auth";
 import { signupApiClient, loginApiClient } from "../services/authServices";
 import useAuthStore from "../store";
 
@@ -112,12 +115,13 @@ export const useRegisterUser = () => {
 };
 
 export const useLoginUser = () => {
-  return useMutation<LoginResponse, Error, LoginResponse>({
+  const { login } = useAuthStore();
+
+  return useMutation<LoginServerResponse, Error, LoginResponse>({
     mutationFn: loginApiClient.post,
 
-    onSuccess: (user: LoginResponse) => {
+    onSuccess: (user: LoginServerResponse) => {
       console.log(user);
-      const { login } = useAuthStore();
       login(user);
     },
   });

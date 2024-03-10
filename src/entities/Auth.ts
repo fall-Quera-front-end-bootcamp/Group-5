@@ -8,15 +8,21 @@ export default interface FormsType {
   };
 }
 
+export interface LoginServerResponse {
+  user_id?: number;
+  email?: string;
+  username?: string;
+  access?: string;
+  refresh?: string;
+}
+
 export interface LoginResponse {
   id?: number;
   email?: string;
   username?: string;
   password?: string;
-  tokens?: {
-    access: string;
-    refresh: string;
-  };
+  access?: string;
+  refresh?: string;
 }
 
 export interface RefreshTokenData {
