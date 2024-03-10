@@ -7,7 +7,13 @@ const signUp = () => {
   const onSubmit = (data: LoginResponse) => {
     register.mutate(data);
   };
-  return <Form formClass={"signUp"} onSubmit={onSubmit} />;
+  return (
+    <Form
+      formClass={"signUp"}
+      onSubmit={onSubmit}
+      mutateError={register.error}
+    />
+  );
 };
 
 export default signUp;
