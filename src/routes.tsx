@@ -1,5 +1,6 @@
 import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
 import { Layout, Listview, MainLayout, Workspace, BoardCalendarView, BoardView } from "./components/layout/exports";
+import { TermsAndConditions } from "./components/TermsAndConditions/TermsAndConditions";
 
 const routes = [
   {path:'/' , element: <Layout />, children:[
@@ -15,6 +16,7 @@ const routes = [
     {path:'board' , element: <BoardView />},
     {path:'workspace' , element: <Workspace />},
     {path:'calendar', element: <BoardCalendarView />},
+    {path:'Terms', element: <TermsAndConditions />},
   ]},
 ]
 

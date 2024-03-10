@@ -1,4 +1,4 @@
-export  const PermissionList: React.FC = () => {
+const PermissionList: React.FC = () => {
   return (
     <>
       <div className="flex flex-col gap-7">
@@ -24,9 +24,12 @@ export  const PermissionList: React.FC = () => {
         </div>
         <div>
           <h3 className="pb-2 font-bold ">فقط دسترسی مشاهده</h3>
-          <p className="text-[#7D828C]">توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.</p>
+          <p className="text-[#7D828C]">
+            توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.
+          </p>
         </div>
       </div>
     </>
   );
 };
+export default PermissionList;

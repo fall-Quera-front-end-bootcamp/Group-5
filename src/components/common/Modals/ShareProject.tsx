@@ -1,4 +1,4 @@
-import { PermissionList } from "./PermissionList";
+import  PermissionList  from "./PermissionList";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { IoClose } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
