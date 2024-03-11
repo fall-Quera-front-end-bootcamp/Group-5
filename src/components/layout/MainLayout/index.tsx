@@ -7,16 +7,12 @@ interface MainLayoutProps {
 }
 const MainLayout = ({ Displayheader }: MainLayoutProps) => {
   return (
-    <div className="flex flex-row gap-s ">
-      <Sidebar className=" h-12" />
-      <div className="flex flex-col mt-[41px] ">
-        {Displayheader && (
-          <>
-            <SidebarHeader className=" h-1/6 flex" />
-          </>
-        )}
+    <div className="flex gap-s">
+      <Sidebar className="h-12" />
+      <div className="flex flex-wrap mt-[41px]">
+        <div className="grow ">{Displayheader && <SidebarHeader />} </div>
 
-        <div className=" pb-5">
+        <div className="w-full pb-5">
           <Outlet />
         </div>
       </div>
@@ -25,3 +21,15 @@ const MainLayout = ({ Displayheader }: MainLayoutProps) => {
 };
 
 export default MainLayout;
+
+{
+  /* <div className='flex flex-wrap gap-s'>
+<Sidebar  className="w-96 h-12"/>
+{Displayheader && <><SidebarHeader className='grow h-1/6 ml-[40px] mt-[41px]' />  
+<div className='basis-[100%] h-5/6'></div> </>}
+
+<div className='mr-[400px] pb-5'>
+  <Outlet />
+</div>
+</div> */
+}

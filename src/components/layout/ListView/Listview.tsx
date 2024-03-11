@@ -82,10 +82,10 @@ const Listview: React.FC<DataProps> = ({}) => {
   };
 
   return (
-    <div key={"contain"} className=" w-full h-screen overflow-y-auto mt-2">
+    <div key={"contain"} className=" h-screen overflow-y-auto mt-2">
       {mocked_data.map((Projects) => {
         return (
-          <div className="w-screen">
+          <div className="">
             <h2
               key={Projects.project_name}
               onClick={toggleCollapsed}
