@@ -1,15 +1,17 @@
 import useDropFile from "../../../hooks/useDropFile";
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
+import Popup from "reactjs-popup";
+import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
 
 type PropsType = {
-  setShowModal: (showModal: boolean) => void
-}
+  setShowModal: (showModal: boolean) => void;
+};
 
-const NewTask = ({setShowModal}:PropsType) => {
+const NewTask = ({ setShowModal }: PropsType) => {
   useLockBodyScroll();
 
   const {
@@ -76,9 +78,7 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="text-body-l">
-                {perviewFile?.name}
-              </p>
+              <p className="text-body-l">{perviewFile?.name}</p>
             </div>
             <div className="flex items-center gap-5">
               <p className="text-body-l">افزودن کاور</p>
@@ -92,15 +92,21 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="text-body-l">
-                {previewCover?.name}
-              </p>
+              <p className="text-body-l">{previewCover?.name}</p>
             </div>
             <div className="flex justify-between items-center gap-5 mt-8">
               <div className="flex justify-between items-center gap-5">
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <BsFlag />
-                </div>
+                <Popup
+                  trigger={
+                    <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                      <BsFlag />
+                    </div>
+                  }
+                  position={'right center'}
+                >
+                  <NewTaskPriprityOptionsModal />
+                </Popup>
+
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <BsCalendarDate />
                 </div>
