@@ -1,7 +1,7 @@
 import useDropFile from "../../../hooks/useDropFile";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
 import { useState } from "react"
-import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { BsCalendar4Event, BsFlag, BsPersonAdd } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
@@ -110,14 +110,14 @@ const NewTask = ({setShowModal}:PropsType) => {
                   type="button"
                   onClick={() => SetShowCalendar(true)}
                 >
-                  <BsCalendarDate />
+                  <BsCalendar4Event />
                 </button>
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <CiBookmarkPlus />
                 </div>
               </div>
               <button
-                className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-normal text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
+                className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-body text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(false)}
               >
