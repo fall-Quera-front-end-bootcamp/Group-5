@@ -5,6 +5,7 @@ import { mountStoreDevtool } from "simple-zustand-devtools";
 interface AuthStore {
   user: LoginResponse;
   login: (newUser: LoginServerResponse) => void;
+  refreshToken: (accessToken: string) => void;
   logout: () => void;
 }
 
@@ -20,6 +21,7 @@ const useAuthStore = create<AuthStore>((set) => ({
         refresh: newUser.refresh,
       },
     })),
+  refreshToken: (accessToken) => set(() => ({ user: { access: accessToken } })),
   logout: () => set(() => ({ user: {} as LoginResponse })),
 }));
 

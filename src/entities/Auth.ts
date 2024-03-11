@@ -30,10 +30,6 @@ export interface LoginResponse {
 }
 
 export interface RefreshTokenData {
-  refresh: string;
-}
-
-export interface RefreshTokenResponse {
-  access: string;
-  refresh: string;
+  access?: string;
+  refresh?: string;
 }
