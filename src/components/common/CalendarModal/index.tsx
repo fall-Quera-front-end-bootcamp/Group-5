@@ -5,7 +5,7 @@ import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { BsCalendar4Event } from "react-icons/bs";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import "./index.css";
+import "./index.min.css";
 
 type PropsType = {
   setShowCalendar: (showCalendar: boolean) => void;

@@ -1,0 +1,116 @@
+.rmdp-day.rmdp-today span {
+  width: 44px !important;
+  height: 38px !important;
+  color: #1e1e1e;
+  background-color: transparent;
+  border: #208d8e 1px solid;
+  border-radius: 100px !important;
+}
+
+.rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+  color: #208d8e;
+  background-color: transparent;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight) {
+  width: 44px !important;
+  height: 38px !important;
+  color: white !important;
+  background-color: #208d8e !important;
+  transition: background-color 0.2s !important;
+  border-radius: 100px !important;
+}
+
+.rmdp-arrow-container .rmdp-arrow {
+  display: block !important;
+  border-color: #7d828c !important;
+}
+
+.rmdp-arrow-container {
+  align-items: center;
+  margin: 0 0;
+}
+
+.rmdp-arrow-container:hover {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.rmdp-week {
+  font-family: "Iran Yekan Body" !important;
+}
+
+div > .rmdp-week:first-child > .rmdp-week-day {
+  width: 100% !important;
+  color: #868e96 !important;
+  font-weight: 500 !important;
+  font-family: "Iran Yekan Body", sans-serif !important;
+  font-size: 16px !important;
+}
+
+.rmdp-panel-body li,
+.rmdp-panel-body li.bg-blue {
+  background-color: transparent;
+}
+
+.rmdp-panel-body li button {
+  color: #1e1e1e !important;
+}
+
+.rmdp-panel-body li .b-deselect {
+  background-color: transparent;
+}
+
+.rmdp-calendar {
+  width: 100%;
+  padding: 10px;
+}
+
+.rmdp-wrapper {
+  width: 100%;
+  height: 100%;
+  border: none !important;
+}
+
+.rmdp-shadow {
+  box-shadow: none;
+}
+
+.rmdp-day-picker {
+  padding: 0;
+}
+
+.rmdp-header {
+  margin-right: 30px !important;
+}
+
+.rmdp-header-values {
+  margin: 0 !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+.rmdp-day-picker > div {
+  width: 100%;
+}
+
+.rmdp-rtl .rmdp-range.end {
+  border-radius: none !important;
+  background-color: transparent !important;
+}
+
+.rmdp-day {
+  height: 41px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.rmdp-day span {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0px auto;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
