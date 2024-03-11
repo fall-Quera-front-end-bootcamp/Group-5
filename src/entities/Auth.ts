@@ -23,6 +23,10 @@ export interface LoginResponse {
   password?: string;
   access?: string;
   refresh?: string;
+  first_name?: string;
+  last_name?: string;
+  phone_number?: string;
+  thumbnail?: string;
 }
 
 export interface RefreshTokenData {
