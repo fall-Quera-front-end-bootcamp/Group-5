@@ -83,47 +83,38 @@ const ShareProject = ({ setShowModal }: PropsType) => {
                     </div>
                   </div>
                   <Popup
-                    trigger={
-                      <div
-                        className="h-6 flex items-center
-                        gap-2 hover:bg-gray-100
-                        text-xs px-3 py-1 border
-                        rounded-md
-                        "
-                      >
-                        <span>دسترسی کامل</span>
-                        <IoIosArrowDown />
-                      </div>
-                    }
-                    contentStyle={{
-                      width: "300px",
-                      margin: "auto",
-                      background: "rgb(255, 255, 255)",
-                      padding: "25px",
-                    }}
-                    position="left center"
-                  >
-                    <PermissionList />
-                  </Popup>
-                  {/* <button
-                    className="h-6 flex items-center gap-2 hover:bg-gray-100 text-xs px-3 py-1 border rounded-md"
-                    onClick={() => setShowPermission(true)}
-                  >
-                    <span>دسترسی کامل</span>
-                    <IoIosArrowDown />
-                  </button> */}
-                  {/* {showPermission && (
-                    <PermissionList setShowModal={setShowPermission} />
-                  )} */}
-                </div>
+                    trigger={<div
+                      className="h-6 flex items-center
+                      gap-2 hover:bg-gray-100
+                      text-xs px-3 py-1 border
+                      rounded-md
+                      "
+                    >
+                      <span>دسترسی کامل</span>
+                      <IoIosArrowDown />
+                    </div>
+                  }
+                  contentStyle={{
+                    width: "300px",
+                    margin: "auto",
+                    background: "rgb(255, 255, 255)",
+                    padding: "25px",
+                  }}
+                  position="left center"
+                >
+                  <PermissionList />
+                </Popup>
+            
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
-    </>
-  );
+    </div>
+    <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
+  </>
+);
 };
 
 export default ShareProject;
+

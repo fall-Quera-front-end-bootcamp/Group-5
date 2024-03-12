@@ -1,23 +1,47 @@
-import { Login, SignUp, ForgotPassword, ResetPassword, Profile, NotFoundPage } from "./pages";
-import { Layout, Listview, MainLayout, Workspace, BoardCalendarView, BoardView } from "./components/layout/exports";
-import { TermsAndConditions } from "./components/TermsAndConditions/TermsAndConditions";
+import {
+  Login,
+  SignUp,
+  ForgotPassword,
+  ResetPassword,
+  Profile,
+  NotFoundPage,
+} from "./pages";
+import {
+  Layout,
+  Listview,
+  MainLayout,
+  Workspace,
+  BoardCalendarView,
+  BoardView,
+} from "./components/layout/exports";
 
 const routes = [
-  {path:'/' , element: <Layout />, children:[
-    {path:'' , element: <Login />},
-    {path:'signUp' , element: <SignUp />},
-    {path:'forgotPassword' , element: <ForgotPassword />},
-    {path:'resetPassword' , element: <ResetPassword />},
-    {path:'*' , element: <NotFoundPage />}
-  ]},
-  {path:'/profile' , element: <Profile />},
-  {path:'/home' , element: <MainLayout Displayheader = {!window.location.pathname.includes("workspace")} />, children:[
-    {path:'' , element: <Listview />},
-    {path:'board' , element: <BoardView />},
-    {path:'workspace' , element: <Workspace />},
-    {path:'calendar', element: <BoardCalendarView />},
-    {path:'Terms', element: <TermsAndConditions />},
-  ]},
-]
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "", element: <Login /> },
+      { path: "signUp", element: <SignUp /> },
+      { path: "forgotPassword", element: <ForgotPassword /> },
+      { path: "resetPassword", element: <ResetPassword /> },
+      { path: "*", element: <NotFoundPage /> },
+    ],
+  },
+  { path: "/profile", element: <Profile /> },
+  {
+    path: "/home",
+    element: (
+      <MainLayout
+        Displayheader={!window.location.pathname.includes("workspace")}
+      />
+    ),
+    children: [
+      { path: "", element: <Listview /> },
+      { path: "board", element: <BoardView /> },
+      { path: "workspace", element: <Workspace /> },
+      { path: "calendar", element: <BoardCalendarView /> },
+    ],
+  },
+];
 
-export default routes
+export default routes;
