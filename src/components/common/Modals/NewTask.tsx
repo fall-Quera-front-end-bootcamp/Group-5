@@ -4,13 +4,10 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import useDropFile from "../../../hooks/useDropFile";
+import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
-
-
+import useDropFile from "../../../hooks/useDropFile";
 import { CalendarModal } from "../exports";
-
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
