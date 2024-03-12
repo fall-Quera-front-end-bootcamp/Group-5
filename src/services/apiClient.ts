@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAuthStore from "../store";
-import { useRefreshUser } from "../hooks/useAuth";
+import { RefreshTokenData } from "../entities/Auth";
 
 const authInstance = axios.create({
   baseURL: "http://185.8.174.74:8000/",
@@ -18,9 +18,8 @@ export class AuthAPIClient<T> {
   };
 }
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL: "http://185.8.174.74:8000/",
-  timeout: 3000,
 });
 
 export class APIClient<T> {
@@ -31,7 +30,7 @@ export class APIClient<T> {
   }
 
   getAll = () => {
-    return axiosInstance.get<T>(this.endpoint).then((res) => res.data);
+    return axiosInstance.get<T[]>(this.endpoint).then((res) => res.data);
   };
   get = (id: string | number) => {
     return axiosInstance.get<T>(this.endpoint + id).then((res) => res.data);
@@ -41,13 +40,16 @@ export class APIClient<T> {
   };
 }
 
+const refreshApiClient = new AuthAPIClient<RefreshTokenData>(
+  "accounts/refresh/"
+);
+
 axiosInstance.interceptors.request.use(
   (config) => {
-    const {
-      user: { access },
-    } = useAuthStore();
+    // const user = useAuthStore((s) => s.user);
+    const user = JSON.parse(localStorage.getItem("user")!);
     const newConfig = { ...config };
-    newConfig.headers.Authorization = `Bearer ${access}`;
+    newConfig.headers.Authorization = `Bearer ${user.access}`;
     return newConfig;
   },
   (error: Error) => Promise.reject(error)
@@ -56,27 +58,28 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const {
-      user: { refresh, access },
-      logout,
-    } = useAuthStore();
-    const refreshRequest = useRefreshUser();
+    const user = JSON.parse(localStorage.getItem("user")!);
 
     const config = error?.config;
 
     if (error.response.status === 401) {
       try {
-        refreshRequest.mutate({ refresh });
+        const refreshResponseData = await refreshApiClient.post({
+          refresh: user.refresh,
+        });
 
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...user, access: refreshResponseData.access })
+        );
         config.headers = {
           ...config.headers,
-          Authorization: `Bearer ${access}`,
+          Authorization: `Bearer ${refreshResponseData.access}`,
         };
 
         return axiosInstance(config);
       } catch (e) {
-        console.log(refreshRequest.error);
-        logout();
+        localStorage.removeItem("user");
 
         window.location.replace("/");
       }
