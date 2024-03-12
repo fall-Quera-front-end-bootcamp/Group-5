@@ -15,8 +15,8 @@ const forms: FormsType = {
     label: "ورود",
     button: "signIn",
     schema: {
-      username: z.string().nonempty("نام کاربری الزامی است"),
-      password: z.string().nonempty("رمز عبور الزامی است"),
+      username: z.string().min(1,"نام کاربری الزامی است"),
+      password: z.string().min(1,"رمز عبور الزامی است"),
     },
     fields: [
       { key: "username", type: "text", label: "نام کاربری" },
@@ -36,7 +36,7 @@ const forms: FormsType = {
         .string()
         .min(1, { message: "ایمیل الزامی است" })
         .email("ایمیل وارد شده معتبر نیست"),
-      password: z.string().nonempty("رمز عبور الزامی است"),
+      password: z.string().min(1,"رمز عبور الزامی است"),
       terms: z.literal(true, {
         errorMap: () => ({ message: "شما با قوانین موافقت نکردید!!" }),
       }),
@@ -53,7 +53,7 @@ const forms: FormsType = {
     label: "دریافت ایمیل بازیابی رمز عبور",
     button: "forgotPassword",
     schema: {
-      email: z.string().nonempty("نام کاربری الزامی است"),
+      email: z.string().min(1,"نام کاربری الزامی است"),
     },
     fields: [{ key: "email", type: "email", label: "ایمیل خود را وارد کنید" }],
   },
