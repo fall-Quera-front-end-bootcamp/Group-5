@@ -12,20 +12,37 @@ export default interface FormsType {
   };
 }
 
+export interface LoginServerResponse {
+  user_id?: number;
+  email?: string;
+  username?: string;
+  access?: string;
+  refresh?: string;
+}
+
+export interface LoginResponse {
+  id?: number;
+  email?: string;
+  username?: string;
+  password?: string;
+  access?: string;
+  refresh?: string;
+  first_name?: string;
+  last_name?: string;
+  phone_number?: string;
+  thumbnail?: string;
+}
+
+export interface RefreshTokenData {
+  access?: string;
+  refresh?: string;
+=======
 export interface LoginFormData {
   email: string;
   password: string;
 }
 
-export interface LoginResponse {
-  id: number;
-  email: string;
-  username: string;
-  tokens: {
-    access: string;
-    refresh: string;
-  };
-}
+
 
 export interface SignupFormData {
   username: string;
@@ -33,11 +50,9 @@ export interface SignupFormData {
   password: string;
 }
 
-export interface RefreshTokenData {
-  refresh: string;
-}
 
 export interface RefreshTokenResponse {
   access: string;
   refresh: string;
+
 }
