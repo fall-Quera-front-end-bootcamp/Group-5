@@ -6,6 +6,14 @@ import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
 import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
+import { useState } from "react"
+import { BsCalendar4Event, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { CiBookmarkPlus } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+import { SlPaperClip } from "react-icons/sl";
+import { CalendarModal } from "../exports"
+
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
@@ -13,6 +21,8 @@ type PropsType = {
 
 const NewTask = ({ setShowModal }: PropsType) => {
   useLockBodyScroll();
+
+  const [showCalendar, SetShowCalendar] = useState(false);
 
   const {
     previewImage: perviewFile,
@@ -96,6 +106,7 @@ const NewTask = ({ setShowModal }: PropsType) => {
             </div>
             <div className="flex justify-between items-center gap-5 mt-8">
               <div className="flex justify-between items-center gap-5">
+
                 <Popup
                   trigger={
                     <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
@@ -110,12 +121,13 @@ const NewTask = ({ setShowModal }: PropsType) => {
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <BsCalendarDate />
                 </div>
+
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <CiBookmarkPlus />
                 </div>
               </div>
               <button
-                className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-normal text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
+                className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-body text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(false)}
               >
@@ -125,7 +137,8 @@ const NewTask = ({ setShowModal }: PropsType) => {
           </div>
         </div>
       </div>
-      <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
+      {showCalendar && <CalendarModal setShowCalendar={SetShowCalendar} />}
+      <div className="opacity-50 fixed inset-0 z-10 bg-black" />
     </>
   );
 };
