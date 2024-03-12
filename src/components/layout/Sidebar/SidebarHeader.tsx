@@ -4,19 +4,19 @@ import { FaColumns } from "react-icons/fa";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
-import {ShareProject} from "../../common/exports";
+import { ShareProject } from "../../common/exports";
 
-interface SidebarHeaderProps {
-  className: string;
-}
+// interface SidebarHeaderProps {
+//   className: string;
+// }
 
-const SidebarHeader = ({ className }: SidebarHeaderProps) => {
-  const [showModal,setShowModal] = useState(false)
+const SidebarHeader = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div className={className}>
-      <div className="flex flex-col">
-        <div className=" flex justify-between items-center py-s px-0">
-          <div className="flex  h-[32px] items-center">
+    <>
+      <div className="flex flex-col ">
+        <div className=" flex justify-between items-center py-s px-0 ">
+          <div className="flex h-[32px] items-center">
             <div
               className=" w-[77px] h-[32px]
                  text-right"
@@ -42,13 +42,15 @@ const SidebarHeader = ({ className }: SidebarHeaderProps) => {
             </div>
             <div className="w-[22px] border-[1px] border-gray-primary rotate-90"></div>
           </div>
-          <button 
-            className="flex h-8 gap-1"
-            onClick={() => setShowModal(true)}
-          >
-            <IoShareSocialOutline className="w-[24px] h-[24px]" />
-            <span className="font-body text-bold-m">اشتراک گذاری</span>
-          </button>
+          <div>
+            <button
+              className="flex h-8 gap-1"
+              onClick={() => setShowModal(true)}
+            >
+              <IoShareSocialOutline className="w-[24px] h-[24px]" />
+              <span className="font-body text-bold-m">اشتراک گذاری</span>
+            </button>
+          </div>
         </div>
         <div className=" h-[50px] flex gap-xl items-center">
           <div>
@@ -71,8 +73,10 @@ const SidebarHeader = ({ className }: SidebarHeaderProps) => {
                 </div>
               </div>
             </div>
-            <div className="flex font-body text-body-xs w-[210px] rounded-[8px] border-[1px]
-             border-brand-primary items-center justify-center gap-[8px] py-[4px] px-[8px]">
+            <div
+              className="flex font-body text-body-xs w-[210px] rounded-[8px] border-[1px]
+             border-brand-primary items-center justify-center gap-[8px] py-[4px] px-[8px]"
+            >
               <IoRefreshOutline className="w-[20px] h-[20px]" />
               <p>بازگردانی تسک های آرشیو شده</p>
             </div>
@@ -80,7 +84,7 @@ const SidebarHeader = ({ className }: SidebarHeaderProps) => {
         </div>
       </div>
       {showModal && <ShareProject setShowModal={setShowModal} />}
-    </div>
+    </>
   );
 };
 
