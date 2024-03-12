@@ -1,3 +1,7 @@
+export type ValueType = {
+  [key: string]: string | string[] | ValueType;
+};
+
 export default interface FormsType {
   [key: string]: {
     title: string;
@@ -23,13 +27,32 @@ export interface LoginResponse {
   password?: string;
   access?: string;
   refresh?: string;
+  first_name?: string;
+  last_name?: string;
+  phone_number?: string;
+  thumbnail?: string;
 }
 
 export interface RefreshTokenData {
-  refresh: string;
+  access?: string;
+  refresh?: string;
+=======
+export interface LoginFormData {
+  email: string;
+  password: string;
 }
+
+
+
+export interface SignupFormData {
+  username: string;
+  email: string;
+  password: string;
+}
+
 
 export interface RefreshTokenResponse {
   access: string;
   refresh: string;
+
 }

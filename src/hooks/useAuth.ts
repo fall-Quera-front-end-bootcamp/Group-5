@@ -5,8 +5,13 @@ import { useMutation } from "@tanstack/react-query";
 import FormsType, {
   LoginResponse,
   LoginServerResponse,
+  RefreshTokenData,
 } from "../entities/Auth";
-import { signupApiClient, loginApiClient } from "../services/authServices";
+import {
+  signupApiClient,
+  loginApiClient,
+  refreshApiClient,
+} from "../services/authServices";
 import useAuthStore from "../store";
 
 const forms: FormsType = {
@@ -115,13 +120,25 @@ export const useRegisterUser = () => {
 };
 
 export const useLoginUser = () => {
-  const { login } = useAuthStore();
+  const login = useAuthStore((s) => s.login);
 
   return useMutation<LoginServerResponse, Error, LoginResponse>({
     mutationFn: loginApiClient.post,
 
     onSuccess: (user: LoginServerResponse) => {
       login(user);
+    },
+  });
+};
+
+export const useRefreshUser = () => {
+  const refreshToken = useAuthStore((s) => s.refreshToken);
+
+  return useMutation<RefreshTokenData, Error, RefreshTokenData>({
+    mutationFn: refreshApiClient.post,
+
+    onSuccess: (token: RefreshTokenData) => {
+      refreshToken(token.access!);
     },
   });
 };
