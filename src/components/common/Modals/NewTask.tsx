@@ -5,7 +5,7 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
+import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
