@@ -1,4 +1,4 @@
-import { TaskPeoples, TaskPriority } from "../exports";
+import { TaskPeoples, TaskPriority } from "..";
 import { IoShareSocialOutline } from "react-icons/io5";
 
 const TaskDetail = () => {

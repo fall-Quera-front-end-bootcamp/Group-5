@@ -7,7 +7,7 @@ import Popup from "reactjs-popup";
 import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import useDropFile from "../../../hooks/useDropFile";
-import { CalendarModal } from "../exports";
+import { CalendarModal } from "..";
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
@@ -100,14 +100,13 @@ const NewTask = ({ setShowModal }: PropsType) => {
             </div>
             <div className="flex justify-between items-center gap-5 mt-8">
               <div className="flex justify-between items-center gap-5">
-
                 <Popup
                   trigger={
                     <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                       <BsFlag />
                     </div>
                   }
-                  position={'right center'}
+                  position={"right center"}
                 >
                   <NewTaskPriprityOptionsModal />
                 </Popup>

@@ -1,6 +1,6 @@
 import Props from "../../../entities/Profile";
 import useProfile from "../../../hooks/useProfile";
-import { InputField, MYButton } from "../../common/exports";
+import { InputField, MYButton } from "../../common";
 
 const Account: React.FC<Props> = ({ tab }) => {
   const { fields, button, label, register, handleSubmit, errors } =

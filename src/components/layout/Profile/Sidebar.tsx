@@ -1,4 +1,4 @@
-import { BackButton, SidebarOption, Slide } from "../../layout/exports";
+import { BackButton, SidebarOption, Slide } from "..";
 import { BsPersonCheck, BsPersonGear } from "react-icons/bs";
 import { SlSettings } from "react-icons/sl";
 
