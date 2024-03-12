@@ -1,7 +1,7 @@
-import { useState } from "react";
-import  {RenderTasks} from "./RenderTasks";
+import { RenderProjects } from "./RenderProjects";
+
 import "reactjs-popup/dist/index.css";
-import { IoIosArrowDropdown } from "react-icons/io";
+
 const man =
   "https://www.tuktukdesign.com/wp-content/uploads/2021/03/person-icon-520x520.jpg";
 export type taskType = {
@@ -12,8 +12,8 @@ export type taskType = {
   priority: string;
   description: string;
 };
-type DataObjectType = { project_name: string; tasks: taskType[] };
-type DataType = DataObjectType[];
+export type DataObjectType = { project_name: string; tasks: taskType[] };
+export type DataType = DataObjectType[];
 
 //////// this is a fake data to test
 const mocked_data: DataType = [
@@ -75,12 +75,6 @@ interface DataProps {
 
 ///// the main component
 const Listview: React.FC<DataProps> = ({}) => {
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
   return (
     <div key={"contain"} className=" h-screen overflow-y-auto mt-2">
       {mocked_data.map((Projects) => {
