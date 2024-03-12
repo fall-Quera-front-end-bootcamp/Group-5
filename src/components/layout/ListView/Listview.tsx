@@ -77,10 +77,8 @@ interface DataProps {
 const Listview: React.FC<DataProps> = ({}) => {
   return (
     <div key={"contain"} className="w-full overflow-y-auto mt-2">
-      {mocked_data.map((Projects) => {
-        return (
-          <RenderProjects Projects={Projects}/>
-        );
+      {mocked_data.map((Projects, index) => {
+        return <RenderProjects Projects={Projects} key={index} />;
       })}
     </div>
   );

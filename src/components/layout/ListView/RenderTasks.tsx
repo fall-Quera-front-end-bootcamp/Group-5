@@ -38,11 +38,12 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
           />
           {collapsedStatus
             ? null
-            : FilteredTasks.map((task: any) => {
+            : FilteredTasks.map((task: any, index) => {
                 return (
-                  <div key={task.name} className="flex flex-row p-xs">
-                    <div className="flex basis-[50%]">
+                  <div key={index} className="flex flex-row p-xs">
+                    <div  className="flex basis-[50%]">
                       <div
+                        
                         className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1 mr-5`}
                       ></div>
                       <div key={task.task_name}>{task.task_name}</div>
@@ -77,8 +78,9 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                           </div>
                         }
                         position="right center"
+                        
                       >
-                        <div>{task.description}</div>
+                        <div >{task.description}</div>
                       </Popup>
                     </div>
                   </div>
