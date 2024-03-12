@@ -27,35 +27,42 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
               ساختن ورک‌اسپیس جدید‌
             </h2>
           </div>
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="workspace-name"
-              className="self-start text-center text-body-s"
-            >
-              نام ورک اسپیس
-            </label>
-            <input
-              id="workspace-name"
-              className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
-              type="text"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="self-start text-center text-body-s">رنگ ورک اسپیس</p>
-            <div className="flex flex-wrap justify-center items-center gap-2">
-              {colors.map((color, index) => (
-                <ColorOption
-                  key={index}
-                  color={color}
-                  selected={color === selectedColor}
-                  handleClick={() => handleColorChange(color)}
-                />
-              ))}
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="workspace-name"
+                className="self-start text-center text-body-s"
+              >
+                نام ورک اسپیس
+              </label>
+              <input
+                id="workspace-name"
+                className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
+                type="text"
+              />
             </div>
-          </div>
-          <button className="w-full h-10 transition-all bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s font-extrabold rounded-lg">
-            ادامه
-          </button>
+            <div className="flex flex-col gap-2">
+              <p className="self-start text-center text-body-s">
+                رنگ ورک اسپیس
+              </p>
+              <div className="flex flex-wrap justify-center items-center gap-2">
+                {colors.map(({ primary: { bgPrimary } }, index) => (
+                  <ColorOption
+                    key={index}
+                    color={bgPrimary}
+                    selected={bgPrimary === selectedColor}
+                    handleClick={() => handleColorChange(index)}
+                  />
+                ))}
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="w-full h-10 transition-all bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s font-extrabold rounded-lg"
+            >
+              ادامه
+            </button>
+          </form>
         </div>
       </div>
       <div className="fixed inset-0 z-10 bg-black opacity-50" />
