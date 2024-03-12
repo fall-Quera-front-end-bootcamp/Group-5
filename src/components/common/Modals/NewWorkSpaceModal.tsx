@@ -1,5 +1,7 @@
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { IoClose } from "react-icons/io5";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
+import { ColorOption } from "../";
+import useColorSelector from "../../../services/ColorsService";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
@@ -7,6 +9,7 @@ type NewProjectType = {
 
 const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
   useLockBodyScroll();
+  const { colors, selectedColor, handleColorChange } = useColorSelector();
 
   return (
     <>
@@ -36,6 +39,19 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
               className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
               type="text"
             />
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="self-start text-center text-body-s">رنگ ورک اسپیس</p>
+            <div className="flex flex-wrap justify-center items-center gap-2">
+              {colors.map((color, index) => (
+                <ColorOption
+                  key={index}
+                  color={color}
+                  selected={color === selectedColor}
+                  handleClick={() => handleColorChange(color)}
+                />
+              ))}
+            </div>
           </div>
           <button className="w-full h-10 transition-all bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s font-extrabold rounded-lg">
             ادامه
