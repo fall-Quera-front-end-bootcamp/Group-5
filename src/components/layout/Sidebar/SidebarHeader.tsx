@@ -6,14 +6,14 @@ import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
 import { ShareProject } from "../../common";
 
-// interface SidebarHeaderProps {
-//   className: string;
-// }
+interface SidebarHeaderProps {
+  className: string;
+}
 
-const SidebarHeader = () => {
+const SidebarHeader = ({className} : SidebarHeaderProps) => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className="grow h-1/6 ml-[40px] mt-[41px]">
+    <div className={className}>
       <div className="flex flex-col ">
         <div className=" flex justify-between items-center py-s px-0 ">
           <div className="flex h-[32px] items-center">
