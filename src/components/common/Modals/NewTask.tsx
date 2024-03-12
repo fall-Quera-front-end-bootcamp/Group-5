@@ -4,9 +4,8 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import useDropFile from "../../../hooks/useDropFile";
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
+import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
+
 
 
 import { CalendarModal } from "../exports";
