@@ -1,18 +1,15 @@
-import useDropFile from "../../../hooks/useDropFile";
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
+import { useState } from "react";
 import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
+import useDropFile from "../../../hooks/useDropFile";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
-import { useState } from "react"
-import { BsCalendar4Event, BsFlag, BsPersonAdd } from "react-icons/bs";
-import { CiBookmarkPlus } from "react-icons/ci";
-import { IoClose } from "react-icons/io5";
-import { SlPaperClip } from "react-icons/sl";
-import { CalendarModal } from "../exports"
+
+
+import { CalendarModal } from "../exports";
 
 
 type PropsType = {
