@@ -13,7 +13,7 @@ import { ShareProject } from "../../common/exports";
 const SidebarHeader = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <>
+    <div className="grow h-1/6 ml-[40px] mt-[41px]">
       <div className="flex flex-col ">
         <div className=" flex justify-between items-center py-s px-0 ">
           <div className="flex h-[32px] items-center">
@@ -84,7 +84,7 @@ const SidebarHeader = () => {
         </div>
       </div>
       {showModal && <ShareProject setShowModal={setShowModal} />}
-    </>
+    </div>
   );
 };
 

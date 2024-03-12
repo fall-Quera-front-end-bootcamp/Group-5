@@ -21,7 +21,7 @@ const MainLayout = ({ Displayheader }: MainLayoutProps) => {
 };
 
 export default MainLayout;
-
+//mohammadreza
 {
   /* <div className='flex flex-wrap gap-s'>
 <Sidebar  className="w-96 h-12"/>
@@ -33,3 +33,15 @@ export default MainLayout;
 </div>
 </div> */
 }
+
+//ali
+{/* <div className="flex gap-s">
+<Sidebar className="h-12" />
+<div className="flex flex-wrap mt-[41px]">
+  <div className="grow ">{Displayheader && <SidebarHeader />} </div>
+
+  <div className="w-full pb-5">
+    <Outlet />
+  </div>
+</div>
+</div> */}
