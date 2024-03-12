@@ -1,27 +1,13 @@
 import { useState } from "react";
-
-const colors: string[] = [
-  "bg-gray-primary",
-  "bg-indigo-primary",
-  "bg-blue-primary",
-  "bg-cyan-primary",
-  "bg-teal-primary",
-  "bg-brand-primary",
-  "bg-green-primary",
-  "bg-lime-primary",
-  "bg-yellow-primary",
-  "bg-orange-primary",
-  "bg-red-primary",
-  "bg-pink-primary",
-  "bg-grape-primary",
-  "bg-violet-primary",
-];
+import { colors } from "../entities/Colors";
 
 const useColorSelector = () => {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [indexColor, setIndexColor] = useState(0);
+  const [selectedColor, setSelectedColor] = useState<string>(colors[indexColor].primary.bgPrimary);
 
-  const handleColorChange = (newColor: string) => {
-    setSelectedColor(newColor);
+  const handleColorChange = (index: number) => {
+    setIndexColor(index);
+    setSelectedColor(colors[index].primary.bgPrimary);
   };
 
   return { colors, selectedColor, handleColorChange };
