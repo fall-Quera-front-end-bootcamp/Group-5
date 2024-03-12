@@ -1,5 +1,4 @@
 import axios from "axios";
-import useAuthStore from "../store";
 import { RefreshTokenData } from "../entities/Auth";
 
 const authInstance = axios.create({
