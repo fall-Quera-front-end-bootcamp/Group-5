@@ -36,7 +36,7 @@ const routes = [
       />
     ),
     children: [
-      { path: "", element: <Listview /> },
+      { path: "list", element: <Listview /> },
       { path: "board", element: <BoardView /> },
       { path: "workspace", element: <Workspace /> },
       { path: "calendar", element: <BoardCalendarView /> },
