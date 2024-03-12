@@ -1,5 +1,5 @@
 import { RenderProjects } from "./RenderProjects";
-import {mocked_data} from "../../../data/Data";
+import {mocked_data} from "../../../data/mockedData";
 import "reactjs-popup/dist/index.css";
 
 export type taskType = {
