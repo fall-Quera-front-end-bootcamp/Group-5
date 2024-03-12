@@ -21,26 +21,23 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
   const { colors, selectedColor, handleColorChange } = useColorSelector();
   const { mutate } = useAddWorkspaces();
 
-  const handleCreateWorkspace = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleCreateWorkspace = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    const newWorkspaceColor = colors.find(
-      ({ primary: { bgPrimary } }) => bgPrimary === selectedColor
-    )?.primary.bgPrimary;
+    const workspaceColor = selectedColor.split("-")[1];
 
-    if (!workspaceName || !newWorkspaceColor) {
-      console.error("Missing workspace name or color");
+    if (!workspaceName || !workspaceColor) {
       return;
     }
 
     const newWorkspace: NewWorkspaceType = {
       name: workspaceName,
-      theme: newWorkspaceColor,
+      theme: workspaceColor,
     };
 
     mutate(newWorkspace);
   };
-
+  
   return (
     <>
       <div className="fixed inset-0 z-30 flex items-center justify-center">
@@ -73,7 +70,7 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
                 className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
                 type="text"
                 value={workspaceName}
-                onChange={e => setWorkspaceName(e.target.value)}
+                onChange={(e) => setWorkspaceName(e.target.value)}
                 required
               />
             </div>
