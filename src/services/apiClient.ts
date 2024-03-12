@@ -6,20 +6,11 @@ const authInstance = axios.create({
 });
 
 export class AuthAPIClient<T> {
-
-
-const authInstance = axios.create({
-  baseURL: "http://185.8.174.74:8000/accounts/",
-});
-
-class APIClient<T> {
-
   endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
-
 
   post = (data: T) => {
     return authInstance.post<T>(this.endpoint, data).then((res) => res.data);
@@ -54,7 +45,6 @@ const refreshApiClient = new AuthAPIClient<RefreshTokenData>(
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    // const user = useAuthStore((s) => s.user);
     const user = JSON.parse(localStorage.getItem("user")!);
     const newConfig = { ...config };
     newConfig.headers.Authorization = `Bearer ${user.access}`;
@@ -96,13 +86,3 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-  post = (data: T, id?: string) => {
-    return authInstance
-      .post<T>(this.endpoint + id, data)
-      .then((res) => res.data);
-  };
-}
-
-export default APIClient;
-
