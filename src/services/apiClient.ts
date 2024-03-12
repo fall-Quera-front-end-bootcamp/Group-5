@@ -7,11 +7,20 @@ const authInstance = axios.create({
 });
 
 export class AuthAPIClient<T> {
+
+
+const authInstance = axios.create({
+  baseURL: "http://185.8.174.74:8000/accounts/",
+});
+
+class APIClient<T> {
+
   endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
+
 
   post = (data: T) => {
     return authInstance.post<T>(this.endpoint, data).then((res) => res.data);
@@ -85,3 +94,13 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+  post = (data: T, id?: string) => {
+    return authInstance
+      .post<T>(this.endpoint + id, data)
+      .then((res) => res.data);
+  };
+}
+
+export default APIClient;
+
