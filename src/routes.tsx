@@ -13,7 +13,7 @@ import {
   Workspace,
   BoardCalendarView,
   BoardView,
-} from "./components/layout/exports";
+} from "./components/layout";
 
 const routes = [
   {

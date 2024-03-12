@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Popup from "reactjs-popup";
-import { TaskPriority, TaskPeoples } from "../../common/exports";
+import { TaskPriority, TaskPeoples } from "../../common";
 import { ListHeader } from "./ListHeader";
 import { CgDetailsMore } from "react-icons/cg";
 import { taskType } from "./Listview";

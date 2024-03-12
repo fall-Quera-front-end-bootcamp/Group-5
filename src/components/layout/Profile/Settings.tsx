@@ -1,4 +1,4 @@
-import { MYButton, ColorOption } from "../../common/exports";
+import { MYButton, ColorOption } from "../../common";
 import Props from "../../../entities/Profile";
 import useTheme from "../../../services/Theme";
 import useProfile from "../../../hooks/useProfile";
