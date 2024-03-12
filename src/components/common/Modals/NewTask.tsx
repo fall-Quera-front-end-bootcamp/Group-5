@@ -1,4 +1,11 @@
 import useDropFile from "../../../hooks/useDropFile";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
+import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { CiBookmarkPlus } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+import { SlPaperClip } from "react-icons/sl";
+import Popup from "reactjs-popup";
+import NewTaskPriprityOptionsModal from "./NewTaskPriprityOptionsModal";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll"
 import { useState } from "react"
 import { BsCalendar4Event, BsFlag, BsPersonAdd } from "react-icons/bs";
@@ -7,11 +14,12 @@ import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import { CalendarModal } from "../exports"
 
-type PropsType = {
-  setShowModal: (showModal: boolean) => void
-}
 
-const NewTask = ({setShowModal}:PropsType) => {
+type PropsType = {
+  setShowModal: (showModal: boolean) => void;
+};
+
+const NewTask = ({ setShowModal }: PropsType) => {
   useLockBodyScroll();
 
   const [showCalendar, SetShowCalendar] = useState(false);
@@ -80,9 +88,7 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="text-body-l">
-                {perviewFile?.name}
-              </p>
+              <p className="text-body-l">{perviewFile?.name}</p>
             </div>
             <div className="flex items-center gap-5">
               <p className="text-body-l">افزودن کاور</p>
@@ -96,22 +102,26 @@ const NewTask = ({setShowModal}:PropsType) => {
                 </span>
                 <p>آپلود فایل</p>
               </div>
-              <p className="text-body-l">
-                {previewCover?.name}
-              </p>
+              <p className="text-body-l">{previewCover?.name}</p>
             </div>
             <div className="flex justify-between items-center gap-5 mt-8">
               <div className="flex justify-between items-center gap-5">
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <BsFlag />
-                </div>
-                <button
-                  className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2"
-                  type="button"
-                  onClick={() => SetShowCalendar(true)}
+
+                <Popup
+                  trigger={
+                    <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                      <BsFlag />
+                    </div>
+                  }
+                  position={'right center'}
                 >
-                  <BsCalendar4Event />
-                </button>
+                  <NewTaskPriprityOptionsModal />
+                </Popup>
+
+                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                  <BsCalendarDate />
+                </div>
+
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <CiBookmarkPlus />
                 </div>
