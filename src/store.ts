@@ -1,33 +1,15 @@
-import { create } from "zustand";
-import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
-import { WorkspaceType } from "./entities/Workspace";
-
-export interface ParamsType {
-  workspaceId?: string;
-  projectId?: string;
-  taskId?: string;
-  boardId?: string;
-}
-
-interface AuthStore {
-  user: LoginResponse;
-  params: ParamsType;
-  login: (newUser: LoginServerResponse) => void;
-  logout: () => void;
-  setWorkspaceId: (id: number) => void;
-  setProjectId: (id: number) => void;
-  setBoardId: (id: number) => void;
-  setTaskId: (id: number) => void;
-}
-
-interface WorkspaceStore {
-  workspaces: WorkspaceType[];
-  setWorkspaces: (data: WorkspaceType[]) => void;
-}
+import { create } from "zustand";
+import {
+  AuthStore,
+  ParamsType,
+  WorkspaceStore,
+  WorkspacesType,
+  useType,
+} from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
-  user: JSON.parse(localStorage.getItem("user") || "{}") as LoginResponse,
+  user: JSON.parse(localStorage.getItem("user") || "{}") as useType,
   params: {} as ParamsType,
   login: (newUser) => {
     localStorage.setItem("user", JSON.stringify(newUser));
@@ -35,7 +17,7 @@ const useAuthStore = create<AuthStore>((set) => ({
   },
   logout: () => {
     localStorage.removeItem("user");
-    set(() => ({ user: {} as LoginResponse }));
+    set(() => ({ user: {} as useType }));
   },
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
@@ -53,7 +35,7 @@ const useAuthStore = create<AuthStore>((set) => ({
 }));
 
 export const useWorkspaceStore = create<WorkspaceStore>((set) => ({
-  workspaces: [] as WorkspaceType[],
+  workspaces: [] as WorkspacesType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
 }));
 
