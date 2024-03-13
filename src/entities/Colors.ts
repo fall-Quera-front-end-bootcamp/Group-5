@@ -1,4 +1,4 @@
-type ThemeType = { [key: string]: { [key: string]: string } };
+export type ThemeType = { [key: string]: { [key: string]: string } };
 
 export const colors: ThemeType[] = [
   {

@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { colors } from "../entities/Colors";
+import { ThemeType, colors } from "../entities/Colors";
 
 const useTheme = () => {
-  const [indexColor, setIndexColor] = useState(0);
-  const [theme, setTheme] = useState<string>(colors[indexColor].primary.bgPrimary);
+  const [theme, setTheme] = useState<ThemeType>(colors[0]);
 
   //   Todo: implement handle change color here
   const handleChangeTheme = (index: number) => {
-    setIndexColor(index);
-    setTheme(colors[index].primary.bgPrimary);
+    setTheme(colors[index]);
   };
 
   return { colors, theme, handleChangeTheme };
