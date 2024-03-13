@@ -1,11 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { WorkspaceType } from "../entities/Workspace";
 import { workspaceApiClient } from "../services/apiServices";
-import { RiChatCheckLine } from "react-icons/ri";
 import { useWorkspaceStore } from "../store";
 
 const CACHE_KEY_WORKSPACE = ["workspaces"];
-type previousTodosType = WorkspaceType[];
 
 export const useWorkspaces = () => {
   return useQuery<WorkspaceType[], Error>({
