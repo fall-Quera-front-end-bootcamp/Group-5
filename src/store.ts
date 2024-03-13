@@ -1,15 +1,18 @@
 import { create } from "zustand";
 import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
+import { ParamsType } from "./entities/Workspace";
 
 interface AuthStore {
   user: LoginResponse;
+  params: ParamsType;
   login: (newUser: LoginServerResponse) => void;
   logout: () => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
   user: JSON.parse(localStorage.getItem("user") || "{}") as LoginResponse,
+  params: JSON.parse(localStorage.getItem("params") || "{}") as ParamsType,
   login: (newUser) => {
     localStorage.setItem("user", JSON.stringify(newUser));
     set(() => ({ user: newUser }));
