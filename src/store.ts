@@ -1,7 +1,13 @@
 import { create } from "zustand";
 import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
-import { ParamsType } from "./entities/Workspace";
+
+export interface ParamsType {
+  workspaceId?: string;
+  projectId?: string;
+  taskId?: string;
+  boardId?: string;
+}
 
 interface AuthStore {
   user: LoginResponse;
@@ -28,7 +34,7 @@ const useAuthStore = create<AuthStore>((set) => ({
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
     set(({ params: { workspaceId } }) => ({
-      params: { workspaceId: workspaceId, projectId: String(id) },
+      params: { workspaceId, projectId: String(id) },
     })),
   setBoardId: (id) =>
     set(({ params: { workspaceId, projectId } }) => ({
