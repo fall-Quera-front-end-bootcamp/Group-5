@@ -12,7 +12,7 @@ import useAuthStore from "../../../../store";
 export const RenderSubMenus: React.FC = () => {
   const { data } = useWorkspaces();
   const [showModal, setShowModal] = useState(false);
-  const setWorkspaceId = useAuthStore((s) => s.setWorkspace);
+  const setWorkspaceId = useAuthStore((s) => s.setWorkspaceId);
   return (
     <>
       <MenuItem>

@@ -8,7 +8,10 @@ interface AuthStore {
   params: ParamsType;
   login: (newUser: LoginServerResponse) => void;
   logout: () => void;
-  setWorkspace: (id: number) => void;
+  setWorkspaceId: (id: number) => void;
+  setProjectId: (id: number) => void;
+  setBoardId: (id: number) => void;
+  setTaskId: (id: number) => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -22,7 +25,19 @@ const useAuthStore = create<AuthStore>((set) => ({
     localStorage.removeItem("user");
     set(() => ({ user: {} as LoginResponse }));
   },
-  setWorkspace: (id) => set(() => ({ params: { workspaceId: String(id) } })),
+  setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
+  setProjectId: (id) =>
+    set(({ params: { workspaceId } }) => ({
+      params: { workspaceId: workspaceId, projectId: String(id) },
+    })),
+  setBoardId: (id) =>
+    set(({ params: { workspaceId, projectId } }) => ({
+      params: { workspaceId, projectId, boardId: String(id) },
+    })),
+  setTaskId: (id) =>
+    set(({ params: { workspaceId, projectId, boardId } }) => ({
+      params: { workspaceId, projectId, boardId, taskId: String(id) },
+    })),
 }));
 
 if (process.env.NODE_ENV === "development")
