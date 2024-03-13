@@ -30,7 +30,7 @@ const Settings: React.FC<Props> = ({ tab }) => {
             <ColorOption
               color={color.primary.bgPrimary}
               key={index}
-              handleClick={() => handleChangeTheme(color)}
+              handleClick={() => handleChangeTheme(index)}
             />
           )
         )}
