@@ -17,10 +17,10 @@ import {
 
 const routes = [
   {
-    path: "/",
+    path: "/auth",
     element: <Layout />,
     children: [
-      { path: "", element: <Login /> },
+      { path: "login", element: <Login /> },
       { path: "signUp", element: <SignUp /> },
       { path: "forgotPassword", element: <ForgotPassword /> },
       { path: "resetPassword", element: <ResetPassword /> },
@@ -29,7 +29,7 @@ const routes = [
   },
   { path: "/profile", element: <Profile /> },
   {
-    path: "/home",
+    path: "/",
     element: (
       <MainLayout
         Displayheader={!window.location.pathname.includes("workspace")}
