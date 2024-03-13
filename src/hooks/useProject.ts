@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { ProjectType } from "../entities/Project";
+import { ProjectType } from "../entities/Workspace";
 import { projectApiClient } from "../services/apiServices";
 
 export const useProjects = () => {
