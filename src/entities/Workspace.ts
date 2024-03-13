@@ -7,40 +7,41 @@ export interface WorkspaceType {
 }
 
 export interface ProjectType {
-  id: number;
+  id?: number;
   name: string;
 }
 
 export interface MembersType {
-  id: number;
-  user: LoginResponse;
+  id?: number;
+  user: LoginResponse | string;
+  is_super_access?: boolean;
 }
 
 export interface BoardType {
-  id: number;
+  id?: number;
   name: string;
   order: number;
-  tasks: string;
-  tasks_count: string;
+  tasks?: string;
+  tasks_count?: string;
   is_archive: boolean;
   color: string;
 }
 
 export interface TaskType {
-  id: 0;
+  id?: 0;
   name: string;
   description: string;
-  deadline: string;
+  deadline?: string;
   priority: number;
   attachment: string;
   thumbnail: string;
   order: number;
-  members: string;
-  created_at: string;
+  members?: string;
+  created_at?: string;
 }
 
 export interface CommnetType {
-  id: number;
+  id?: number;
   author: number;
   attachment: string;
   text: string;
