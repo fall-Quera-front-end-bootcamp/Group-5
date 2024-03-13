@@ -7,11 +7,12 @@ import { useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
 import { RenderMenuItems } from "./RenderMenuItems";
+import useAuthStore from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
   const { data } = useWorkspaces();
-  console.log(data);
   const [showModal, setShowModal] = useState(false);
+  const setWorkspaceId = useAuthStore((s) => s.setWorkspace);
   return (
     <>
       <MenuItem>
@@ -29,12 +30,13 @@ export const RenderSubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {data?.map((e) => {
+      {data?.map((workspace) => {
         return (
           <SubMenu
+            onClick={() => setWorkspaceId(workspace.id!)}
             className="font-body text-body-m"
-            label={e.name}
-            icon={<ProjectColorBox color={useGetBgColor(e.color!)} />}
+            label={workspace.name}
+            icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
           >
             <RenderMenuItems />
           </SubMenu>
@@ -45,25 +47,3 @@ export const RenderSubMenus: React.FC = () => {
     </>
   );
 };
-
-{
-  /* <SubMenu
-        className="font-body text-body-m"
-        label="درس مدیریت پروژه"
-        icon={<ProjectColorBox color="bg-green-primary" />}
-      ></SubMenu>
-      <SubMenu
-        defaultOpen={true}
-        className="font-body text-body-m"
-        label="کارهای شخصی"
-        icon={<ProjectColorBox color="bg-yellow-primary" />}
-      >
-        <MenuItem>پروژه اول</MenuItem>
-        <MenuItem>پروژه دوم</MenuItem>
-      </SubMenu>
-      <SubMenu
-        className="font-body text-body-m"
-        label="درس طراحی کامپایلر"
-        icon={<ProjectColorBox color="bg-blue-primary" />}
-      ></SubMenu> */
-}

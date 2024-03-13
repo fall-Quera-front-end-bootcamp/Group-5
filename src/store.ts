@@ -8,7 +8,7 @@ interface AuthStore {
   params: ParamsType;
   login: (newUser: LoginServerResponse) => void;
   logout: () => void;
-  setWorkspace: (id: string) => void;
+  setWorkspace: (id: number) => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -22,7 +22,7 @@ const useAuthStore = create<AuthStore>((set) => ({
     localStorage.removeItem("user");
     set(() => ({ user: {} as LoginResponse }));
   },
-  setWorkspace: (id) => set(() => ({ params: { workspaceId: id } })),
+  setWorkspace: (id) => set(() => ({ params: { workspaceId: String(id) } })),
 }));
 
 if (process.env.NODE_ENV === "development")
