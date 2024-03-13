@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
+import { WorkspaceType } from "./entities/Workspace";
 
 export interface ParamsType {
   workspaceId?: string;
@@ -18,6 +19,11 @@ interface AuthStore {
   setProjectId: (id: number) => void;
   setBoardId: (id: number) => void;
   setTaskId: (id: number) => void;
+}
+
+interface WorkspaceStore {
+  workspaces: WorkspaceType[];
+  setWorkspaces: (data: WorkspaceType[]) => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -44,6 +50,11 @@ const useAuthStore = create<AuthStore>((set) => ({
     set(({ params: { workspaceId, projectId, boardId } }) => ({
       params: { workspaceId, projectId, boardId, taskId: String(id) },
     })),
+}));
+
+export const useWorkspaceStore = create<WorkspaceStore>((set) => ({
+  workspaces: [] as WorkspaceType[],
+  setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
 }));
 
 if (process.env.NODE_ENV === "development")
