@@ -12,7 +12,7 @@ interface AuthStore {
 
 const useAuthStore = create<AuthStore>((set) => ({
   user: JSON.parse(localStorage.getItem("user") || "{}") as LoginResponse,
-  params: JSON.parse(localStorage.getItem("params") || "{}") as ParamsType,
+  params: {} as ParamsType,
   login: (newUser) => {
     localStorage.setItem("user", JSON.stringify(newUser));
     set(() => ({ user: newUser }));
