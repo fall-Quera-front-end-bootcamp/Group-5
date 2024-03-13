@@ -14,3 +14,9 @@
   font-family: "Iran Yekan Heading";
   src: url(./assets/fonts/Qs_IranyekanExtrabold.ttf);
 }
+
+@layer components {
+  .active {
+    @apply text-brand-primary font-heading;
+  }
+}

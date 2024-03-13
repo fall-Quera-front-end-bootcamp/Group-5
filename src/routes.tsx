@@ -13,14 +13,14 @@ import {
   Workspace,
   BoardCalendarView,
   BoardView,
-} from "./components/layout/exports";
+} from "./components/layout";
 
 const routes = [
   {
-    path: "/",
+    path: "/auth",
     element: <Layout />,
     children: [
-      { path: "", element: <Login /> },
+      { path: "login", element: <Login /> },
       { path: "signUp", element: <SignUp /> },
       { path: "forgotPassword", element: <ForgotPassword /> },
       { path: "resetPassword", element: <ResetPassword /> },
@@ -29,14 +29,14 @@ const routes = [
   },
   { path: "/profile", element: <Profile /> },
   {
-    path: "/home",
+    path: "/",
     element: (
       <MainLayout
         Displayheader={!window.location.pathname.includes("workspace")}
       />
     ),
     children: [
-      { path: "", element: <Listview /> },
+      { path: "list", element: <Listview /> },
       { path: "board", element: <BoardView /> },
       { path: "workspace", element: <Workspace /> },
       { path: "calendar", element: <BoardCalendarView /> },

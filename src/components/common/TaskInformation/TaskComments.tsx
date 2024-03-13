@@ -1,4 +1,4 @@
-import { TaskPeoples } from "../exports";
+import { TaskPeoples } from "..";
 
 const TaskComments = () => {
   return (

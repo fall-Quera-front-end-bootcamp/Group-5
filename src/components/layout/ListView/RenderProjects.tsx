@@ -14,7 +14,7 @@ export const RenderProjects: React.FC<RenderProjectsType> = ({ Projects }) => {
   const [collapsed, setCollapsed] = useState(true);
   return (
     <>
-      <div key={Projects.project_name} className="w-screen">
+      <div key={Projects.project_name} className="w-full">
         <h2
           key={Projects.project_name}
           onClick={toggleCollapsed}

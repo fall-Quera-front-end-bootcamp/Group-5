@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { WorkspaceType } from "../entities/Workspace";
-import { workspaceApiClient } from "../services/workspaceServices";
+import { workspaceApiClient } from "../services/apiServices";
 
 export const useWorkspaces = () => {
   return useQuery<WorkspaceType[], Error>({
@@ -9,11 +9,15 @@ export const useWorkspaces = () => {
   });
 };
 
-export const useAddWorkspaces = () => {
+export const useAddWorkspace = () => {
   return useMutation<WorkspaceType, Error, WorkspaceType>({
     mutationFn: workspaceApiClient.post,
-    onSuccess: (newWorkspace: WorkspaceType) => {
-      console.log(newWorkspace);
-    },
+  });
+};
+
+export const useGetWorkspace = (id: string) => {
+  return useQuery<WorkspaceType, Error>({
+    queryKey: ["workspaces", id],
+    queryFn: () => workspaceApiClient.get(id),
   });
 };

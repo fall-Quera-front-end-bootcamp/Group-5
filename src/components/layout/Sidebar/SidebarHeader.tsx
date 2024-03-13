@@ -4,16 +4,16 @@ import { FaColumns } from "react-icons/fa";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import Searchbar from "./Searchbar";
-import { ShareProject } from "../../common/exports";
+import { ShareProject } from "../../common";
 
-// interface SidebarHeaderProps {
-//   className: string;
-// }
+interface SidebarHeaderProps {
+  className: string;
+}
 
-const SidebarHeader = () => {
+const SidebarHeader = ({className} : SidebarHeaderProps) => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <>
+    <div className={className}>
       <div className="flex flex-col ">
         <div className=" flex justify-between items-center py-s px-0 ">
           <div className="flex h-[32px] items-center">
@@ -84,7 +84,7 @@ const SidebarHeader = () => {
         </div>
       </div>
       {showModal && <ShareProject setShowModal={setShowModal} />}
-    </>
+    </div>
   );
 };
 
