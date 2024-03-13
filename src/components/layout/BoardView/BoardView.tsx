@@ -4,7 +4,7 @@ import { DropResult } from "react-beautiful-dnd";
 import TaskCol from "./TaskCol";
 
 // delete at the end
-import { taskData } from "../../../Data";
+import { taskData } from "../../../data/TaskData";
 
 type tasksType = {
   id: number,

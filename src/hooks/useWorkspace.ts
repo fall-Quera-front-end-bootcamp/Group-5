@@ -12,8 +12,12 @@ export const useWorkspaces = () => {
 export const useAddWorkspaces = () => {
   return useMutation<WorkspaceType, Error, WorkspaceType>({
     mutationFn: workspaceApiClient.post,
-    onSuccess: (newWorkspace: WorkspaceType) => {
-      console.log(newWorkspace);
-    },
+  });
+};
+
+export const useGetWorkspace = (id: string) => {
+  return useQuery<WorkspaceType, Error>({
+    queryKey: ["workspaces", id],
+    queryFn: () => workspaceApiClient.get(id),
   });
 };
