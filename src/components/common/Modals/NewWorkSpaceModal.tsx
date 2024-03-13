@@ -4,40 +4,30 @@ import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { useAddWorkspaces } from "../../../hooks/useWorkspace";
 import useColorSelector from "../../../services/ColorsService";
 import { ColorOption } from "../";
+import { WorkspaceType } from "../../../entities/Workspace";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
-};
-
-type NewWorkspaceType = {
-  name: string;
-  theme: string;
 };
 
 const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [workspaceName, setWorkspaceName] = useState("");
 
-  const { colors, selectedColor, handleColorChange } = useColorSelector();
+  const { colors, selectedColor, handleColorChange, indexColor } =
+    useColorSelector();
   const { mutate } = useAddWorkspaces();
 
   const handleCreateWorkspace = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const workspaceColor = selectedColor.split("-")[1];
-
-    if (!workspaceName || !workspaceColor) {
-      return;
-    }
-
-    const newWorkspace: NewWorkspaceType = {
+    const newWorkspace: WorkspaceType = {
       name: workspaceName,
-      theme: workspaceColor,
+      color: String(indexColor),
     };
 
     mutate(newWorkspace);
   };
-  
+
   return (
     <>
       <div className="fixed inset-0 z-30 flex items-center justify-center">
