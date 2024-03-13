@@ -26,6 +26,7 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
     };
 
     mutate(newWorkspace);
+    setShowModal(false);
   };
 
   return (
