@@ -79,7 +79,7 @@ axiosInstance.interceptors.response.use(
       } catch (e) {
         localStorage.removeItem("user");
 
-        window.location.replace("/");
+        window.location.replace("/auth/login");
       }
     }
 
