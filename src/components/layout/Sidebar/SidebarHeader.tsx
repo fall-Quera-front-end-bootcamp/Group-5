@@ -5,12 +5,14 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
 import { ShareProject } from "../../common";
+import Searchbar from "./Searchbar";
 
 interface SidebarHeaderProps {
   className: string;
 }
 
-const SidebarHeader = ({className} : SidebarHeaderProps) => {
+
+const SidebarHeader = ({ className }: SidebarHeaderProps) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className={className}>
@@ -25,24 +27,24 @@ const SidebarHeader = ({className} : SidebarHeaderProps) => {
             </div>
             <div className="w-6 border border-gray-primary rotate-90"></div>
             <NavLink to="list" className="flex items-center w-36 h-8 gap-1">
-              <TiThList size={24}/>
+              <TiThList size={24} />
               <p className="text-bold-m">نمایش لیستی</p>
             </NavLink>
             <div className="w-6 border border-gray-primary rotate-90"></div>
             <NavLink to="board" className="flex items-center w-36 h-8 gap-1">
-              <MdOutlineDashboard size={24}/>
+              <MdOutlineDashboard size={24} />
               <p className="text-bold-m">نمایش ستونی</p>
             </NavLink>
             <div className="w-6 border border-gray-primary rotate-90"></div>
             <NavLink to="calendar" className="flex items-center w-16 h-8 gap-1">
-              <LuCalendarDays size={24}/>
+              <LuCalendarDays size={24} />
               <p className="text-bold-m">تقویم</p>
             </NavLink>
             <div className="w-6 border border-gray-primary rotate-90"></div>
           </div>
           <div>
             <button className="flex h-8" onClick={() => setShowModal(true)}>
-              <IoShareSocialOutline size={24}/>
+              <IoShareSocialOutline size={24} />
               <span className="text-bold-m">اشتراک گذاری</span>
             </button>
           </div>
