@@ -1,7 +1,7 @@
 export interface WorkspaceType {
   id?: number;
-  name: string;
-  color: string;
+  name?: string;
+  color?: string;
 }
 
 export interface ParamsType {
