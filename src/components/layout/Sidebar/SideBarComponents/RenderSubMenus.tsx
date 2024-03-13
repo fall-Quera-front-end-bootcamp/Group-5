@@ -6,6 +6,7 @@ import { NewWorkspaceModal } from "../../../common";
 import { useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
+import { RenderMenuItems } from "./RenderMenuItems";
 
 export const RenderSubMenus: React.FC = () => {
   const { data } = useWorkspaces();
@@ -34,7 +35,9 @@ export const RenderSubMenus: React.FC = () => {
             className="font-body text-body-m"
             label={e.name}
             icon={<ProjectColorBox color={useGetBgColor(e.color!)} />}
-          ></SubMenu>
+          >
+            <RenderMenuItems />
+          </SubMenu>
         );
       })}
 
