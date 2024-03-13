@@ -1,14 +1,23 @@
 import { create } from "zustand";
 import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
-import { ParamsType } from "./entities/Workspace";
+
+export interface ParamsType {
+  workspaceId?: string;
+  projectId?: string;
+  taskId?: string;
+  boardId?: string;
+}
 
 interface AuthStore {
   user: LoginResponse;
   params: ParamsType;
   login: (newUser: LoginServerResponse) => void;
   logout: () => void;
-  setWorkspace: (id: string) => void;
+  setWorkspaceId: (id: number) => void;
+  setProjectId: (id: number) => void;
+  setBoardId: (id: number) => void;
+  setTaskId: (id: number) => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -22,7 +31,19 @@ const useAuthStore = create<AuthStore>((set) => ({
     localStorage.removeItem("user");
     set(() => ({ user: {} as LoginResponse }));
   },
-  setWorkspace: (id) => set(() => ({ params: { workspaceId: id } })),
+  setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
+  setProjectId: (id) =>
+    set(({ params: { workspaceId } }) => ({
+      params: { workspaceId, projectId: String(id) },
+    })),
+  setBoardId: (id) =>
+    set(({ params: { workspaceId, projectId } }) => ({
+      params: { workspaceId, projectId, boardId: String(id) },
+    })),
+  setTaskId: (id) =>
+    set(({ params: { workspaceId, projectId, boardId } }) => ({
+      params: { workspaceId, projectId, boardId, taskId: String(id) },
+    })),
 }));
 
 if (process.env.NODE_ENV === "development")

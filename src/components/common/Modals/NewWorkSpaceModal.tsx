@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import { useAddWorkspaces } from "../../../hooks/useWorkspace";
+import { useAddWorkspace } from "../../../hooks/useWorkspace";
 import useColorSelector from "../../../services/ColorsService";
 import { ColorOption } from "../";
 import { WorkspaceType } from "../../../entities/Workspace";
@@ -16,7 +16,7 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
 
   const { colors, selectedColor, handleColorChange, indexColor } =
     useColorSelector();
-  const { mutate } = useAddWorkspaces();
+  const { mutate } = useAddWorkspace();
 
   const handleCreateWorkspace = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,6 +26,7 @@ const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
     };
 
     mutate(newWorkspace);
+    setShowModal(false);
   };
 
   return (
