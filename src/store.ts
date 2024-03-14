@@ -3,7 +3,7 @@ import { create } from "zustand";
 import {
   AuthStore,
   ParamsType,
-  WorkspaceStore,
+  DataStore,
   WorkspacesType,
   useType,
   ProjectStore,
@@ -36,9 +36,11 @@ const useAuthStore = create<AuthStore>((set) => ({
     })),
 }));
 
-export const useWorkspaceStore = create<WorkspaceStore>((set) => ({
+export const useDataStore = create<DataStore>((set) => ({
   workspaces: [] as WorkspacesType,
+  projects: [] as ProjectsType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+  setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 
 export const useProjectStore = create<ProjectStore>((set) => ({

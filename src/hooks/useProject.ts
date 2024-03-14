@@ -2,22 +2,27 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProjectType } from "../entities/Workspace";
 import { useProjectStore } from "../store";
 import { projectApiClient } from "../services/apiServices";
+import { useDataStore } from "../store";
+
+const CACHE_KEY_PROJECT = ["projects"];
 
 const CACHE_KEY_PROJECT = ["projects"];
 
 export const useProjects = () => {
   const apiClient = projectApiClient();
   return useQuery<ProjectType[], Error>({
-    queryKey: ["projects"],
+    queryKey: CACHE_KEY_PROJECT,
     queryFn: apiClient.getAll,
+    staleTime: 60 * 60 * 1000, // 1h
   });
 };
 
 export const useAddProject = () => {
   const queryClient = useQueryClient();
   const apiClient = projectApiClient();
-  const { projects, setProjects } = useProjectStore();
-
+  
+  const { projects, setProjects } = useDataStore();
+  
   return useMutation<ProjectType, Error, ProjectType>({
     mutationFn: apiClient.post,
 
@@ -40,10 +45,9 @@ export const useAddProject = () => {
     },
     onError: (error, newProject, context) => {
       if (!context) return;
-      queryClient.setQueryData<ProjectType[]>(
-        CACHE_KEY_PROJECT,
-        projects
-      );
+
+      queryClient.setQueryData<ProjectType[]>(CACHE_KEY_PROJECT, projects);
+
     },
   });
 };

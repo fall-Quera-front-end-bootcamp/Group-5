@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { WorkspaceType } from "../entities/Workspace";
 import { workspaceApiClient } from "../services/apiServices";
-import { useWorkspaceStore } from "../store";
+import { useDataStore } from "../store";
 
 const CACHE_KEY_WORKSPACE = ["workspaces"];
 
@@ -9,12 +9,13 @@ export const useWorkspaces = () => {
   return useQuery<WorkspaceType[], Error>({
     queryKey: CACHE_KEY_WORKSPACE,
     queryFn: workspaceApiClient.getAll,
+    staleTime: 60 * 60 * 1000, // 1h
   });
 };
 
 export const useAddWorkspace = () => {
   const queryClient = useQueryClient();
-  const { workspaces, setWorkspaces } = useWorkspaceStore();
+  const { workspaces, setWorkspaces } = useDataStore();
 
   return useMutation<WorkspaceType, Error, WorkspaceType>({
     mutationFn: workspaceApiClient.post,
