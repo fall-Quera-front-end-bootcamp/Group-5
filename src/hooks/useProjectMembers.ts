@@ -1,11 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { MembersType } from "../entities/Workspace";
 import { projectMembersApiClient } from "../services/apiServices";
+import { useDataStore } from "../store";
 
 export const useProjectMembers = () => {
+  const { workspaceId, projectId } = useDataStore((s) => s.params);
   const apiClient = projectMembersApiClient();
   return useQuery<MembersType[], Error>({
-    queryKey: ["projects"],
+    queryKey: ["workspaces", workspaceId, "projects", projectId, "members"],
     queryFn: apiClient.getAll,
   });
 };
@@ -17,10 +19,11 @@ export const useAddProjectMembers = () => {
   });
 };
 
-export const useGetProjectMembers = (id: string) => {
+export const useGetProjectMember = (id: string) => {
+  const { workspaceId, projectId } = useDataStore((s) => s.params);
   const apiClient = projectMembersApiClient();
   return useQuery<MembersType, Error>({
-    queryKey: ["projects", id],
+    queryKey: ["workspaces", workspaceId, "projects", projectId, "member", id],
     queryFn: () => apiClient.get(id),
   });
 };
