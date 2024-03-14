@@ -1,27 +1,17 @@
-import { create } from "zustand";
-import { LoginResponse, LoginServerResponse } from "./entities/Auth";
 import { mountStoreDevtool } from "simple-zustand-devtools";
-
-export interface ParamsType {
-  workspaceId?: string;
-  projectId?: string;
-  taskId?: string;
-  boardId?: string;
-}
-
-interface AuthStore {
-  user: LoginResponse;
-  params: ParamsType;
-  login: (newUser: LoginServerResponse) => void;
-  logout: () => void;
-  setWorkspaceId: (id: number) => void;
-  setProjectId: (id: number) => void;
-  setBoardId: (id: number) => void;
-  setTaskId: (id: number) => void;
-}
+import { create } from "zustand";
+import {
+  AuthStore,
+  ParamsType,
+  DataStore,
+  WorkspacesType,
+  useType,
+  ProjectStore,
+  ProjectsType,
+} from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
-  user: JSON.parse(localStorage.getItem("user") || "{}") as LoginResponse,
+  user: JSON.parse(localStorage.getItem("user") || "{}") as useType,
   params: {} as ParamsType,
   login: (newUser) => {
     localStorage.setItem("user", JSON.stringify(newUser));
@@ -29,7 +19,7 @@ const useAuthStore = create<AuthStore>((set) => ({
   },
   logout: () => {
     localStorage.removeItem("user");
-    set(() => ({ user: {} as LoginResponse }));
+    set(() => ({ user: {} as useType }));
   },
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
@@ -44,6 +34,18 @@ const useAuthStore = create<AuthStore>((set) => ({
     set(({ params: { workspaceId, projectId, boardId } }) => ({
       params: { workspaceId, projectId, boardId, taskId: String(id) },
     })),
+}));
+
+export const useDataStore = create<DataStore>((set) => ({
+  workspaces: [] as WorkspacesType,
+  projects: [] as ProjectsType,
+  setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+  setProjects: (data) => set(() => ({ projects: [...data] })),
+}));
+
+export const useProjectStore = create<ProjectStore>((set) => ({
+  projects: [] as ProjectsType,
+  setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 
 if (process.env.NODE_ENV === "development")

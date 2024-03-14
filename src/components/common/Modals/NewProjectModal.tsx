@@ -1,31 +1,21 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import { useAddWorkspace } from "../../../hooks/useWorkspace";
-import useColorSelector from "../../../services/ColorsService";
-import { ColorOption } from "../";
-import { WorkspaceType } from "../../../entities/Workspace";
+import { useAddProject } from "../../../hooks/useProject";
 
-type NewWorkspaceType = {
+type NewProjectModalType = {
   setShowModal: (showModal: boolean) => void;
 };
 
-const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
+const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal }) => {
   useLockBodyScroll();
-  const [workspaceName, setWorkspaceName] = useState("");
+  const [name, setName] = useState("");
 
-  const { colors, selectedColor, handleColorChange, indexColor } =
-    useColorSelector();
-  const { mutate } = useAddWorkspace();
+  const { mutate } = useAddProject();
 
-  const handleCreateWorkspace = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newWorkspace: WorkspaceType = {
-      name: workspaceName,
-      color: String(indexColor),
-    };
-
-    mutate(newWorkspace);
+    mutate({ name });
     setShowModal(false);
   };
 
@@ -42,43 +32,25 @@ const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
               <IoClose size={24} />
             </button>
             <h2 className="text-center grow font-heading text-heading-s">
-              ساختن ورک‌اسپیس جدید‌
+              ساختن پروژه جدید‌
             </h2>
           </div>
-          <form
-            className="flex flex-col gap-2"
-            onSubmit={handleCreateWorkspace}
-          >
+          <form className="flex flex-col gap-2" onSubmit={handleCreateProject}>
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="workspace-name"
                 className="self-start text-center text-body-s"
               >
-                نام ورک اسپیس
+                نام پروژه
               </label>
               <input
                 id="workspace-name"
                 className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
                 type="text"
-                value={workspaceName}
-                onChange={(e) => setWorkspaceName(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="self-start text-center text-body-s">
-                رنگ ورک اسپیس
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-2">
-                {colors.map(({ primary: { bgPrimary } }, index) => (
-                  <ColorOption
-                    key={index}
-                    color={bgPrimary}
-                    selected={bgPrimary === selectedColor}
-                    handleClick={() => handleColorChange(index)}
-                  />
-                ))}
-              </div>
             </div>
             <button
               type="submit"
@@ -94,4 +66,4 @@ const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
   );
 };
 
-export default NewWorkspaceModal;
+export default NewProjectModal;
