@@ -3,18 +3,27 @@ import ProjectColorBox from "../ProjectColorBox";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { NewWorkspaceModal } from "../../../common";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
 import { RenderMenuItems } from "./RenderMenuItems";
 import useAuthStore from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
-  const [workspaceIndex, setWorkspaceIndex] = useState(0);
+  const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(0);
   const [checkIfClicked, setcheckIfClicked] = useState(false);
-  const { data } = useWorkspaces();
   const [showModal, setShowModal] = useState(false);
+  const { data: workspaces } = useWorkspaces();
   const setWorkspaceId = useAuthStore((s) => s.setWorkspaceId);
+  //   const { workspaceId } = useAuthStore((s) => s.params);
+
+  useEffect(() => {
+    if (workspaces) {
+      setWorkspaceId(workspaces[0].id!);
+      setSelectedWorkspaceId(workspaces[0].id!);
+    }
+  }, [workspaces]);
+
   return (
     <>
       <MenuItem>
@@ -32,13 +41,15 @@ export const RenderSubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {data?.map((workspace) => (
+      {workspaces?.map((workspace) => (
         <SubMenu
+          key={workspace.id}
           onClick={() => {
-            setWorkspaceId(workspace.id!), setWorkspaceIndex(workspace.id!);
-            setcheckIfClicked(workspaceIndex === workspace.id!);
+            setWorkspaceId(workspace.id!);
+            setSelectedWorkspaceId(workspace.id!);
+            setcheckIfClicked(selectedWorkspaceId === workspace.id!);
           }}
-          open={workspaceIndex === workspace.id! && !checkIfClicked}
+          open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
           className="font-body text-body-m"
           label={workspace.name}
           icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}

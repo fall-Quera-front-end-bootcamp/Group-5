@@ -3,9 +3,10 @@ import { create } from "zustand";
 import {
   AuthStore,
   ParamsType,
-  WorkspaceStore,
+  DataStore,
   WorkspacesType,
   useType,
+  ProjectsType,
 } from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -34,9 +35,11 @@ const useAuthStore = create<AuthStore>((set) => ({
     })),
 }));
 
-export const useWorkspaceStore = create<WorkspaceStore>((set) => ({
+export const useDataStore = create<DataStore>((set) => ({
   workspaces: [] as WorkspacesType,
+  projects: [] as ProjectsType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+  setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 
 if (process.env.NODE_ENV === "development")

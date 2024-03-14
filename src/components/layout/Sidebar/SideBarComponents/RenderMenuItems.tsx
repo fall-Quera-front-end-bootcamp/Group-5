@@ -1,15 +1,16 @@
 import { MenuItem } from "react-pro-sidebar";
 import { useProjects } from "../../../../hooks/useProject";
-import { NewProjectModal } from "../../../common/Modals/NewProjectModal";
+import NewProjectModal from "../../../common/Modals/NewProjectModal";
 import { useState } from "react";
 
 export const RenderMenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const { data: ProjectNames } = useProjects();
+
+  const { data: Projects } = useProjects();
   return (
     <>
-      {ProjectNames?.map((ProjectName) => (
-        <MenuItem>{ProjectName.name}</MenuItem>
+      {Projects?.map((project) => (
+        <MenuItem key={project.id}>{project.name}</MenuItem>
       ))}
 
       <button
