@@ -7,15 +7,15 @@ import { useEffect, useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
 import { RenderMenuItems } from "./RenderMenuItems";
-import useAuthStore from "../../../../store";
+import { useDataStore } from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(0);
   const [checkIfClicked, setcheckIfClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { data: workspaces } = useWorkspaces();
-  const setWorkspaceId = useAuthStore((s) => s.setWorkspaceId);
-  const { workspaceId } = useAuthStore((s) => s.params);
+  const setWorkspaceId = useDataStore((s) => s.setWorkspaceId);
+  const { workspaceId } = useDataStore((s) => s.params);
 
   useEffect(() => {
     if (workspaces) {

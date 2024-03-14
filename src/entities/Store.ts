@@ -10,20 +10,20 @@ export interface ParamsType {
 
 export interface AuthStore {
   user: LoginResponse;
-  params: ParamsType;
   login: (newUser: LoginServerResponse) => void;
   logout: () => void;
-  setWorkspaceId: (id: number) => void;
-  setProjectId: (id: number) => void;
-  setBoardId: (id: number) => void;
-  setTaskId: (id: number) => void;
 }
 
 export interface DataStore {
+  params: ParamsType;
   workspaces: WorkspacesType;
   projects: ProjectsType;
   setWorkspaces: (data: WorkspacesType) => void;
   setProjects: (data: ProjectsType) => void;
+  setWorkspaceId: (id: number) => void;
+  setProjectId: (id: number) => void;
+  setBoardId: (id: number) => void;
+  setTaskId: (id: number) => void;
 }
 
 export type useType = LoginResponse;

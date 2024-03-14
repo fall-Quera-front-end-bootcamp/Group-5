@@ -11,7 +11,6 @@ import {
 
 const useAuthStore = create<AuthStore>((set) => ({
   user: JSON.parse(localStorage.getItem("user") || "{}") as useType,
-  params: {} as ParamsType,
   login: (newUser) => {
     localStorage.setItem("user", JSON.stringify(newUser));
     set(() => ({ user: newUser }));
@@ -20,6 +19,14 @@ const useAuthStore = create<AuthStore>((set) => ({
     localStorage.removeItem("user");
     set(() => ({ user: {} as useType }));
   },
+}));
+
+export const useDataStore = create<DataStore>((set) => ({
+  params: {} as ParamsType,
+  workspaces: [] as WorkspacesType,
+  projects: [] as ProjectsType,
+  setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+  setProjects: (data) => set(() => ({ projects: [...data] })),
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
     set(({ params: { workspaceId } }) => ({
@@ -33,13 +40,6 @@ const useAuthStore = create<AuthStore>((set) => ({
     set(({ params: { workspaceId, projectId, boardId } }) => ({
       params: { workspaceId, projectId, boardId, taskId: String(id) },
     })),
-}));
-
-export const useDataStore = create<DataStore>((set) => ({
-  workspaces: [] as WorkspacesType,
-  projects: [] as ProjectsType,
-  setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
-  setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 
 if (process.env.NODE_ENV === "development")
