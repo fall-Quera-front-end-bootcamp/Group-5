@@ -1,7 +1,10 @@
 import { MenuItem } from "react-pro-sidebar";
 import { useProjects } from '../../../../hooks/useProject';
+import { NewProjectModal } from "../../../common/Modals/NewProjectModal";
+import { useState } from "react";
 
 export const RenderMenuItems: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
   const { data: ProjectNamesArray } = useProjects();
   return (
     <>
@@ -12,17 +15,20 @@ export const RenderMenuItems: React.FC = () => {
       <button
         className=" font-body text-body-s
          w-[260px] h-[32px]  
-          rounded-[6px] p-[10px] 
+          rounded-[6px]
           flex items-center
-           gap-[4px] text-[#1E1E1E]
+          justify-center
+          text-cyan-primary
            mr-10
-           border-green-200"
+           border
+           border-cyan-primary"
       // onClick={() => setShowModal(true)}
       >
-        ساختن پروژ چدید
+        ساختن پروژ جدید
         {/* <AddBoxOutlinedIcon /> */}
 
       </button>
+      {showModal && <NewProjectModal setShowModal={setShowModal} />}
     </>
   );
 };
