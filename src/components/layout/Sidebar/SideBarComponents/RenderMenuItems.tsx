@@ -5,11 +5,11 @@ import { useState } from "react";
 
 export const RenderMenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { data: projects } = useProjects();
 
-  const { data: Projects } = useProjects();
   return (
     <>
-      {Projects?.map((project) => (
+      {projects?.map((project) => (
         <MenuItem key={project.id}>{project.name}</MenuItem>
       ))}
 

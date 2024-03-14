@@ -10,7 +10,6 @@ export const useProjects = () => {
   return useQuery<ProjectType[], Error>({
     queryKey: CACHE_KEY_PROJECT,
     queryFn: apiClient.getAll,
-    staleTime: 60 * 60 * 1000, // 1h
   });
 };
 
