@@ -22,7 +22,7 @@ export const RenderMenuItems: React.FC = () => {
            mr-10
            border
            border-cyan-primary"
-      // onClick={() => setShowModal(true)}
+      onClick={() => setShowModal(true)}
       >
         ساختن پروژ جدید
         {/* <AddBoxOutlinedIcon /> */}
