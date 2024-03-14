@@ -10,6 +10,8 @@ import { RenderMenuItems } from "./RenderMenuItems";
 import useAuthStore from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
+  const [workspaceIndex, setWorkspaceIndex] = useState(0);
+  const [checkIfClicked, setcheckIfClicked] = useState(false)
   const { data } = useWorkspaces();
   const [showModal, setShowModal] = useState(false);
   const setWorkspaceId = useAuthStore((s) => s.setWorkspaceId);
@@ -30,10 +32,15 @@ export const RenderSubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {data?.map((workspace) => {
+      {data?.map((workspace, index) => {
         return (
           <SubMenu
-            onClick={() => setWorkspaceId(workspace.id!)}
+            onClick={() => {
+              setWorkspaceId(workspace.id!),
+                setWorkspaceIndex(workspace.id!)
+              setcheckIfClicked(workspaceIndex === workspace.id!)
+            }}
+            open={workspaceIndex === workspace.id! && !checkIfClicked}
             className="font-body text-body-m"
             label={workspace.name}
             icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
