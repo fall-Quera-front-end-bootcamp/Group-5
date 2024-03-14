@@ -32,7 +32,7 @@ export const RenderSubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {data?.map((workspace, index) => {
+      {data?.map((workspace) => {
         return (
           <SubMenu
             onClick={() => {
