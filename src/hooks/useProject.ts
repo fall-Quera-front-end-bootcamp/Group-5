@@ -3,7 +3,7 @@ import { ProjectType } from "../entities/Workspace";
 import { useProjectStore } from "../store";
 import { projectApiClient } from "../services/apiServices";
 
-const CACHE_KEY_WORKSPACE = ["workspaces"];
+const CACHE_KEY_PROJECT = ["projects"];
 
 export const useProjects = () => {
   const apiClient = projectApiClient();
@@ -21,27 +21,27 @@ export const useAddProject = () => {
   return useMutation<ProjectType, Error, ProjectType>({
     mutationFn: apiClient.post,
 
-    onMutate: (newWorkspace: ProjectType) => {
+    onMutate: (newProject: ProjectType) => {
       const previousData =
-        queryClient.getQueryData<ProjectType[]>(CACHE_KEY_WORKSPACE) || [];
+        queryClient.getQueryData<ProjectType[]>(CACHE_KEY_PROJECT) || [];
       setProjects(previousData);
 
       queryClient.setQueryData<ProjectType[]>(
-        CACHE_KEY_WORKSPACE,
-        (data = []) => [...data, newWorkspace]
+        CACHE_KEY_PROJECT,
+        (data = []) => [...data, newProject]
       );
 
       return { previousData };
     },
-    onSuccess: (savedWorkspace, newWorkspace) => {
-      queryClient.setQueryData<ProjectType[]>(CACHE_KEY_WORKSPACE, (data) =>
-        data?.map((data) => (data === newWorkspace ? savedWorkspace : data))
+    onSuccess: (savedProject, newProject) => {
+      queryClient.setQueryData<ProjectType[]>(CACHE_KEY_PROJECT, (data) =>
+        data?.map((data) => (data === newProject ? savedProject : data))
       );
     },
-    onError: (error, newWorkspace, context) => {
+    onError: (error, newProject, context) => {
       if (!context) return;
       queryClient.setQueryData<ProjectType[]>(
-        CACHE_KEY_WORKSPACE,
+        CACHE_KEY_PROJECT,
         projects
       );
     },
