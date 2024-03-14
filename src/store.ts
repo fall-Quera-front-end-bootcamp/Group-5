@@ -6,6 +6,8 @@ import {
   WorkspaceStore,
   WorkspacesType,
   useType,
+  ProjectStore,
+  ProjectsType,
 } from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -37,6 +39,11 @@ const useAuthStore = create<AuthStore>((set) => ({
 export const useWorkspaceStore = create<WorkspaceStore>((set) => ({
   workspaces: [] as WorkspacesType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+}));
+
+export const useProjectStore = create<ProjectStore>((set) => ({
+  projects: [] as ProjectsType,
+  setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 
 if (process.env.NODE_ENV === "development")
