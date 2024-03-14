@@ -1,14 +1,14 @@
 import { MenuItem } from "react-pro-sidebar";
-import { useProjects } from '../../../../hooks/useProject';
+import { useProjects } from "../../../../hooks/useProject";
 import { NewProjectModal } from "../../../common/Modals/NewProjectModal";
 import { useState } from "react";
 
 export const RenderMenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const { data: ProjectNamesArray } = useProjects();
+  const { data: ProjectNames } = useProjects();
   return (
     <>
-      {ProjectNamesArray?.map((ProjectName) => (
+      {ProjectNames?.map((ProjectName) => (
         <MenuItem>{ProjectName.name}</MenuItem>
       ))}
 
@@ -22,11 +22,10 @@ export const RenderMenuItems: React.FC = () => {
            mr-10
            border
            border-cyan-primary"
-      onClick={() => setShowModal(true)}
+        onClick={() => setShowModal(true)}
       >
         ساختن پروژ جدید
         {/* <AddBoxOutlinedIcon /> */}
-
       </button>
       {showModal && <NewProjectModal setShowModal={setShowModal} />}
     </>
