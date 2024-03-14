@@ -6,6 +6,7 @@ import {
   DataStore,
   WorkspacesType,
   useType,
+  ProjectStore,
   ProjectsType,
 } from "./entities/Store";
 
@@ -39,6 +40,11 @@ export const useDataStore = create<DataStore>((set) => ({
   workspaces: [] as WorkspacesType,
   projects: [] as ProjectsType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
+  setProjects: (data) => set(() => ({ projects: [...data] })),
+}));
+
+export const useProjectStore = create<ProjectStore>((set) => ({
+  projects: [] as ProjectsType,
   setProjects: (data) => set(() => ({ projects: [...data] })),
 }));
 

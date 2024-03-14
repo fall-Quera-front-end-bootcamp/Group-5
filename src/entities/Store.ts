@@ -1,5 +1,7 @@
 import { LoginResponse, LoginServerResponse } from "./Auth";
+
 import { ProjectType, WorkspaceType } from "./Workspace";
+
 
 export interface ParamsType {
   workspaceId?: string;
@@ -24,6 +26,11 @@ export interface DataStore {
   projects: ProjectsType;
   setWorkspaces: (data: WorkspacesType) => void;
   setProjects: (data: ProjectsType) => void;
+}
+
+export interface ProjectStore {
+  projects: ProjectType[];
+  setProjects: (data: ProjectType[]) => void;
 }
 
 export type useType = LoginResponse;

@@ -1,7 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProjectType } from "../entities/Workspace";
+import { useProjectStore } from "../store";
 import { projectApiClient } from "../services/apiServices";
 import { useDataStore } from "../store";
+
+const CACHE_KEY_PROJECT = ["projects"];
 
 const CACHE_KEY_PROJECT = ["projects"];
 
@@ -17,7 +20,9 @@ export const useProjects = () => {
 export const useAddProject = () => {
   const queryClient = useQueryClient();
   const apiClient = projectApiClient();
+  
   const { projects, setProjects } = useDataStore();
+  
   return useMutation<ProjectType, Error, ProjectType>({
     mutationFn: apiClient.post,
 
@@ -40,7 +45,9 @@ export const useAddProject = () => {
     },
     onError: (error, newProject, context) => {
       if (!context) return;
+
       queryClient.setQueryData<ProjectType[]>(CACHE_KEY_PROJECT, projects);
+
     },
   });
 };
