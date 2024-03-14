@@ -6,11 +6,11 @@ import useColorSelector from "../../../services/ColorsService";
 import { ColorOption } from "../";
 import { WorkspaceType } from "../../../entities/Workspace";
 
-type NewProjectType = {
+type NewWorkspaceType = {
   setShowModal: (showModal: boolean) => void;
 };
 
-const NewWorkspaceModal: React.FC<NewProjectType> = ({ setShowModal }) => {
+const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [workspaceName, setWorkspaceName] = useState("");
 
