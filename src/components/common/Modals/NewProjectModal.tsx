@@ -14,8 +14,9 @@ export const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal })
 
     const { mutate } = useAddProject();
 
-    const handleCreateWorkspace = (event: React.FormEvent<HTMLFormElement>) => {
-       
+    const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        mutate(projectName);
         setShowModal(false);
     };
 
@@ -37,7 +38,7 @@ export const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal })
                     </div>
                     <form
                         className="flex flex-col gap-2"
-                        onSubmit={handleCreateWorkspace}
+                        onSubmit={handleCreateProject}
                     >
                         <div className="flex flex-col gap-2">
                             <label
@@ -50,7 +51,7 @@ export const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal })
                                 id="workspace-name"
                                 className="h-10 w-full rounded-lg border border-[#AAAAAA] outline-none overflow-hidden p-3 bg-gray-100"
                                 type="text"
-                                value={workspaceName}
+                                value={projectName}
                                 onChange={(e) => setProjectName(e.target.value)}
                                 required
                             />
