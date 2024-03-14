@@ -2,18 +2,19 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProjectType } from "../entities/Workspace";
 import { projectApiClient } from "../services/apiServices";
 import { useDataStore } from "../store";
-import { APIClient } from "../services/apiClient";
 
-export const useProjects = (id: string) => {
-  const apiClient = new APIClient<ProjectType>(`workspaces/${id}/projects/`);
+export const useProjects = () => {
+  const apiClient = projectApiClient();
+  const { workspaceId } = useDataStore((s) => s.params);
   return useQuery<ProjectType[], Error>({
-    queryKey: ["projects", id],
+    queryKey: ["projects", workspaceId],
     queryFn: apiClient.getAll,
   });
 };
 
-export const useAddProject = (id: string) => {
-  const cacheKey = ["projects", id];
+export const useAddProject = () => {
+  const { workspaceId } = useDataStore((s) => s.params);
+  const cacheKey = ["projects", workspaceId];
   const queryClient = useQueryClient();
   const apiClient = projectApiClient();
   const { projects, setProjects } = useDataStore();

@@ -5,17 +5,13 @@ import { useAddProject } from "../../../hooks/useProject";
 
 type NewProjectModalType = {
   setShowModal: (showModal: boolean) => void;
-  workspaceId: string;
 };
 
-const NewProjectModal: React.FC<NewProjectModalType> = ({
-  setShowModal,
-  workspaceId,
-}) => {
+const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
 
-  const { mutate } = useAddProject(workspaceId);
+  const { mutate } = useAddProject();
 
   const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

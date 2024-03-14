@@ -55,7 +55,7 @@ export const RenderSubMenus: React.FC = () => {
             label={workspace.name}
             icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
           >
-            <RenderMenuItems workspaceId={String(workspace.id!)} />
+            <RenderMenuItems />
           </SubMenu>
         ))}
 
