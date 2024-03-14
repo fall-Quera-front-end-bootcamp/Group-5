@@ -9,6 +9,7 @@ export const useWorkspaces = () => {
   return useQuery<WorkspaceType[], Error>({
     queryKey: CACHE_KEY_WORKSPACE,
     queryFn: workspaceApiClient.getAll,
+    staleTime: 60 * 60 * 1000, // 1h
   });
 };
 
