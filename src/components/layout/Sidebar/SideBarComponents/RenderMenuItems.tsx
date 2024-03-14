@@ -3,14 +3,18 @@ import { useProjects } from "../../../../hooks/useProject";
 import NewProjectModal from "../../../common/Modals/NewProjectModal";
 import { useState } from "react";
 
-export const RenderMenuItems: React.FC = () => {
+interface Props {
+  workspaceId: string;
+}
+
+const RenderMenuItems: React.FC<Props> = ({ workspaceId }) => {
   const [showModal, setShowModal] = useState(false);
-  const { data: projects } = useProjects();
+  const { data: projects } = useProjects(workspaceId);
 
   return (
     <>
-      {projects?.map((project) => (
-        <MenuItem key={project.id}>{project.name}</MenuItem>
+      {projects?.map((project, index) => (
+        <MenuItem key={index}>{project.name}</MenuItem>
       ))}
 
       <button
@@ -28,7 +32,14 @@ export const RenderMenuItems: React.FC = () => {
         ساختن پروژ جدید
         {/* <AddBoxOutlinedIcon /> */}
       </button>
-      {showModal && <NewProjectModal setShowModal={setShowModal} />}
+      {showModal && (
+        <NewProjectModal
+          setShowModal={setShowModal}
+          workspaceId={workspaceId}
+        />
+      )}
     </>
   );
 };
+
+export default RenderMenuItems;

@@ -2,18 +2,18 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ProjectType } from "../entities/Workspace";
 import { projectApiClient } from "../services/apiServices";
 import { useDataStore } from "../store";
+import { APIClient } from "../services/apiClient";
 
-const CACHE_KEY_PROJECT = ["projects"];
-
-export const useProjects = () => {
-  const apiClient = projectApiClient();
+export const useProjects = (id: string) => {
+  const apiClient = new APIClient<ProjectType>(`workspaces/${id}/projects/`);
   return useQuery<ProjectType[], Error>({
-    queryKey: CACHE_KEY_PROJECT,
+    queryKey: ["projects", id],
     queryFn: apiClient.getAll,
   });
 };
 
-export const useAddProject = () => {
+export const useAddProject = (id: string) => {
+  const cacheKey = ["projects", id];
   const queryClient = useQueryClient();
   const apiClient = projectApiClient();
   const { projects, setProjects } = useDataStore();
@@ -22,24 +22,24 @@ export const useAddProject = () => {
 
     onMutate: (newProject: ProjectType) => {
       const previousData =
-        queryClient.getQueryData<ProjectType[]>(CACHE_KEY_PROJECT) || [];
+        queryClient.getQueryData<ProjectType[]>(cacheKey) || [];
       setProjects(previousData);
 
-      queryClient.setQueryData<ProjectType[]>(
-        CACHE_KEY_PROJECT,
-        (data = []) => [...data, newProject]
-      );
+      queryClient.setQueryData<ProjectType[]>(cacheKey, (data = []) => [
+        ...data,
+        newProject,
+      ]);
 
       return { previousData };
     },
     onSuccess: (savedProject, newProject) => {
-      queryClient.setQueryData<ProjectType[]>(CACHE_KEY_PROJECT, (data) =>
+      queryClient.setQueryData<ProjectType[]>(cacheKey, (data) =>
         data?.map((data) => (data === newProject ? savedProject : data))
       );
     },
     onError: (error, newProject, context) => {
       if (!context) return;
-      queryClient.setQueryData<ProjectType[]>(CACHE_KEY_PROJECT, projects);
+      queryClient.setQueryData<ProjectType[]>(cacheKey, projects);
     },
   });
 };
@@ -47,7 +47,7 @@ export const useAddProject = () => {
 export const useGetProject = (id: string) => {
   const apiClient = projectApiClient();
   return useQuery<ProjectType, Error>({
-    queryKey: ["projects", id],
+    queryKey: ["project", id],
     queryFn: () => apiClient.get(id),
   });
 };

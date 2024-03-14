@@ -1,12 +1,12 @@
+import { useEffect, useState } from "react";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import Searchbar from "../Searchbar";
 import ProjectColorBox from "../ProjectColorBox";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import RenderMenuItems from "./RenderMenuItems";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { NewWorkspaceModal } from "../../../common";
-import { useEffect, useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
-import { RenderMenuItems } from "./RenderMenuItems";
 import { useDataStore } from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
@@ -55,7 +55,7 @@ export const RenderSubMenus: React.FC = () => {
             label={workspace.name}
             icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
           >
-            <RenderMenuItems />
+            <RenderMenuItems workspaceId={String(workspace.id!)} />
           </SubMenu>
         ))}
 
