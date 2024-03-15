@@ -6,4 +6,5 @@ export { default as NewWorkspace } from "./NewWorkspace";
 export { default as PermissionList } from "./PermissionList";
 export { default as ShareProject } from "./ShareProject";
 export { default as ColumnMore } from "./ColumnMore";
+export { default as ColumnMoreproject } from "./ColumnMore";
 export { default as ShareWorkSpace } from "./ShareWorkSpace";

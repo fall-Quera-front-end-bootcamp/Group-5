@@ -5,9 +5,10 @@ import { useAddProject } from "../../../hooks/useProject";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
+  setDisplay: (display: string) => void;
 };
 
-const NewProject: React.FC<NewProjectType> = ({ setShowModal }) => {
+const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
 
@@ -27,7 +28,9 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal }) => {
             <button
               className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
               type="button"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setShowModal(false), setDisplay("visible");
+              }}
             >
               <IoClose size={24} />
             </button>
