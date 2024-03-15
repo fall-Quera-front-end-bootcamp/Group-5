@@ -1,21 +1,21 @@
+import { useEffect, useState } from "react";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import Searchbar from "../Searchbar";
 import ProjectColorBox from "../ProjectColorBox";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import RenderMenuItems from "./RenderMenuItems";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { NewWorkspaceModal } from "../../../common";
-import { useEffect, useState } from "react";
 import { useWorkspaces } from "../../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../../services/ColorsService";
-import { RenderMenuItems } from "./RenderMenuItems";
-import useAuthStore from "../../../../store";
+import { useDataStore } from "../../../../store";
 
 export const RenderSubMenus: React.FC = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(0);
   const [checkIfClicked, setcheckIfClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { data: workspaces } = useWorkspaces();
-  const setWorkspaceId = useAuthStore((s) => s.setWorkspaceId);
-  //   const { workspaceId } = useAuthStore((s) => s.params);
+  const setWorkspaceId = useDataStore((s) => s.setWorkspaceId);
+  const { workspaceId } = useDataStore((s) => s.params);
 
   useEffect(() => {
     if (workspaces) {
@@ -41,22 +41,23 @@ export const RenderSubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {workspaces?.map((workspace) => (
-        <SubMenu
-          key={workspace.id}
-          onClick={() => {
-            setWorkspaceId(workspace.id!);
-            setSelectedWorkspaceId(workspace.id!);
-            setcheckIfClicked(selectedWorkspaceId === workspace.id!);
-          }}
-          open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
-          className="font-body text-body-m"
-          label={workspace.name}
-          icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
-        >
-          <RenderMenuItems />
-        </SubMenu>
-      ))}
+      {workspaceId &&
+        workspaces?.map((workspace) => (
+          <SubMenu
+            key={workspace.id}
+            onClick={() => {
+              setWorkspaceId(workspace.id!);
+              setSelectedWorkspaceId(workspace.id!);
+              setcheckIfClicked(selectedWorkspaceId === workspace.id!);
+            }}
+            open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
+            className="font-body text-body-m"
+            label={workspace.name}
+            icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
+          >
+            <RenderMenuItems />
+          </SubMenu>
+        ))}
 
       {showModal && <NewWorkspaceModal setShowModal={setShowModal} />}
     </>

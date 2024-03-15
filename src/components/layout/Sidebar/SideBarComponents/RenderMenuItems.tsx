@@ -3,14 +3,14 @@ import { useProjects } from "../../../../hooks/useProject";
 import NewProjectModal from "../../../common/Modals/NewProjectModal";
 import { useState } from "react";
 
-export const RenderMenuItems: React.FC = () => {
+const RenderMenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { data: projects } = useProjects();
 
-  const { data: Projects } = useProjects();
   return (
     <>
-      {Projects?.map((project) => (
-        <MenuItem key={project.id}>{project.name}</MenuItem>
+      {projects?.map((project, index) => (
+        <MenuItem key={index}>{project.name}</MenuItem>
       ))}
 
       <button
@@ -32,3 +32,5 @@ export const RenderMenuItems: React.FC = () => {
     </>
   );
 };
+
+export default RenderMenuItems;
