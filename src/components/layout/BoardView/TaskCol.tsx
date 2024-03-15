@@ -1,5 +1,5 @@
 import { Droppable } from "react-beautiful-dnd"
-import TaskHeader from "./TaskHeader";
+import TaskHeader from "./Board";
 import TaskBox from "./TaskBox";
 
 type taskType = {
