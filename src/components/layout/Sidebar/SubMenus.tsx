@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import ProjectColorBox from "./ProjectColorBox";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
@@ -16,12 +16,7 @@ const SubMenus: React.FC = () => {
   const setWorkspaceId = useDataStore((s) => s.setWorkspaceId);
   const { workspaceId } = useDataStore((s) => s.params);
 
-  useEffect(() => {
-    if (workspaces) {
-      setWorkspaceId(workspaces[0].id!);
-      setSelectedWorkspaceId(workspaces[0].id!);
-    }
-  }, [workspaces]);
+
 
   return (
     <>
