@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { DragDropContext } from "react-beautiful-dnd"
 import { DropResult } from "react-beautiful-dnd";
+import CreateBoard from "./CreateBoard";
 import TaskCol from "./TaskCol";
 
 // delete at the end
@@ -55,6 +56,7 @@ const BoardView = () => {
         {taskHeaders.map((taskHeader: taskHeaderType) => (
           <TaskCol key={taskHeader.id} id={taskHeader.id} header={taskHeader.title} tasks={givenTasks(taskHeader.taskIds)} />
         ))}
+        <CreateBoard />
       </div>
     </DragDropContext>
   )
