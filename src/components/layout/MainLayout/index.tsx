@@ -30,7 +30,7 @@ const MainLayout = ({ Displayheader }: MainLayoutProps) => {
         <p className="text-body-s font-body text-white"> تسک جدید</p>
         </button>
       </div>
-      {newTaskOpen && <NewTask setShowModal={(newTaskOpen) => !newTaskOpen}/>}
+      {newTaskOpen && <NewTask setShowModal={setNewTaskOpen}/>}
     </div>
   );
 };
