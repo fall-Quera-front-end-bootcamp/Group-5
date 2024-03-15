@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { BsThreeDots } from "react-icons/bs";
-import { NewWorkspace } from "../../common/Modals";
+import { NewWorkspace, ColumnMore } from "../../common/Modals";
 import { useWorkspaces } from "../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../services/ColorsService";
 import { useDataStore } from "../../../store";
@@ -12,6 +12,7 @@ const SubMenus: React.FC = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(0);
   const [checkIfClicked, setcheckIfClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showColumnMore, setColumnMore] = useState(false);
   const { data: workspaces } = useWorkspaces();
   const setWorkspaceId = useDataStore((s) => s.setWorkspaceId);
   useEffect(() => {
@@ -63,6 +64,7 @@ const SubMenus: React.FC = () => {
       ))}
 
       {showModal && <NewWorkspace setShowModal={setShowModal} />}
+      {showColumnMore && <ColumnMore setColumnMore={setColumnMore} />}
     </>
   );
 };
