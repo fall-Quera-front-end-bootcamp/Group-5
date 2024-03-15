@@ -1,16 +1,16 @@
 import { useState } from "react";
 import Popup from "reactjs-popup";
-import { TaskPriority, TaskPeoples } from "../../common";
-import { ListHeader } from "./ListHeader";
 import { CgDetailsMore } from "react-icons/cg";
-import { taskType } from "./Listview";
-import { taskStatusType } from "./ListHeader";
-import { FilteredTasksFunc } from "./FilterTasksBasedOnStatus";
+import { TaskPriority, TaskPeoples } from "../../common";
+import ListHeader from "./Header";
+import { taskType } from ".";
+import { taskStatusType } from "./Header";
+import FilteredTasksFunc from "./FilteredTasksFunc";
 type RenderTask = {
   allTasks: taskType[];
   status: taskStatusType;
 };
-export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
+const Tasks: React.FC<RenderTask> = ({ allTasks, status }) => {
   const [collapsedStatus, setCollapsedStatus] = useState(false);
   const toggleCollapsedStatus = () => {
     setCollapsedStatus(!collapsedStatus);
@@ -41,9 +41,8 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
             : FilteredTasks.map((task: any, index) => {
                 return (
                   <div key={index} className="flex flex-row p-xs">
-                    <div  className="flex basis-[50%]">
+                    <div className="flex basis-[50%]">
                       <div
-                        
                         className={`rounded-lg w-[20px] h-[20px] cursor-pointer ${color} ml-1 mr-5`}
                       ></div>
                       <div key={task.task_name}>{task.task_name}</div>
@@ -78,9 +77,8 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
                           </div>
                         }
                         position="right center"
-                        
                       >
-                        <div >{task.description}</div>
+                        <div>{task.description}</div>
                       </Popup>
                     </div>
                   </div>
@@ -91,3 +89,4 @@ export const RenderTasks: React.FC<RenderTask> = ({ allTasks, status }) => {
     </>
   );
 };
+export default Tasks;

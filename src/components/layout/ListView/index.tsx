@@ -1,5 +1,5 @@
-import { RenderProjects } from "./RenderProjects";
-import {mocked_data} from "../../../data/mockedData";
+import Projects from "./Projects";
+import { mocked_data } from "../../../data/mockedData";
 import "reactjs-popup/dist/index.css";
 
 export type taskType = {
@@ -20,10 +20,9 @@ interface DataProps {
 ///// the main component
 const Listview: React.FC<DataProps> = ({}) => {
   return (
-
     <div key={"contain"} className="w-full overflow-y-auto mt-2">
-      {mocked_data.map((Projects, index) => {
-        return <RenderProjects Projects={Projects} key={index} />;
+      {mocked_data.map((projects, index) => {
+        return <Projects Projects={projects} key={index} />;
       })}
     </div>
   );

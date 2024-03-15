@@ -4,8 +4,8 @@ import { TiThList } from "react-icons/ti";
 import { MdOutlineDashboard } from "react-icons/md";
 import { LuCalendarDays, LuSettings2 } from "react-icons/lu";
 import { IoShareSocialOutline, IoRefreshOutline } from "react-icons/io5";
-import { ShareProject } from "../../common";
-import Searchbar from "./Searchbar";
+import { ShareProject } from "../../common/Modals";
+import {Searchbar} from ".";
 
 const SidebarHeader = () => {
   const [showModal, setShowModal] = useState(false);

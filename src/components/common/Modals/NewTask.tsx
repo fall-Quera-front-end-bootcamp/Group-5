@@ -4,7 +4,7 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
+import {PriorityOptions} from "../Modals";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import useDropFile from "../../../hooks/useDropFile";
 import { CalendarModal } from "..";
@@ -108,7 +108,7 @@ const NewTask = ({ setShowModal }: PropsType) => {
                   }
                   position={"right center"}
                 >
-                  <NewTaskPriprityOptionsModal />
+                  <PriorityOptions />
                 </Popup>
 
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">

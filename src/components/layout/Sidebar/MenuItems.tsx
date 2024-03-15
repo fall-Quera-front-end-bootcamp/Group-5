@@ -1,9 +1,9 @@
 import { MenuItem } from "react-pro-sidebar";
-import { useProjects } from "../../../../hooks/useProject";
-import NewProjectModal from "../../../common/Modals/NewProjectModal";
+import { useProjects } from "../../../hooks/useProject";
+import {NewProject} from "../../common/Modals";
 import { useState } from "react";
 
-const RenderMenuItems: React.FC = () => {
+const MenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const { data: projects } = useProjects();
 
@@ -28,9 +28,9 @@ const RenderMenuItems: React.FC = () => {
         ساختن پروژ جدید
         {/* <AddBoxOutlinedIcon /> */}
       </button>
-      {showModal && <NewProjectModal setShowModal={setShowModal} />}
+      {showModal && <NewProject setShowModal={setShowModal} />}
     </>
   );
 };
 
-export default RenderMenuItems;
+export default MenuItems;
