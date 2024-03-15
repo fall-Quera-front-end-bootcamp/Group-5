@@ -1,13 +1,13 @@
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useState } from "react";
-import { DataObjectType } from "./Listview";
-import { RenderTasks } from "./RenderTasks";
+import { DataObjectType } from ".";
+import Tasks from "./Tasks";
 
 type RenderProjectsType = {
   Projects: DataObjectType;
 };
 
-export const RenderProjects: React.FC<RenderProjectsType> = ({ Projects }) => {
+const Projects: React.FC<RenderProjectsType> = ({ Projects }) => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
@@ -35,12 +35,13 @@ export const RenderProjects: React.FC<RenderProjectsType> = ({ Projects }) => {
                   duration-500 opacity-100
                   "
           >
-            <RenderTasks allTasks={Projects.tasks} status={"pending"} />
-            <RenderTasks allTasks={Projects.tasks} status={"inprogress"} />
-            <RenderTasks allTasks={Projects.tasks} status={"done"} />
+            <Tasks allTasks={Projects.tasks} status={"pending"} />
+            <Tasks allTasks={Projects.tasks} status={"inprogress"} />
+            <Tasks allTasks={Projects.tasks} status={"done"} />
           </div>
         )}
       </div>
     </>
   );
 };
+export default Projects;

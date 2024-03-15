@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import Searchbar from "../Searchbar";
-import ProjectColorBox from "../ProjectColorBox";
-import RenderMenuItems from "./RenderMenuItems";
+import ProjectColorBox from "./ProjectColorBox";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-import { NewWorkspaceModal } from "../../../common";
-import { useWorkspaces } from "../../../../hooks/useWorkspace";
-import { useGetBgColor } from "../../../../services/ColorsService";
-import { useDataStore } from "../../../../store";
+import { NewWorkspace } from "../../common/Modals";
+import { useWorkspaces } from "../../../hooks/useWorkspace";
+import { useGetBgColor } from "../../../services/ColorsService";
+import { useDataStore } from "../../../store";
+import { MenuItems, Searchbar } from ".";
 
-export const RenderSubMenus: React.FC = () => {
+const SubMenus: React.FC = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(0);
   const [checkIfClicked, setcheckIfClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -42,24 +41,26 @@ export const RenderSubMenus: React.FC = () => {
         </button>
       </MenuItem>
       {workspaceId &&
-        workspaces?.map((workspace) => (
+        workspaces?.map((workspace, index) => (
           <SubMenu
             key={workspace.id}
             onClick={() => {
               setWorkspaceId(workspace.id!);
               setSelectedWorkspaceId(workspace.id!);
-              setcheckIfClicked(selectedWorkspaceId === workspace.id!);
+              setcheckIfClicked(!checkIfClicked);
             }}
+            defaultOpen={index === 0}
             open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
             className="font-body text-body-m"
             label={workspace.name}
             icon={<ProjectColorBox color={useGetBgColor(workspace.color!)} />}
           >
-            <RenderMenuItems />
+            <MenuItems />
           </SubMenu>
         ))}
 
-      {showModal && <NewWorkspaceModal setShowModal={setShowModal} />}
+      {showModal && <NewWorkspace setShowModal={setShowModal} />}
     </>
   );
 };
+export default SubMenus;

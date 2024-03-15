@@ -1,12 +1,12 @@
-import { taskType } from "./Listview";
-import { taskStatusType } from "./ListHeader";
+import { taskType } from ".";
+import { taskStatusType } from "./Header";
 
 type FilteredTasksFuncType = {
   allTasks: taskType[];
   status: taskStatusType;
 };
 
-export const FilteredTasksFunc = ({
+const FilteredTasksFunc = ({
   allTasks,
   status,
 }: FilteredTasksFuncType): [taskType[], string] => {
@@ -23,3 +23,4 @@ export const FilteredTasksFunc = ({
 
   return [FilteredTasks, color];
 };
+export default FilteredTasksFunc;

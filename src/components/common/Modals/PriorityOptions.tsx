@@ -2,7 +2,7 @@ import TaskPriority from "../TaskPriority/TaskPriority";
 import { TaskPriorityEnum } from "../TaskPriority/TaskPriority";
 import { IoClose } from "react-icons/io5";
 
-const NewTaskPriorityOptionsModal: React.FC = () => {
+const PriorityOptions: React.FC = () => {
   const priorities: ("high" | "medium" | "low" | "immediate")[] = [
     "immediate",
     "high",
@@ -38,4 +38,4 @@ const NewTaskPriorityOptionsModal: React.FC = () => {
   );
 };
 
-export default NewTaskPriorityOptionsModal;
+export default PriorityOptions;
