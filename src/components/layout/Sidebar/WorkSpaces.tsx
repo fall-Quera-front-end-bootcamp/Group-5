@@ -1,7 +1,7 @@
 import { Sidebar, Menu, SubMenu } from "react-pro-sidebar";
-import { RenderSubMenus } from "./RenderSubMenus";
+import { SubMenus } from ".";
 
-export const RenderWorkSpacesInSideBar: React.FC = () => {
+const WorkSpaces: React.FC = () => {
   return (
     <>
       <Sidebar
@@ -22,10 +22,11 @@ export const RenderWorkSpacesInSideBar: React.FC = () => {
             label="ورک اسپیس ها"
             className="font-bold text-[16px]"
           >
-            <RenderSubMenus />
+            <SubMenus />
           </SubMenu>
         </Menu>
       </Sidebar>
     </>
   );
 };
+export default WorkSpaces;

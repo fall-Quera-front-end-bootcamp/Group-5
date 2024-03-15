@@ -3,11 +3,11 @@ import { IoClose } from "react-icons/io5";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { useAddProject } from "../../../hooks/useProject";
 
-type NewProjectModalType = {
+type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
 };
 
-const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal }) => {
+const NewProject: React.FC<NewProjectType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
 
@@ -66,4 +66,4 @@ const NewProjectModal: React.FC<NewProjectModalType> = ({ setShowModal }) => {
   );
 };
 
-export default NewProjectModal;
+export default NewProject;

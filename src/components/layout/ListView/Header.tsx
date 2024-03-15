@@ -10,7 +10,7 @@ type ListHeaderType = {
   numTasks: number;
 };
 
-export const ListHeader: React.FC<ListHeaderType> = ({
+const Header: React.FC<ListHeaderType> = ({
   status,
   onToggleCollapseStatus,
   numTasks,
@@ -38,3 +38,4 @@ export const ListHeader: React.FC<ListHeaderType> = ({
     </div>
   );
 };
+export default Header;
