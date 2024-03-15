@@ -31,14 +31,14 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
       <div
         className={`fixed inset-0 z-30 flex items-center justify-center ${display} `}
       >
-        <div className="w-[25   0px] bg-white text-black font-body rounded-xl p-5 flex flex-col gap-6">
-          <div className="flex justify-between items-center">
+        <div className="w-[250px] bg-white text-black font-body rounded-xl p-5 flex flex-col">
+          <div className="flex flex-row-reverse">
             <button
-              className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
+              className="text-xl hover:text-red-primary hover:rotate-90 transition-all"
               type="button"
               onClick={() => setColumnMore(false)}
             >
-              <IoClose size={24} />
+              <IoClose size={20} />
             </button>
           </div>
           <div className="flex flex-col gap-2">
@@ -81,7 +81,9 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
                 <div>
                   <GoShareAndroid className="text-heading-m block m-auto ml-2 grow " />
                 </div>
-                <div className="flex items-center justify-center text-l font-bold text ">اشتراک گذاری</div>
+                <div className="flex items-center justify-center text-l font-bold text ">
+                  اشتراک گذاری
+                </div>
               </div>
             </button>
           </div>
@@ -90,10 +92,7 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
       {showModal && (
         <ShareWorkSpace setShowModal={setShowModal} setDisplay={setDisplay} />
       )}
-      <div
-        className="fixed inset-0 z-20 bg-black opacity-50"
-        onClick={() => setColumnMore(false)}
-      />
+      <div className="fixed inset-0 z-20 bg-black opacity-50" />
     </>
   );
 };
