@@ -4,7 +4,6 @@ import ProfilePreview from "./ProfilePreview";
 import ExitButton from "./ExitButton";
 import ThemeButton from "./ThemeButton";
 
-
 import { RenderWorkSpacesInSideBar } from "./SideBarComponents/RenderWorkSpacesInSideBar";
 
 interface MySideBarProps {
@@ -12,9 +11,6 @@ interface MySideBarProps {
 }
 
 const MySidebar = ({ className }: MySideBarProps) => {
-
-
-  
   return (
     <div className={className}>
       <RenderWorkSpacesInSideBar />
@@ -36,7 +32,6 @@ const MySidebar = ({ className }: MySideBarProps) => {
           </div>
         </Sidebar>
       </div>
-     
     </div>
   );
 };
