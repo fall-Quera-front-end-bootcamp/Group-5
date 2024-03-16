@@ -28,7 +28,7 @@ export interface BoardType {
 }
 
 export interface TaskType {
-  id?: 0;
+  id?: number;
   name: string;
   description: string;
   deadline?: string;
