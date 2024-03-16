@@ -24,7 +24,7 @@ const ColumnMoreproject: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
         className={`fixed inset-0 z-30 flex items-center justify-center ${display} `}
       >
         <div className="w-[250px] bg-white text-black font-body rounded-xl p-5 flex flex-col">
-          <div className="flex flex-row-reverse">
+          <div className="flex flex-row-reverse cursor-pointer">
             <button
               className="text-xl hover:text-red-primary hover:rotate-90 transition-all"
               type="button"
@@ -33,7 +33,7 @@ const ColumnMoreproject: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
               <IoClose size={20} />
             </button>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 cursor-pointer">
             <div className="flex w-full" onClick={() => setNewTask(true)}>
               <div>
                 <TiPlus className="text-heading-m block m-auto ml-2 " />
@@ -60,7 +60,9 @@ const ColumnMoreproject: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
             </div>
 
             <button
-              className="w-full h-[40px] transition-all bg-brand-primary hover:bg-teal-primary text-white rounded"
+              className="w-full h-[40px] transition-all
+               bg-brand-primary hover:bg-teal-primary
+               text-white rounded cursor-pointer"
               onClick={() => {
                 setShowModal(true), setDisplay("invisible");
               }}

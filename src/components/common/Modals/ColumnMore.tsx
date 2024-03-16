@@ -45,7 +45,7 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
           </div>
           <div className="flex flex-col gap-2">
             <div
-              className="flex w-full"
+              className="flex w-full cursor-pointer"
               onClick={() => {
                 setNewProject(true), setDisplay("invisible");
               }}
