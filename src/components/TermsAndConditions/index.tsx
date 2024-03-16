@@ -1,6 +1,5 @@
 import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 import "semantic-ui-css/semantic.min.css";
-import { ListList, ListItem, List } from "semantic-ui-react";
 import { IoClose } from "react-icons/io5";
 type TermsAndConditionsType = {
   setShowModal: (showModal: boolean) => void;
@@ -22,7 +21,9 @@ export const TermsAndConditions: React.FC<TermsAndConditionsType> = ({
                  "
         >
           <div className="flex justify-between items-center">
-            <p className="grow text-center font-heading text-heading-s">قوانین و مقررات</p>
+            <p className="grow text-center font-heading text-heading-s">
+              قوانین و مقررات
+            </p>
             <button
               className="text-2xl
                              hover:text-red-primary 
@@ -42,9 +43,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsType> = ({
             زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
             متخصصان را می طلبد.
           </p>
-          <ul
-            className="list-outside list-disc pr-5"
-          >
+          <ul className="list-outside list-disc pr-5">
             <li>
               ورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله

@@ -1,10 +1,5 @@
 import { Sidebar } from "react-pro-sidebar";
-
-import ProfilePreview from "./ProfilePreview";
-import ExitButton from "./ExitButton";
-import ThemeButton from "./ThemeButton";
-
-import { RenderWorkSpacesInSideBar } from "./SideBarComponents/RenderWorkSpacesInSideBar";
+import { ExitButton, ThemeButton, WorkSpaces, ProfilePreview } from ".";
 
 interface MySideBarProps {
   className: string;
@@ -13,7 +8,7 @@ interface MySideBarProps {
 const MySidebar = ({ className }: MySideBarProps) => {
   return (
     <div className={className}>
-      <RenderWorkSpacesInSideBar />
+      <WorkSpaces />
       <div>
         <Sidebar
           rtl={true}

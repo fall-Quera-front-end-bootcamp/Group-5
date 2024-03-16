@@ -1,4 +1,4 @@
-import {DataType} from "../components/layout/ListView/Listview";
+import {DataType} from "../components/layout/ListView";
 
 const man =
   "https://www.tuktukdesign.com/wp-content/uploads/2021/03/person-icon-520x520.jpg";

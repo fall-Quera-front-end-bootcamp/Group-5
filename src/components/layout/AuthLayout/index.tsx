@@ -2,28 +2,33 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuthStore from "../../../store";
 import { useEffect } from "react";
 
-const Layout = () => {
+function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const user = useAuthStore((s) => s.user)
+
+  const user = useAuthStore((s) => s.user);
 
   const isLoginPage: boolean =
     location.pathname === "/auth" || location.pathname === "/auth/login";
+
   const signUpMessage = isLoginPage
     ? "ثبت‌نام نکرده‌ای؟"
     : "قبلا ثبت‌نام کرده‌ای؟";
 
-  const btnValue = isLoginPage ? "ثبت‌نام" : "ورود";
+  const BtnValue = isLoginPage ? "ثبت‌نام" : "ورود";
 
-  const navigateTo = isLoginPage ? "/auth/signUp" : "/auth/login";
+  const NavigateTo = isLoginPage ? "/auth/signUp" : "/auth/login";
 
-  useEffect(()=>{
-    if(user.username){
-      navigate("/")
-    }
-  },[user])
+  useEffect(() => {
+    if (user.username) navigate("/");
+    else navigate("/auth/login");
+  }, []);
 
+
+  useEffect(() => {
+    if (user.username) navigate("/");
+  }, []);
   return (
     <div className="relative w-full h-screen overflow-hidden flex justify-center items-center text-black">
       <div className="absolute top-[45px] w-10/12 flex justify-between">
@@ -34,9 +39,9 @@ const Layout = () => {
           <p className="font-body text-bold-m">{signUpMessage}</p>
           <button
             className="w-[95px] h-10 p-2.5 rounded-md duration-300 bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s select-none"
-            onClick={() => navigate(navigateTo)}
+            onClick={() => navigate(NavigateTo)}
           >
-            {btnValue}
+            {BtnValue}
           </button>
         </div>
       </div>

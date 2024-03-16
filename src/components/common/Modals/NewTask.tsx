@@ -4,7 +4,8 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import NewTaskPriprityOptionsModal from "./NewTaskPriorityOptionsModal";
+import { PriorityOptions, AddTag } from ".";
+
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import useDropFile from "../../../hooks/useDropFile";
 import { CalendarModal } from "..";
@@ -108,16 +109,29 @@ const NewTask = ({ setShowModal }: PropsType) => {
                   }
                   position={"right center"}
                 >
-                  <NewTaskPriprityOptionsModal />
+                  <PriorityOptions />
                 </Popup>
 
                 <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
                   <BsCalendarDate />
                 </div>
 
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
-                  <CiBookmarkPlus />
-                </div>
+                <Popup
+                  trigger={
+                    <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                      <CiBookmarkPlus />
+                    </div>
+                  }
+                  position={"left center"}
+                  contentStyle={{
+                    width: "350px",
+                    margin: "auto",
+                    background: "rgb(255, 255, 255)",
+                    padding: "25px",
+                  }}
+                >
+                  <AddTag />
+                </Popup>
               </div>
               <button
                 className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-body text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"

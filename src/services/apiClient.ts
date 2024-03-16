@@ -15,6 +15,10 @@ export class AuthAPIClient<T> {
   post = (data: T) => {
     return authInstance.post<T>(this.endpoint, data).then((res) => res.data);
   };
+
+  patch = (data: T) => {
+    return authInstance.patch<T>(this.endpoint, data).then((res) => res.data);
+  };
 }
 
 const axiosInstance = axios.create({

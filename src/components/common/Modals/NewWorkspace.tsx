@@ -3,14 +3,14 @@ import { IoClose } from "react-icons/io5";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { useAddWorkspace } from "../../../hooks/useWorkspace";
 import useColorSelector from "../../../services/ColorsService";
-import { ColorOption } from "../";
+import { ColorOption } from "..";
 import { WorkspaceType } from "../../../entities/Workspace";
 
 type NewWorkspaceType = {
   setShowModal: (showModal: boolean) => void;
 };
 
-const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
+const NewWorkspace: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [workspaceName, setWorkspaceName] = useState("");
 
@@ -94,4 +94,4 @@ const NewWorkspaceModal: React.FC<NewWorkspaceType> = ({ setShowModal }) => {
   );
 };
 
-export default NewWorkspaceModal;
+export default NewWorkspace;

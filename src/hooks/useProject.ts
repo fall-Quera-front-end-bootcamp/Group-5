@@ -7,17 +7,19 @@ export const useProjects = () => {
   const apiClient = projectApiClient();
   const { workspaceId } = useDataStore((s) => s.params);
   return useQuery<ProjectType[], Error>({
-    queryKey: ["projects", workspaceId],
+    queryKey: ["workspaces", workspaceId, "projects"],
     queryFn: apiClient.getAll,
   });
 };
 
 export const useAddProject = () => {
   const { workspaceId } = useDataStore((s) => s.params);
-  const cacheKey = ["projects", workspaceId];
+  const cacheKey = ["workspaces", workspaceId, "projects"];
   const queryClient = useQueryClient();
   const apiClient = projectApiClient();
-  const { projects, setProjects } = useDataStore();
+  const projects = useDataStore((s) => s.projects);
+  const setProjects = useDataStore((s) => s.setProjects);
+
   return useMutation<ProjectType, Error, ProjectType>({
     mutationFn: apiClient.post,
 
@@ -39,6 +41,7 @@ export const useAddProject = () => {
       );
     },
     onError: (error, newProject, context) => {
+      console.log(error, newProject);
       if (!context) return;
       queryClient.setQueryData<ProjectType[]>(cacheKey, projects);
     },
