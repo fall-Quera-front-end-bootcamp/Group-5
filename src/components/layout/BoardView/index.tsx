@@ -66,7 +66,7 @@ const BoardView = () => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <div className="flex gap-4">
+      <div className="flex items-start gap-4">
         {boards?.map((board, index) => (
           <TaskCol key={index} {...board} />
         ))}
