@@ -5,7 +5,7 @@ import { useAddProject } from "../../../hooks/useProject";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
-  setDisplay: (display: string) => void;
+  setDisplay?: (display: string) => void;
 };
 
 const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
@@ -25,15 +25,28 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
       <div className="fixed inset-0 z-30 flex items-center justify-center">
         <div className="w-[470px] bg-white text-black font-body rounded-xl p-5 flex flex-col gap-6">
           <div className="flex justify-between items-center">
-            <button
-              className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
-              type="button"
-              onClick={() => {
-                setShowModal(false), setDisplay("visible");
-              }}
-            >
-              <IoClose size={24} />
-            </button>
+            {setDisplay ? (
+              <button
+                className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
+                type="button"
+                onClick={() => {
+                  setShowModal(false), setDisplay("visible");
+                }}
+              >
+                <IoClose size={24} />
+              </button>
+            ) : (
+              <button
+                className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
+                type="button"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                <IoClose size={24} />
+              </button>
+            )}
+
             <h2 className="text-center grow font-heading text-heading-s">
               ساختن پروژه جدید‌
             </h2>
