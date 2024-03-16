@@ -5,6 +5,8 @@ import { InputField, MYButton } from "../../common";
 import FieldType from "../../../entities/Field";
 import Props from "../../../entities/Profile";
 import useProfile from "../../../hooks/useProfile";
+import { LoginResponse } from "../../../entities/Auth";
+import { useUpdateUser } from "../../../hooks/useAuth";
 
 type PreviewImage = {
   name: string; // File name
@@ -15,6 +17,7 @@ type PreviewImage = {
 };
 
 const Personal: React.FC<Props> = ({ tab }) => {
+  const update = useUpdateUser();
   const { fields, button, label, register, handleSubmit, errors } =
     useProfile(tab);
   const [previewImage, setPreviewImage] = useState<PreviewImage>();
@@ -36,8 +39,8 @@ const Personal: React.FC<Props> = ({ tab }) => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data); // Handle form submission here
+  const onSubmit = (data: LoginResponse) => {
+    update.mutate(data);
   };
 
   return (

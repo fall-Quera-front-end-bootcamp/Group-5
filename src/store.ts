@@ -14,8 +14,10 @@ import {
 const useAuthStore = create<AuthStore>((set) => ({
   user: JSON.parse(localStorage.getItem("user") || "{}") as useType,
   login: (newUser) => {
-    localStorage.setItem("user", JSON.stringify(newUser));
-    set(() => ({ user: newUser }));
+    const { user_id: id, ...rest } = newUser;
+    const userToSave = { id, ...rest };
+    localStorage.setItem("user", JSON.stringify(userToSave));
+    set(() => ({ user: userToSave }));
   },
   logout: () => {
     localStorage.removeItem("user");

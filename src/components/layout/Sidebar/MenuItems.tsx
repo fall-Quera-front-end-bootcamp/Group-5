@@ -1,12 +1,14 @@
 import { MenuItem } from "react-pro-sidebar";
+import { BsThreeDots } from "react-icons/bs";
 import { useProjects } from "../../../hooks/useProject";
-import { NewProject } from "../../common/Modals";
+import { ColumnMoreproject } from "../../common/Modals";
 import { useState } from "react";
 import { useDataStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 const MenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  // const [display, setDisplay] = useState("visible");
   const { data: projects } = useProjects();
   const setProjectId = useDataStore((s) => s.setProjectId);
   const navigate = useNavigate();
@@ -17,10 +19,16 @@ const MenuItems: React.FC = () => {
           onClick={() => {
             setProjectId(project.id!);
             navigate("/board");
+            setShowModal(true);
           }}
           key={index}
         >
-          {project.name}
+          <div className="flex justify-between">
+            <div>{project.name}</div>
+            <div>
+              <BsThreeDots onClick={() => setShowModal(true)} />
+            </div>
+          </div>
         </MenuItem>
       ))}
 
@@ -37,9 +45,9 @@ const MenuItems: React.FC = () => {
         onClick={() => setShowModal(true)}
       >
         ساختن پروژه‌ی جدید
-        {/* <AddBoxOutlinedIcon /> */}
+
       </button>
-      {showModal && <NewProject setShowModal={setShowModal} />}
+      {showModal && <ColumnMoreproject setColumnMore={setShowModal} />}
     </>
   );
 };
