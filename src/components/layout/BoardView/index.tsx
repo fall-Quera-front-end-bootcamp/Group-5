@@ -1,62 +1,70 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { DropResult } from "react-beautiful-dnd";
 import CreateBoard from "./CreateBoard";
 import TaskCol from "./TaskCol";
 import { useBoards } from "../../../hooks/useBoard";
-
-// delete at the end
-// import { taskData } from "../../../data/TaskData";
+import { BoardType } from "../../../entities/Workspace";
 
 const BoardView = () => {
   const Boards = useBoards().data;
-  // const [taskHeaders, setTaskHeaders] = useState(taskData.taskHeaders);
-  // const tasks = taskData.tasks;
 
-  const handleDragEnd = useCallback(
-    (result: DropResult) => {
-      const { destination, source, draggableId } = result;
+  // test
+  const [test, setTest] = useState();
 
-      if (
-        !destination ||
-        (source.droppableId === destination.droppableId &&
-          source.index === destination.index)
-      ) {
-        return;
-      }
+  const handleDragEnd = (result: DropResult) => {
+    const { destination, source, draggableId } = result;
 
-      const newTaskHeaders = taskHeaders.map((Col) => {
-        let newTaskIds = [...Col.taskIds];
-        if (Col.id === Number(source.droppableId)) {
-          newTaskIds.splice(source.index, 1);
-        }
-        if (Col.id === Number(destination.droppableId)) {
-          newTaskIds.splice(destination.index, 0, Number(draggableId));
-        }
+    if (
+      !destination ||
+      (source.droppableId === destination.droppableId &&
+        source.index === destination.index)
+    ) {
+      return;
+    }
 
-        return { ...Col, taskIds: newTaskIds };
-      });
+    // const newBoards = Boards?.map((board) => {})
 
-      setTaskHeaders(newTaskHeaders);
-    },
-    [taskHeaders, setTaskHeaders, tasks]
-  );
+    // const newTaskHeaders = Boards?.map((Col) => {
+    //   let newTaskIds = [...Col.taskIds];
+    //   if (Col.id === Number(source.droppableId)) {
+    //     newTaskIds.splice(source.index, 1);
+    //   }
+    //   if (Col.id === Number(destination.droppableId)) {
+    //     newTaskIds.splice(destination.index, 0, Number(draggableId));
+    //   }
 
-  // const givenTasks = useCallback((taskIds: number[]): tasksType => {
-  //   return taskIds.map(id => tasks.find(task => task.id === id) as tasksType[0]) as tasksType;
-  // }, [tasks]);
+    //   return { ...Col, taskIds: newTaskIds };
+    // });
+
+  };
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div className="flex gap-4">
-        {taskHeaders.map((taskHeader: taskHeaderType) => (
-          <TaskCol
-            key={taskHeader.id}
-            id={taskHeader.id}
-            header={taskHeader.title}
-            tasks={givenTasks(taskHeader.taskIds)}
-          />
-        ))}
+        {Boards &&
+          Boards.map(
+            ({
+              id,
+              name,
+              order,
+              tasks,
+              tasks_count,
+              color,
+              is_archive,
+            }: BoardType) => (
+              <TaskCol
+                key={id}
+                id={id}
+                name={name}
+                tasks={tasks}
+                tasks_count={tasks_count}
+                color={color}
+                order={order}
+                is_archive={is_archive}
+              />
+            )
+          )}
         <CreateBoard />
       </div>
     </DragDropContext>
