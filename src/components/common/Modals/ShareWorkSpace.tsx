@@ -8,7 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
-  setDisplay: (display: string) => void;
+  setDisplay?: (display: string) => void;
 };
 
 const ShareWorkSpace = ({ setShowModal, setDisplay }: PropsType) => {
@@ -19,16 +19,27 @@ const ShareWorkSpace = ({ setShowModal, setDisplay }: PropsType) => {
       <div className="flex justify-center top-[150px] bottom-auto fixed inset-0 z-40">
         <div className="w-[470px] p-5 bg-white text-[#1E1E1E] font-body rounded-xl flex flex-col gap-10">
           <div className="flex justify-between items-center">
-            <button
-              className="text-2xl hover:text-red-primary hover:rotate-90 transition-all"
-              onClick={() => {
-                setShowModal(false), setDisplay("visible");
-              }}
-            >
-              <IoClose />
-            </button>
+            {setDisplay ? (
+              <button
+                className="text-2xl hover:text-red-primary hover:rotate-90 transition-all"
+                onClick={() => {
+                  setShowModal(false), setDisplay("visible");
+                }}
+              >
+                <IoClose />
+              </button>
+            ) : (
+              <button
+                className="text-2xl hover:text-red-primary hover:rotate-90 transition-all"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                <IoClose />
+              </button>
+            )}
             <h2 className="text-center font-heading text-heading-xs">
-            اشتراک گذاری ورک اسپیس
+              اشتراک گذاری ورک اسپیس
             </h2>
             <span className="w-6" />
           </div>

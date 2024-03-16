@@ -13,9 +13,10 @@ import { useAddTask } from "../../../hooks/useTask";
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
   order: number;
+  setDisplay?: (display: string) => void;
 };
 
-const NewTask: React.FC<PropsType> = ({ setShowModal, order }) => {
+const NewTask: React.FC<PropsType> = ({ setShowModal, order, setDisplay }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -65,13 +66,27 @@ const NewTask: React.FC<PropsType> = ({ setShowModal, order }) => {
                   required
                 />
               </div>
-              <button
-                className="text-3xl hover:text-red-primary hover:rotate-90 transition-all"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                <IoClose />
-              </button>
+              {setDisplay ? (
+                <button
+                  className="text-3xl hover:text-red-primary hover:rotate-90 transition-all"
+                  type="button"
+                  onClick={() => {
+                    setShowModal(false), setDisplay("visible");
+                  }}
+                >
+                  <IoClose />
+                </button>
+              ) : (
+                <button
+                  className="text-3xl hover:text-red-primary hover:rotate-90 transition-all"
+                  type="button"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  <IoClose />
+                </button>
+              )}
             </div>
             <div className="flex items-center gap-3">
               <p className="text-body-ml">در</p>
