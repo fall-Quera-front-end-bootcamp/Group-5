@@ -7,6 +7,7 @@ import {
   WorkspacesType,
   useType,
   ProjectsType,
+  BoardsType,
 } from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -25,8 +26,10 @@ export const useDataStore = create<DataStore>((set) => ({
   params: {} as ParamsType,
   workspaces: [] as WorkspacesType,
   projects: [] as ProjectsType,
+  boards: [] as BoardsType,
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
   setProjects: (data) => set(() => ({ projects: [...data] })),
+  setBoards: (data) => set(() => ({ boards: [...data] })),
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
     set(({ params: { workspaceId } }) => ({
@@ -42,7 +45,8 @@ export const useDataStore = create<DataStore>((set) => ({
     })),
 }));
 
-if (process.env.NODE_ENV === "development")
+if (process.env.NODE_ENV === "development") {
   mountStoreDevtool("User info", useAuthStore);
-
+  mountStoreDevtool("Data info", useDataStore);
+}
 export default useAuthStore;

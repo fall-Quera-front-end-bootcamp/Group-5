@@ -21,7 +21,7 @@ export interface BoardType {
   id?: number;
   name: string;
   order: number;
-  tasks?: string;
+  tasks?: TaskType[];
   tasks_count?: string;
   is_archive: boolean;
   color: string;
@@ -33,10 +33,10 @@ export interface TaskType {
   description: string;
   deadline?: string;
   priority: number;
-  attachment: string;
-  thumbnail: string;
+  attachment?: string;
+  thumbnail?: string;
   order: number;
-  members?: string;
+  members?: MembersType[];
   created_at?: string;
 }
 

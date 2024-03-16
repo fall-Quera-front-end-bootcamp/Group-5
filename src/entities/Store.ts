@@ -1,5 +1,5 @@
 import { LoginResponse, LoginServerResponse } from "./Auth";
-import { ProjectType, WorkspaceType } from "./Workspace";
+import { BoardType, ProjectType, WorkspaceType } from "./Workspace";
 
 export interface ParamsType {
   workspaceId?: string;
@@ -18,8 +18,10 @@ export interface DataStore {
   params: ParamsType;
   workspaces: WorkspacesType;
   projects: ProjectsType;
+  boards: BoardsType;
   setWorkspaces: (data: WorkspacesType) => void;
   setProjects: (data: ProjectsType) => void;
+  setBoards: (data: BoardsType) => void;
   setWorkspaceId: (id: number) => void;
   setProjectId: (id: number) => void;
   setBoardId: (id: number) => void;
@@ -29,3 +31,4 @@ export interface DataStore {
 export type useType = LoginResponse;
 export type WorkspacesType = WorkspaceType[];
 export type ProjectsType = ProjectType[];
+export type BoardsType = BoardType[];

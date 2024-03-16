@@ -1,16 +1,15 @@
 import { Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 import { FaRegComments } from "react-icons/fa6";
+import { TaskType } from "../../../entities/Workspace";
 
-type taskType = {
-  id: number,
-  img: string,
-  title: string,
-  caption: string,
-  index: number
+interface TaskBoxType extends TaskType {
+  index: number;
 }
 
-const TaskBox = ({id, img, title, caption, index}:taskType) => {
+// priority, attachment, order?!
+
+const TaskBox: React.FC<TaskBoxType> = ({id, name, description, deadline, priority, attachment, thumbnail, order, index}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -29,13 +28,13 @@ const TaskBox = ({id, img, title, caption, index}:taskType) => {
             ...provided.draggableProps.style,
           }}
         >
-          {img && <img className="rounded-[4px]" src={img} alt="task's image" />}
+          {thumbnail && <img className="rounded-[4px]" src={thumbnail} alt="task's image" />}
           <div className="flex flex-col gap-2 text-body-xs">
-            <p className="text-[rgba(83, 77, 96, 1)]">{title}</p>
-            <p>{caption}</p>
+            <p className="text-[rgba(83, 77, 96, 1)]">{name}</p>
+            <p>{description}</p>
           </div>
           <div className="flex gap-2">
-            {/* tags */}
+            {deadline}
           </div>
           {isHovered && (
             <>
