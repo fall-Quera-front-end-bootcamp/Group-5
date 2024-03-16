@@ -56,7 +56,7 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal }) => {
               type="submit"
               className="w-full h-10 transition-all bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s font-extrabold rounded-lg"
             >
-              ساختن ورک‌اسپیس
+              ایجاد پروژه
             </button>
           </form>
         </div>
