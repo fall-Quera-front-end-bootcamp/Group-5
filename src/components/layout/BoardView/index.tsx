@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
-import { DropResult } from "react-beautiful-dnd";
+import { useEffect } from "react";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { useNavigate } from "react-router-dom";
+import { BoardType } from "../../../entities/Workspace";
+import { useBoards } from "../../../hooks/useBoard";
+import { useDataStore } from "../../../store";
 import CreateBoard from "./CreateBoard";
 import TaskCol from "./TaskCol";
-import { useBoards } from "../../../hooks/useBoard";
-import { BoardType } from "../../../entities/Workspace";
-import useAuth from "../../../hooks/useAuth";
-import { useDataStore } from "../../../store";
-import { useNavigate } from "react-router-dom";
 
 const BoardView = () => {
   const navigate = useNavigate();
