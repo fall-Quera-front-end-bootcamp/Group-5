@@ -19,15 +19,14 @@ const MenuItems: React.FC = () => {
           onClick={() => {
             setProjectId(project.id!);
             navigate("/board");
-            setShowModal(true);
           }}
           key={index}
         >
           <div className="flex justify-between">
             <div>{project.name}</div>
-            <div>
-              <BsThreeDots onClick={() => setShowModal(true)} />
-            </div>
+            <button onClick={() => setShowModal(true)}>
+              <BsThreeDots />
+            </button>
           </div>
         </MenuItem>
       ))}
