@@ -44,7 +44,12 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
             </button>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex w-full" onClick={() => setNewProject(true)}>
+            <div
+              className="flex w-full"
+              onClick={() => {
+                setNewProject(true), setDisplay("invisible");
+              }}
+            >
               <div>
                 <TiPlus className="text-heading-m block m-auto ml-2 " />
               </div>

@@ -8,3 +8,4 @@ export { default as ShareProject } from "./ShareProject";
 export { default as ColumnMore } from "./ColumnMore";
 export { default as ColumnMoreproject } from "./ColumnMore";
 export { default as ShareWorkSpace } from "./ShareWorkSpace";
+export { default as NewTaskBoardCalendar } from "./NewTaskBoardCalendar";
