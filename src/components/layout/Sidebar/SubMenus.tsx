@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { BsThreeDots } from "react-icons/bs";
-import { NewWorkspace,  ColumnMore } from "../../common/Modals";
+import { NewWorkspace, ColumnMore } from "../../common/Modals";
 import { useWorkspaces } from "../../../hooks/useWorkspace";
 import { useGetBgColor } from "../../../services/ColorsService";
 import { useDataStore } from "../../../store";
@@ -54,6 +54,7 @@ const SubMenus: React.FC = () => {
               className={`${useGetBgColor(
                 workspace.color!
               )} w-[20px] h-[20px] rounded flex justify-center items-center`}
+              onClick={() => setColumnMore(true)}
             >
               <BsThreeDots color="e3e3e3" />
             </div>
