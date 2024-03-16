@@ -1,21 +1,16 @@
-import { Droppable } from "react-beautiful-dnd"
-import TaskHeader from "./Board";
+import { Droppable } from "react-beautiful-dnd";
+import BoardHeader from "./BoardHeader";
 import TaskBox from "./TaskBox";
+import { BoardType, TaskType } from "../../../entities/Workspace";
 
-type taskType = {
-  id: number,
-  img: string,
-  title: string,
-  caption: string
-}
-
-type taskColType = {
-  id: number,
-  header: string,
-  tasks: taskType[]
-}
-
-const TaskCol = ({id, header, tasks}:taskColType) => {
+const TaskCol: React.FC<BoardType> = ({
+  id,
+  name,
+  order,
+  tasks,
+  tasks_count,
+  color,
+}) => {
   return (
     <Droppable droppableId={String(id)}>
       {(provided) => (
@@ -24,15 +19,14 @@ const TaskCol = ({id, header, tasks}:taskColType) => {
           {...provided.droppableProps}
           className="flex flex-col gap-4"
         >
-          <TaskHeader title={header} numOfTasks={tasks.length} />
-          {tasks.map((task: taskType, index) => (
+          <BoardHeader name={name} tasks_count={tasks_count} color={color} />
+          {tasks && tasks.map((task: TaskType, index) => (
             <TaskBox key={task.id} {...task} index={index} />
           ))}
-
         </div>
       )}
     </Droppable>
   );
-}
+};
 
 export default TaskCol;
