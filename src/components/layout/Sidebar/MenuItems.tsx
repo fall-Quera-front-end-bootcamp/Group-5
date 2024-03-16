@@ -3,15 +3,23 @@ import { useProjects } from "../../../hooks/useProject";
 import { NewProject } from "../../common/Modals";
 import { useState } from "react";
 import { useDataStore } from "../../../store";
+import { useNavigate } from "react-router-dom";
 
 const MenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const { data: projects } = useProjects();
   const setProjectId = useDataStore((s) => s.setProjectId);
+  const navigate = useNavigate();
   return (
     <>
       {projects?.map((project, index) => (
-        <MenuItem onClick={() => setProjectId(project.id!)} key={index}>
+        <MenuItem
+          onClick={() => {
+            setProjectId(project.id!);
+            navigate("/board");
+          }}
+          key={index}
+        >
           {project.name}
         </MenuItem>
       ))}
