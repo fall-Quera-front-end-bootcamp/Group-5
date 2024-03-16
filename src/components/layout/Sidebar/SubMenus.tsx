@@ -34,7 +34,7 @@ const SubMenus: React.FC = () => {
           rounded-[6px] p-[10px] flex items-center gap-[4px] text-[#1E1E1E]"
           onClick={() => setShowModal(true)}
         >
-          <AddBoxOutlinedIcon /> ساختن اسپیس جدید
+          <AddBoxOutlinedIcon /> ساختن ورک‌اسپیس جدید
         </button>
       </MenuItem>
       {workspaces?.map((workspace, index) => (

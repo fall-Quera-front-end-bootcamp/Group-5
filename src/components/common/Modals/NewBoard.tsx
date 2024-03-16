@@ -1,22 +1,31 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { useAddBoard } from "../../../hooks/useBoard";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import { useAddProject } from "../../../hooks/useProject";
+import { useQueryClient } from "@tanstack/react-query";
+import { useDataStore } from "../../../store";
+import { BoardType } from "../../../entities/Workspace";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
-  setDisplay: (display: string) => void;
 };
 
-const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
+const NewBoard: React.FC<NewProjectType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
-
-  const { mutate } = useAddProject();
-
+  const queryClient = useQueryClient();
+  const { workspaceId, projectId } = useDataStore((s) => s.params);
+  const { mutate } = useAddBoard();
+  const boards = queryClient.getQueryData<BoardType[]>([
+    "workspaces",
+    workspaceId,
+    "projects",
+    projectId,
+    "boards",
+  ]);
   const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutate({ name });
+    mutate({ name, order: boards?.length!, is_archive: true, color: "0" });
     setShowModal(false);
   };
 
@@ -28,14 +37,12 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
             <button
               className="text-2xl hover:text-red-primary hover:rotate-90 transition-all flex-none"
               type="button"
-              onClick={() => {
-                setShowModal(false), setDisplay("visible");
-              }}
+              onClick={() => setShowModal(false)}
             >
               <IoClose size={24} />
             </button>
             <h2 className="text-center grow font-heading text-heading-s">
-              ساختن پروژه جدید‌
+              ایجاد بورد جدید‌
             </h2>
           </div>
           <form className="flex flex-col gap-2" onSubmit={handleCreateProject}>
@@ -44,7 +51,7 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
                 htmlFor="workspace-name"
                 className="self-start text-center text-body-s"
               >
-                نام پروژه
+                نام بورد
               </label>
               <input
                 id="workspace-name"
@@ -59,7 +66,7 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
               type="submit"
               className="w-full h-10 transition-all bg-brand-primary hover:bg-teal-primary text-white font-heading text-body-s font-extrabold rounded-lg"
             >
-              ایجاد پروژه
+              ایجاد بورد
             </button>
           </form>
         </div>
@@ -69,4 +76,4 @@ const NewProject: React.FC<NewProjectType> = ({ setShowModal, setDisplay }) => {
   );
 };
 
-export default NewProject;
+export default NewBoard;

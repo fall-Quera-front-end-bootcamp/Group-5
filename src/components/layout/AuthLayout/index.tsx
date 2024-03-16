@@ -5,10 +5,13 @@ import { useEffect } from "react";
 function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
+
+
   const user = useAuthStore((s) => s.user);
 
   const isLoginPage: boolean =
     location.pathname === "/auth" || location.pathname === "/auth/login";
+
   const signUpMessage = isLoginPage
     ? "ثبت‌نام نکرده‌ای؟"
     : "قبلا ثبت‌نام کرده‌ای؟";
@@ -16,6 +19,12 @@ function Layout() {
   const BtnValue = isLoginPage ? "ثبت‌نام" : "ورود";
 
   const NavigateTo = isLoginPage ? "/auth/signUp" : "/auth/login";
+
+  useEffect(() => {
+    if (user.username) navigate("/");
+    else navigate("/auth/login");
+  }, []);
+
 
   useEffect(() => {
     if (user.username) navigate("/");
