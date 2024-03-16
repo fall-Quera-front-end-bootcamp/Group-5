@@ -5,3 +5,4 @@ export { default as PriorityOptions } from "./PriorityOptions";
 export { default as NewWorkspace } from "./NewWorkspace";
 export { default as PermissionList } from "./PermissionList";
 export { default as ShareProject } from "./ShareProject";
+export { default as NewBoard } from "./NewBoard"
