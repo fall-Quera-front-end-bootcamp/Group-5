@@ -24,7 +24,6 @@ const routes = [
       { path: "signUp", element: <SignUp /> },
       { path: "forgotPassword", element: <ForgotPassword /> },
       { path: "resetPassword", element: <ResetPassword /> },
-      { path: "*", element: <NotFoundPage /> },
     ],
   },
   { path: "/profile", element: <Profile /> },
@@ -32,16 +31,17 @@ const routes = [
     path: "/",
     element: (
       <MainLayout
-        Displayheader={!window.location.pathname.includes("workspace")}
+      Displayheader={!window.location.pathname.includes("workspace")}
       />
-    ),
-    children: [
-      { path: "list", element: <Listview /> },
-      { path: "board", element: <BoardView /> },
-      { path: "workspace", element: <Workspace /> },
-      { path: "calendar", element: <BoardCalendarView /> },
-    ],
-  },
-];
+      ),
+      children: [
+        { path: "list", element: <Listview /> },
+        { path: "board", element: <BoardView /> },
+        { path: "workspace", element: <Workspace /> },
+        { path: "calendar", element: <BoardCalendarView /> },
+      ],
+    },
+    { path: "*", element: <NotFoundPage /> },
+  ];
 
 export default routes;
