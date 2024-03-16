@@ -25,7 +25,7 @@ const MenuItems: React.FC = () => {
            border-cyan-primary"
         onClick={() => setShowModal(true)}
       >
-        ساختن پروژ جدید
+        ساختن پروژه‌ی جدید
         {/* <AddBoxOutlinedIcon /> */}
       </button>
       {showModal && <NewProject setShowModal={setShowModal} />}
