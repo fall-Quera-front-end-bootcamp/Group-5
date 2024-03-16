@@ -42,7 +42,8 @@ export const useDataStore = create<DataStore>((set) => ({
     })),
 }));
 
-if (process.env.NODE_ENV === "development")
+if (process.env.NODE_ENV === "development") {
   mountStoreDevtool("User info", useAuthStore);
-
+  mountStoreDevtool("Data info", useDataStore);
+}
 export default useAuthStore;
