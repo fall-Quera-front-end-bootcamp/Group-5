@@ -7,4 +7,8 @@ export { default as PermissionList } from "./PermissionList";
 export { default as ShareProject } from "./ShareProject";
 export { default as NewBoard } from "./NewBoard"
 export { default as ColumnMore } from "./ColumnMore";
+export { default as ColumnMoreproject } from "./ColumnMore";
 export { default as ShareWorkSpace } from "./ShareWorkSpace";
+export { default as NewTaskBoardCalendar } from "./NewTaskBoardCalendar";
+export { default as AddTag } from "./AddTag";
+

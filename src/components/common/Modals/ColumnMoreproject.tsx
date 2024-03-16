@@ -6,15 +6,15 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoShareAndroid } from "react-icons/go";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import { TiPlus } from "react-icons/ti";
-import { ShareWorkSpace, NewProject } from ".";
+import { ShareWorkSpace, NewTask } from ".";
 import { useState } from "react";
 type ColumnMoreType = {
   setColumnMore: (showModal: boolean) => void;
 };
 
-const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
+const ColumnMoreproject: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
   const [showModal, setShowModal] = useState(false);
-  const [showNewProject, setNewProject] = useState(false);
+  const [showNewTask, setNewTask] = useState(false);
   const [display, setDisplay] = useState("visible");
   //hidden
   useLockBodyScroll();
@@ -44,16 +44,11 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
             </button>
           </div>
           <div className="flex flex-col gap-2">
-            <div
-              className="flex w-full"
-              onClick={() => {
-                setNewProject(true), setDisplay("invisible");
-              }}
-            >
+            <div className="flex w-full" onClick={() => setNewTask(true)}>
               <div>
                 <TiPlus className="text-heading-m block m-auto ml-2 " />
               </div>
-              <div className="text-l font-bold text">ساخت پروژه جدید</div>
+              <div className="text-l font-bold text">ساخت تسک جدید</div>
             </div>
             <div className="flex w-full">
               <div>
@@ -101,12 +96,12 @@ const ColumnMore: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
       {showModal && (
         <ShareWorkSpace setShowModal={setShowModal} setDisplay={setDisplay} />
       )}
-      {showNewProject && (
-        <NewProject setShowModal={setNewProject} setDisplay={setDisplay} />
+      {showNewTask && (
+        <NewTask setShowModal={setNewTask} setDisplay={setDisplay} />
       )}
       <div className="fixed inset-0 z-20 bg-black opacity-50" />
     </>
   );
 };
 
-export default ColumnMore;
+export default ColumnMoreproject;

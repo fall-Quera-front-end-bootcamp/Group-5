@@ -6,6 +6,7 @@ function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   const user = useAuthStore((s) => s.user);
 
   const isLoginPage: boolean =
@@ -24,6 +25,10 @@ function Layout() {
     else navigate("/auth/login");
   }, []);
 
+
+  useEffect(() => {
+    if (user.username) navigate("/");
+  }, []);
   return (
     <div className="relative w-full h-screen overflow-hidden flex justify-center items-center text-black">
       <div className="absolute top-[45px] w-10/12 flex justify-between">

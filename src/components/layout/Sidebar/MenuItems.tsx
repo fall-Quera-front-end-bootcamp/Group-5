@@ -1,5 +1,7 @@
 import { MenuItem } from "react-pro-sidebar";
+import { BsThreeDots } from "react-icons/bs";
 import { useProjects } from "../../../hooks/useProject";
+import { ColumnMoreproject } from "../../common/Modals";
 import { NewProject } from "../../common/Modals";
 import { useState } from "react";
 import { useDataStore } from "../../../store";
@@ -7,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const MenuItems: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  // const [display, setDisplay] = useState("visible");
   const { data: projects } = useProjects();
   const setProjectId = useDataStore((s) => s.setProjectId);
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ const MenuItems: React.FC = () => {
         ساختن پروژه‌ی جدید
         {/* <AddBoxOutlinedIcon /> */}
       </button>
-      {showModal && <NewProject setShowModal={setShowModal} />}
+      {showModal && <ColumnMoreproject setColumnMore={setShowModal} />}
     </>
   );
 };
