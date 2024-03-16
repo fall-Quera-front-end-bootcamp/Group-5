@@ -34,7 +34,7 @@ const BoardView = () => {
     <DragDropContext onDragEnd={handleDragEnd}>
       <div className="flex gap-4">
         {boards?.map((board, index) => (
-          <TaskCol key={index} board={board} />
+          <TaskCol key={index} {...board} />
         ))}
         <button onClick={() => setShowModal(true)}>
           <CreateBoard />

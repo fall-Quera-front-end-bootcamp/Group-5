@@ -6,12 +6,9 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useDataStore } from "../../../store";
 
 // is_archive???
-interface Props {
-  board: BoardType;
-}
 
-const TaskCol: React.FC<Props> = ({ board }) => {
-  const { id, tasks } = board;
+const TaskCol: React.FC<BoardType> = (props) => {
+  const { id, tasks } = props;
   const { workspaceId, projectId } = useDataStore((s) => s.params);
   const cacheKey = [
     "workspaces",
@@ -34,7 +31,7 @@ const TaskCol: React.FC<Props> = ({ board }) => {
           {...provided.droppableProps}
           className="flex flex-col gap-4"
         >
-          <BoardHeader board={board} />
+          <BoardHeader {...props} />
           {tasks?.map((task, index) => (
             <TaskBox key={task.id} {...task} index={index} />
           ))}

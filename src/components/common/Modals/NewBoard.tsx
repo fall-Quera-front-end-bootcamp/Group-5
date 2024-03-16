@@ -22,7 +22,7 @@ const NewBoard: React.FC<NewProjectType> = ({ setShowModal }) => {
     "projects",
     projectId,
     "boards",
-  ]);
+  ]); 
   const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     mutate({ name, order: boards?.length!, is_archive: true, color: "0" });

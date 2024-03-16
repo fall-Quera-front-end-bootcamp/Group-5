@@ -6,12 +6,8 @@ import { useGetBgColor } from "../../../services/ColorsService";
 import { useDataStore } from "../../../store";
 import { BoardType } from "../../../entities/Workspace";
 
-interface Props {
-  board: BoardType;
-}
-
-const BoardHeader: React.FC<Props> = ({ board }) => {
-  const { id, name, tasks_count, color } = board;
+const BoardHeader: React.FC<BoardType> = (props) => {
+  const { id, name, tasks_count, color } = props;
   const [showPlusModal, setShowPlusModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const borderColor = `border-${useGetBgColor(color)}`;
