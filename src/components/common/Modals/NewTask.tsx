@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { BsCalendarDate, BsFlag } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
