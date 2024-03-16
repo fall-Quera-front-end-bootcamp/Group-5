@@ -32,7 +32,7 @@ const TaskCol: React.FC<BoardType> = (props) => {
           className="flex flex-col gap-4"
         >
           <BoardHeader {...props} />
-          {tasks?.map((task, index) => (
+          {tasks?.map((task,index) => (
             <TaskBox key={task.id} {...task} index={index} />
           ))}
         </div>

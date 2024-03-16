@@ -10,7 +10,7 @@ interface TaskBoxType extends TaskType {
 // priority, attachment, order?!
 
 const TaskBox: React.FC<TaskBoxType> = (props) => {
-  const { id, name, description, deadline, thumbnail, index, order} = props;
+  const { id, name, description, deadline, thumbnail, index} = props;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
