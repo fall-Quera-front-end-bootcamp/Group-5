@@ -4,20 +4,22 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
 import Popup from "reactjs-popup";
-import {PriorityOptions} from "../Modals";
+import { PriorityOptions } from "../Modals";
 import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
 import useDropFile from "../../../hooks/useDropFile";
 import { CalendarModal } from "..";
+import { useAddTask } from "../../../hooks/useTask";
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
+  order: number;
 };
 
-const NewTask = ({ setShowModal }: PropsType) => {
+const NewTask: React.FC<PropsType> = ({ setShowModal, order }) => {
   useLockBodyScroll();
-
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [showCalendar, SetShowCalendar] = useState(false);
-
   const {
     previewImage: perviewFile,
     getRootProps: getRootPropsFile,
@@ -30,18 +32,37 @@ const NewTask = ({ setShowModal }: PropsType) => {
     getInputProps: getInputPropsCover,
   } = useDropFile();
 
+  const { mutate } = useAddTask();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    mutate({
+      name,
+      description,
+      priority: order,
+      order: order,
+    });
+    setShowModal(false);
+  };
+
   return (
     <>
       <div className="flex justify-center items-center fixed inset-0 z-30">
         <div className="w-9/12">
-          <div className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] font-body p-8 rounded-3xl shadow-lg">
+          <form
+            onSubmit={handleSubmit}
+            className="relative flex flex-col gap-5 w-full h-full bg-white text-[#1E1E1E] font-body p-8 rounded-3xl shadow-lg"
+          >
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="h-4 w-4 bg-[#d9d9d9]"></div>
+                <div className="h-4 w-4 bg-[#d9d9d9]" />
                 <input
                   className="outline-none text-body-xl"
                   placeholder="عنوان تسک"
                   type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <button
@@ -68,6 +89,8 @@ const NewTask = ({ setShowModal }: PropsType) => {
               <textarea
                 placeholder="توضیحاتی برای این تسک بنویسید"
                 className="outline-none text-body-m w-full h-48 rounded-2xl p-5 border-solid border-2 border-[#E2E2E2]"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="flex items-center gap-5">
@@ -121,13 +144,12 @@ const NewTask = ({ setShowModal }: PropsType) => {
               </div>
               <button
                 className="w-[125px] h-8 bg-brand-primary hover:bg-teal-primary text-white font-body text-xs px-2 py-1 rounded shadow hover:shadow-lg ease-linear transition-all duration-150"
-                type="button"
-                onClick={() => setShowModal(false)}
+                type="submit"
               >
                 ساخت تسک
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       {showCalendar && <CalendarModal setShowCalendar={SetShowCalendar} />}

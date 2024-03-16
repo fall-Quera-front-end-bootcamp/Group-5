@@ -23,25 +23,25 @@ export const useAddBoard = () => {
   return useMutation<BoardType, Error, BoardType>({
     mutationFn: apiClient.post,
 
-    onMutate: (newBoards: BoardType) => {
+    onMutate: (newBoard: BoardType) => {
       const previousData =
         queryClient.getQueryData<BoardType[]>(cacheKey) || [];
       setBoards(previousData);
 
       queryClient.setQueryData<BoardType[]>(cacheKey, (data = []) => [
         ...data,
-        newBoards,
+        newBoard,
       ]);
 
       return { previousData };
     },
-    onSuccess: (savedBoards, newBoards) => {
+    onSuccess: (savedBoard, newBoards) => {
       queryClient.setQueryData<BoardType[]>(cacheKey, (data) =>
-        data?.map((data) => (data === newBoards ? savedBoards : data))
+        data?.map((data) => (data === newBoards ? savedBoard : data))
       );
     },
-    onError: (error, newBoards, context) => {
-      console.log(error, newBoards);
+    onError: (error, newBoard, context) => {
+      console.log(error, newBoard);
       if (!context) return;
       queryClient.setQueryData<BoardType[]>(cacheKey, boards);
     },

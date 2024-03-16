@@ -6,7 +6,7 @@ import { useBoards } from "../../../hooks/useBoard";
 import { useDataStore } from "../../../store";
 import CreateBoard from "./CreateBoard";
 import TaskCol from "./TaskCol";
-import {NewBoard} from "../../common/Modals/index";
+import { NewBoard } from "../../common/Modals/index";
 
 const BoardView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -33,29 +33,10 @@ const BoardView = () => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div className="flex gap-4">
-        {boards?.map(
-          ({
-            id,
-            name,
-            order,
-            tasks,
-            tasks_count,
-            color,
-            is_archive,
-          }: BoardType) => (
-            <TaskCol
-              key={id}
-              id={id}
-              name={name}
-              tasks={tasks}
-              tasks_count={tasks_count}
-              color={color}
-              order={order}
-              is_archive={is_archive}
-            />
-          )
-        )}
-        <button onClick={()=> setShowModal(true)}>
+        {boards?.map((board, index) => (
+          <TaskCol key={index} board={board} />
+        ))}
+        <button onClick={() => setShowModal(true)}>
           <CreateBoard />
         </button>
 

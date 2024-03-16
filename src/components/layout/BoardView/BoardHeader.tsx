@@ -3,18 +3,19 @@ import { FaPlus } from "react-icons/fa6";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { BoardMore, NewTask } from "../../common/Modals";
 import { useGetBgColor } from "../../../services/ColorsService";
+import { useDataStore } from "../../../store";
+import { BoardType } from "../../../entities/Workspace";
 
-interface BoardHeaderType{
-  name: string
-  tasks_count?: string
-  color: string
+interface Props {
+  board: BoardType;
 }
 
-const BoardHeader: React.FC<BoardHeaderType> = ({ name, tasks_count, color }) => {
+const BoardHeader: React.FC<Props> = ({ board }) => {
+  const { id, name, tasks_count, color } = board;
   const [showPlusModal, setShowPlusModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const borderColor = `border-${useGetBgColor(color)}`;
-
+  const setBoardId = useDataStore((s) => s.setBoardId);
 
   return (
     <div
@@ -26,7 +27,7 @@ const BoardHeader: React.FC<BoardHeaderType> = ({ name, tasks_count, color }) =>
       <div className="flex gap-1 items-center">
         <p className="text-body-m">{name}</p>
         <p className="text-body-xs pt-[2px] px-1 bg-gray-100 rounded-[100px]">
-          {tasks_count||0}
+          {tasks_count || 0}
         </p>
       </div>
       <div className="relative flex gap-1 items-center">
@@ -35,7 +36,12 @@ const BoardHeader: React.FC<BoardHeaderType> = ({ name, tasks_count, color }) =>
             <HiEllipsisHorizontal />
           </span>
         </button>
-        <button onClick={() => setShowPlusModal(true)}>
+        <button
+          onClick={() => {
+            setShowPlusModal(true);
+            setBoardId(id!);
+          }}
+        >
           <span className="hover:text-brand-primary transition-all">
             <FaPlus />
           </span>
@@ -43,7 +49,9 @@ const BoardHeader: React.FC<BoardHeaderType> = ({ name, tasks_count, color }) =>
 
         {showMore && <BoardMore setShowModal={setShowMore} />}
 
-        {showPlusModal && <NewTask setShowModal={setShowPlusModal} />}
+        {showPlusModal && (
+          <NewTask setShowModal={setShowPlusModal} order={tasks_count!} />
+        )}
       </div>
     </div>
   );

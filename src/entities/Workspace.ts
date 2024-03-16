@@ -22,7 +22,7 @@ export interface BoardType {
   name: string;
   order: number;
   tasks?: TaskType[];
-  tasks_count?: string;
+  tasks_count?: number;
   is_archive: boolean;
   color: string;
 }
