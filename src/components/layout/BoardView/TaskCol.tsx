@@ -16,13 +16,14 @@ const TaskCol: React.FC<BoardType> = (props) => {
     "projects",
     projectId,
     "boards",
-    id,
+    String(id),
     "tasks",
   ];
   const queryClient = useQueryClient();
   if (tasks?.length! > 0)
     queryClient.setQueryData<TaskType[]>(cacheKey, () => [...tasks!]);
-
+  const tasksData =
+    queryClient.getQueryData<TaskType[]>(cacheKey) || tasks || [];
   return (
     <Droppable droppableId={String(id)}>
       {(provided) => (
@@ -32,7 +33,8 @@ const TaskCol: React.FC<BoardType> = (props) => {
           className="flex flex-col gap-4"
         >
           <BoardHeader {...props} />
-          {tasks?.map((task,index) => (
+
+          {tasksData?.map((task, index) => (
             <TaskBox key={task.id} {...task} index={index} />
           ))}
         </div>
