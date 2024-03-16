@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
-import { useAddProject } from "../../../hooks/useProject";
 import { useAddBoard } from "../../../hooks/useBoard";
+import useLockBodyScroll from "../../../hooks/useLockBodyScroll";
+import { useQueryClient } from "@tanstack/react-query";
+import { useDataStore } from "../../../store";
+import { BoardType } from "../../../entities/Workspace";
 
 type NewProjectType = {
   setShowModal: (showModal: boolean) => void;
@@ -11,14 +13,21 @@ type NewProjectType = {
 const NewBoard: React.FC<NewProjectType> = ({ setShowModal }) => {
   useLockBodyScroll();
   const [name, setName] = useState("");
-
+  const queryClient = useQueryClient();
+  const { workspaceId, projectId } = useDataStore((s) => s.params);
   const { mutate } = useAddBoard();
-
-  // const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   mutate({ name });
-  //   setShowModal(false);
-  // };
+  const boards = queryClient.getQueryData<BoardType[]>([
+    "workspaces",
+    workspaceId,
+    "projects",
+    projectId,
+    "boards",
+  ]);
+  const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    mutate({ name, order: boards?.length!, is_archive: true, color: "0" });
+    setShowModal(false);
+  };
 
   return (
     <>
