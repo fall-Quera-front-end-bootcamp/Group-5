@@ -122,9 +122,12 @@ const NewTask: React.FC<PropsType> = ({ setShowModal, order }) => {
                   <PriorityOptions />
                 </Popup>
 
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                <button
+                  onClick={() => SetShowCalendar(true)}
+                  className="text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2"
+                >
                   <BsCalendarDate />
-                </div>
+                </button>
 
                 <Popup
                   trigger={
