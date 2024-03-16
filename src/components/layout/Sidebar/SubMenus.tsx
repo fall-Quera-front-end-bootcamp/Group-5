@@ -55,7 +55,12 @@ const SubMenus: React.FC = () => {
                 workspace.color!
               )} w-[20px] h-[20px] rounded flex justify-center items-center`}
             >
-              <BsThreeDots color="e3e3e3" onClick={() => setColumnMore(true)} />
+              <BsThreeDots
+                color="e3e3e3"
+                onClick={() => {
+                  setColumnMore(true), console.log("clicked");
+                }}
+              />
             </div>
           }
         >

@@ -1,6 +1,5 @@
 import { IoClose } from "react-icons/io5";
 import { BiSolidEdit } from "react-icons/bi";
-import { MdOutlineColorLens } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoShareAndroid } from "react-icons/go";
@@ -17,15 +16,7 @@ const ColumnMoreproject: React.FC<ColumnMoreType> = ({ setColumnMore }) => {
   const [showNewTask, setNewTask] = useState(false);
   const [display, setDisplay] = useState("visible");
   useLockBodyScroll();
-  //   const [name, setName] = useState("");
-
-  //   const { mutate } = useAddProject();
-
-  //   const handleCreateProject = (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     mutate({ name });
-  //     setShowModal(false);
-  //   };
+ 
 
   return (
     <>

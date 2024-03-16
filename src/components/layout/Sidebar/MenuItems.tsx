@@ -7,7 +7,7 @@ import { useDataStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 const MenuItems: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showColumnMorePro, setColumnMorePro] = useState(false);
   const [showNewProject, setNewProject] = useState(false);
   // const [display, setDisplay] = useState("visible");
   const { data: projects } = useProjects();
@@ -28,7 +28,7 @@ const MenuItems: React.FC = () => {
             <div>
               <BsThreeDots
                 onClick={() => {
-                  setShowModal(true), console.log("clicked");
+                  setColumnMorePro(true);
                 }}
               />
             </div>
@@ -50,7 +50,7 @@ const MenuItems: React.FC = () => {
       >
         ساختن پروژه‌ی جدید
       </button>
-      {showModal && <ColumnMoreproject setColumnMore={setShowModal} />}
+      {showColumnMorePro && <ColumnMoreproject setColumnMore={setColumnMorePro} />}
       {showNewProject && <NewProject setShowModal={setNewProject} />}
     </>
   );
