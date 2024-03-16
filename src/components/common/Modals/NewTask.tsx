@@ -73,18 +73,6 @@ const NewTask: React.FC<PropsType> = ({ setShowModal, order }) => {
                 <IoClose />
               </button>
             </div>
-            <div className="flex items-center gap-3">
-              <p className="text-body-ml">در</p>
-              <input
-                className="outline-none w-40 px-[8px] py-[5px] text-body-m rounded-md border-2"
-                placeholder="پروژه اول"
-                type="text"
-              />
-              <p className="text-body-m">برای</p>
-              <div className="p-2 cursor-pointer border-2 border-[#C1C1C1] border-dashed rounded-full">
-                <BsPersonAdd size={20} color="#C1C1C1" />
-              </div>
-            </div>
             <div>
               <textarea
                 placeholder="توضیحاتی برای این تسک بنویسید"
