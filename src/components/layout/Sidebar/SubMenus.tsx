@@ -15,13 +15,11 @@ const SubMenus: React.FC = () => {
   const [showColumnMore, setColumnMore] = useState(false);
   const { data: workspaces } = useWorkspaces();
   const setWorkspaceId = useDataStore((s) => s.setWorkspaceId);
-  const { workspaceId } = useDataStore((s) => s.params);
-
   useEffect(() => {
     if (workspaces) {
       setWorkspaceId(workspaces[0].id!);
     }
-  }, []);
+  }, [workspaces]);
 
   return (
     <>
@@ -40,32 +38,33 @@ const SubMenus: React.FC = () => {
           <AddBoxOutlinedIcon /> ساختن اسپیس جدید
         </button>
       </MenuItem>
-      {workspaces?.map((workspace, index) => (
-        <SubMenu
-          key={workspace.id}
-          onClick={() => {
-            setWorkspaceId(workspace.id!);
-            setSelectedWorkspaceId(workspace.id!);
-            setcheckIfClicked(!checkIfClicked);
-          }}
-          defaultOpen={index === 0}
-          open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
-          className="font-body text-body-m"
-          label={workspace.name}
-          icon={
-            <div
-              className={`${useGetBgColor(
-                workspace.color!
-              )} w-[20px] h-[20px] rounded flex justify-center items-center`}
-              onClick={() => setColumnMore(true)}
-            >
-              <BsThreeDots color="e3e3e3" />
-            </div>
-          }
-        >
-          <MenuItems />
-        </SubMenu>
-      ))}
+      {workspaceId &&
+        workspaces?.map((workspace, index) => (
+          <SubMenu
+            key={workspace.id}
+            onClick={() => {
+              setWorkspaceId(workspace.id!);
+              setSelectedWorkspaceId(workspace.id!);
+              setcheckIfClicked(!checkIfClicked);
+            }}
+            defaultOpen={index === 0}
+            open={selectedWorkspaceId === workspace.id! && !checkIfClicked}
+            className="font-body text-body-m"
+            label={workspace.name}
+            icon={
+              <div
+                className={`${useGetBgColor(
+                  workspace.color!
+                )} w-[20px] h-[20px] rounded flex justify-center items-center`}
+                onClick={() => setColumnMore(true)}
+              >
+                <BsThreeDots color="e3e3e3" />
+              </div>
+            }
+          >
+            <MenuItems />
+          </SubMenu>
+        ))}
 
       {showModal && <NewWorkspace setShowModal={setShowModal} />}
       {showColumnMore && <ColumnMore setColumnMore={setColumnMore} />}
