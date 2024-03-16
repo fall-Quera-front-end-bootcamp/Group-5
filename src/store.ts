@@ -8,6 +8,7 @@ import {
   useType,
   ProjectsType,
   BoardsType,
+  TasksType,
 } from "./entities/Store";
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -29,9 +30,13 @@ export const useDataStore = create<DataStore>((set) => ({
   workspaces: [] as WorkspacesType,
   projects: [] as ProjectsType,
   boards: [] as BoardsType,
+  tasks: [] as TasksType,
+
   setWorkspaces: (data) => set(() => ({ workspaces: [...data] })),
   setProjects: (data) => set(() => ({ projects: [...data] })),
   setBoards: (data) => set(() => ({ boards: [...data] })),
+  setTasks: (data) => set(() => ({ tasks: [...data] })),
+
   setWorkspaceId: (id) => set(() => ({ params: { workspaceId: String(id) } })),
   setProjectId: (id) =>
     set(({ params: { workspaceId } }) => ({
