@@ -3,10 +3,13 @@ import BoardHeader from "./BoardHeader";
 import TaskBox from "./TaskBox";
 import { BoardType, TaskType } from "../../../entities/Workspace";
 
+// is_archive???
+
 const TaskCol: React.FC<BoardType> = ({
   id,
   name,
   order,
+  is_archive,
   tasks,
   tasks_count,
   color,
