@@ -1,21 +1,29 @@
-import { Droppable } from "react-beautiful-dnd"
-import TaskHeader from "./TaskHeader";
+import { Droppable } from "react-beautiful-dnd";
+import BoardHeader from "./BoardHeader";
 import TaskBox from "./TaskBox";
+import { BoardType, TaskType } from "../../../entities/Workspace";
+import { useQueryClient } from "@tanstack/react-query";
+import { useDataStore } from "../../../store";
 
-type taskType = {
-  id: number,
-  img: string,
-  title: string,
-  caption: string
-}
+// is_archive???
 
-type taskColType = {
-  id: number,
-  header: string,
-  tasks: taskType[]
-}
-
-const TaskCol = ({id, header, tasks}:taskColType) => {
+const TaskCol: React.FC<BoardType> = (props) => {
+  const { id, tasks } = props;
+  const { workspaceId, projectId } = useDataStore((s) => s.params);
+  const cacheKey = [
+    "workspaces",
+    workspaceId,
+    "projects",
+    projectId,
+    "boards",
+    String(id),
+    "tasks",
+  ];
+  const queryClient = useQueryClient();
+  if (tasks?.length! > 0)
+    queryClient.setQueryData<TaskType[]>(cacheKey, () => [...tasks!]);
+  const tasksData =
+    queryClient.getQueryData<TaskType[]>(cacheKey) || tasks || [];
   return (
     <Droppable droppableId={String(id)}>
       {(provided) => (
@@ -24,15 +32,15 @@ const TaskCol = ({id, header, tasks}:taskColType) => {
           {...provided.droppableProps}
           className="flex flex-col gap-4"
         >
-          <TaskHeader title={header} numOfTasks={tasks.length} />
-          {tasks.map((task: taskType, index) => (
+          <BoardHeader {...props} />
+
+          {tasksData?.map((task, index) => (
             <TaskBox key={task.id} {...task} index={index} />
           ))}
-
         </div>
       )}
     </Droppable>
   );
-}
+};
 
 export default TaskCol;

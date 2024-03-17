@@ -6,7 +6,11 @@ import FormsType, {
   LoginResponse,
   LoginServerResponse,
 } from "../entities/Auth";
-import { loginApiClient, signupApiClient } from "../services/authServices";
+import {
+  loginApiClient,
+  signupApiClient,
+  updateApiClient,
+} from "../services/authServices";
 import useAuthStore from "../store";
 
 const forms: FormsType = {
@@ -15,8 +19,8 @@ const forms: FormsType = {
     label: "ورود",
     button: "signIn",
     schema: {
-      username: z.string().min(1,"نام کاربری الزامی است"),
-      password: z.string().min(1,"رمز عبور الزامی است"),
+      username: z.string().min(1, "نام کاربری الزامی است"),
+      password: z.string().min(1, "رمز عبور الزامی است"),
     },
     fields: [
       { key: "username", type: "text", label: "نام کاربری" },
@@ -36,7 +40,7 @@ const forms: FormsType = {
         .string()
         .min(1, { message: "ایمیل الزامی است" })
         .email("ایمیل وارد شده معتبر نیست"),
-      password: z.string().min(1,"رمز عبور الزامی است"),
+      password: z.string().min(1, "رمز عبور الزامی است"),
       terms: z.literal(true, {
         errorMap: () => ({ message: "شما با قوانین موافقت نکردید!!" }),
       }),
@@ -53,7 +57,7 @@ const forms: FormsType = {
     label: "دریافت ایمیل بازیابی رمز عبور",
     button: "forgotPassword",
     schema: {
-      email: z.string().min(1,"نام کاربری الزامی است"),
+      email: z.string().min(1, "نام کاربری الزامی است"),
     },
     fields: [{ key: "email", type: "email", label: "ایمیل خود را وارد کنید" }],
   },
@@ -121,6 +125,17 @@ export const useLoginUser = () => {
     mutationFn: loginApiClient.post,
 
     onSuccess: (user: LoginServerResponse) => {
+      login(user);
+    },
+  });
+};
+
+export const useUpdateUser = () => {
+  const login = useAuthStore((s) => s.login);
+  const apiClient = updateApiClient();
+  return useMutation<LoginResponse, Error, LoginResponse>({
+    mutationFn: apiClient.patch,
+    onSuccess: (user: LoginResponse) => {
       login(user);
     },
   });

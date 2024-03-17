@@ -8,15 +8,15 @@ import { IoIosArrowDown } from "react-icons/io";
 
 type PropsType = {
   setShowModal: (showModal: boolean) => void;
-  setDisplay?: (setDisplay: string) => void;
+  setDisplay?: (display: string) => void;
 };
 
-const ShareProject = ({ setShowModal, setDisplay }: PropsType) => {
+const ShareWorkSpace = ({ setShowModal, setDisplay }: PropsType) => {
   useLockBodyScroll();
 
   return (
     <>
-      <div className="flex justify-center top-20 bottom-auto fixed inset-0 z-30">
+      <div className="flex justify-center top-[150px] bottom-auto fixed inset-0 z-40">
         <div className="w-[470px] p-5 bg-white text-[#1E1E1E] font-body rounded-xl flex flex-col gap-10">
           <div className="flex justify-between items-center">
             {setDisplay ? (
@@ -39,7 +39,7 @@ const ShareProject = ({ setShowModal, setDisplay }: PropsType) => {
               </button>
             )}
             <h2 className="text-center font-heading text-heading-xs">
-              به اشتراک‌گذاری پروژه
+              اشتراک گذاری ورک اسپیس
             </h2>
             <span className="w-6" />
           </div>
@@ -125,9 +125,9 @@ const ShareProject = ({ setShowModal, setDisplay }: PropsType) => {
           </div>
         </div>
       </div>
-      <div className="opacity-50 fixed inset-0 z-10 bg-black"></div>
+      {/* <div className="opacity-50 fixed inset-0 z-10 bg-black"></div> */}
     </>
   );
 };
 
-export default ShareProject;
+export default ShareWorkSpace;

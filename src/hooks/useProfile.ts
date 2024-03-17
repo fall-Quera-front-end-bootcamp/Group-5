@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import FieldType from "../entities/Field";
+import useAuthStore from "../store";
 
 const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
@@ -27,29 +28,34 @@ const forms: FormsType = {
     label: "ثبت تغییرات",
     button: "personal",
     schema: {
-      image: z
-        .any()
-        .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
-        .refine(
-          (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
-          "Only .jpg, .jpeg, .png and .webp formats are supported."
-        ),
-      firstname: z
+      image: z.optional(
+        z
+          .any()
+          .refine(
+            (file) => file?.size <= MAX_FILE_SIZE,
+            `Max image size is 5MB.`
+          )
+          .refine(
+            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+            "Only .jpg, .jpeg, .png and .webp formats are supported."
+          )
+      ),
+      first_name: z
         .string()
         .min(3, { message: "نام باید حداقل 3 کاراکتر باشد." }),
-      lastname: z
+      last_name: z
         .string()
         .min(3, { message: "نام باید حداقل 3 کاراکتر باشد." }),
 
-      phoneNumber: z
-        .number()
+      phone_number: z
+        .string()
         .min(10, { message: "شماره تلفن باید حداقل 10 کاراکتر باشد." })
         .max(12, { message: "شماره تلفن باید حداکثر 10 کاراکتر باشد." }),
     },
     fields: [
-      { key: "firstname", type: "text", label: "نام" },
-      { key: "lastname", type: "text", label: "نام خانوادگی" },
-      { key: "phoneNumber", type: "text", label: "شماره موبایل" },
+      { key: "first_name", type: "text", label: "نام" },
+      { key: "last_name", type: "text", label: "نام خانوادگی" },
+      { key: "phone_number", type: "text", label: "شماره موبایل" },
     ],
   },
   accountInfo: {
@@ -65,13 +71,13 @@ const forms: FormsType = {
         .string()
         .min(6, { message: "نام کاربری باید حداقل 6 کاراکتر باشد." }),
 
-      currentPassword: z
+      old_password: z
         .string()
         .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
-      password: z
+      new_password: z
         .string()
         .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
-      confirmPassword: z
+      new_password1: z
         .string()
         .min(6, { message: "پسورد باید حداقل 6 کاراکتر باشد." }),
     },
@@ -80,17 +86,17 @@ const forms: FormsType = {
       { key: "username", type: "text", label: "نام کاربری" },
 
       {
-        key: "currentPassword",
+        key: "old_password",
         type: "password",
         label: "رمز عبور فعلی",
       },
       {
-        key: "password",
+        key: "new_password",
         type: "password",
         label: "رمز عبور جدید",
       },
       {
-        key: "confirmPassword",
+        key: "new_password1",
         type: "password",
         label: "تکرار رمز عبور جدید",
       },
@@ -105,12 +111,23 @@ const forms: FormsType = {
 
 const useProfile = (tab: string) => {
   const { title, schema, fields, button, label } = forms[tab];
-
+  const user = useAuthStore((s) => s.user);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues:
+      button === "account" && user
+        ? {
+            email: user.email,
+            username: user.username,
+          }
+        : {
+            first_name: user.first_name,
+            last_name: user.last_name,
+            phone_number: user.phone_number,
+          },
     resolver:
       button === "account"
         ? zodResolver(

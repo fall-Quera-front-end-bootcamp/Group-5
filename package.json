@@ -18,6 +18,7 @@
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
+    "react-date-object": "^2.1.8",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.50.1",
@@ -26,12 +27,11 @@
     "react-pro-sidebar": "^1.1.0",
     "react-router-dom": "^6.22.1",
     "reactjs-popup": "^2.0.6",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5",
     "simple-zustand-devtools": "^1.1.0",
     "zod": "^3.22.4",
-    "zustand": "^4.5.2",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5"
-
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.25",

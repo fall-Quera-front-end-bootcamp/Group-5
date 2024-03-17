@@ -1,9 +1,9 @@
 
 const NotFoundPage = () => {
   return (
-        <div>
-            <h1 className="text-[4rem] font-heading text-center">صفحه مورد نظر شما پیدا نشد</h1>
-        </div>
+    <div className="flex justify-center items-center w-full h-screen">
+      <h1 className="text-6xl font-heading">صفحه مورد نظر شما پیدا نشد</h1>
+    </div>
   )
 }
 
