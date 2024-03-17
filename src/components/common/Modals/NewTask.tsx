@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BsCalendarDate, BsFlag, BsPersonAdd } from "react-icons/bs";
+import { BsCalendarDate, BsFlag } from "react-icons/bs";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { SlPaperClip } from "react-icons/sl";
@@ -88,18 +88,6 @@ const NewTask: React.FC<PropsType> = ({ setShowModal, order, setDisplay }) => {
                 </button>
               )}
             </div>
-            <div className="flex items-center gap-3">
-              <p className="text-body-ml">در</p>
-              <input
-                className="outline-none w-40 px-[8px] py-[5px] text-body-m rounded-md border-2"
-                placeholder="پروژه اول"
-                type="text"
-              />
-              <p className="text-body-m">برای</p>
-              <div className="p-2 cursor-pointer border-2 border-[#C1C1C1] border-dashed rounded-full">
-                <BsPersonAdd size={20} color="#C1C1C1" />
-              </div>
-            </div>
             <div>
               <textarea
                 placeholder="توضیحاتی برای این تسک بنویسید"
@@ -149,9 +137,12 @@ const NewTask: React.FC<PropsType> = ({ setShowModal, order, setDisplay }) => {
                   <PriorityOptions />
                 </Popup>
 
-                <div className="cursor-pointer text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2">
+                <button
+                  onClick={() => SetShowCalendar(true)}
+                  className="text-[#C1C1C1] text-xl border-dashed border-2 border-[#C1C1C1] rounded-full p-2"
+                >
                   <BsCalendarDate />
-                </div>
+                </button>
 
                 <Popup
                   trigger={

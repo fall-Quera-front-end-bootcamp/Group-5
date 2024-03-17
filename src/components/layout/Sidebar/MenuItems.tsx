@@ -29,6 +29,7 @@ const MenuItems: React.FC = () => {
               <BsThreeDots
                 onClick={() => {
                   setColumnMorePro(true);
+                  setShowModal(true)
                 }}
               />
             </div>
